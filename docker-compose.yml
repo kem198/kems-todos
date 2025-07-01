@@ -1,0 +1,23 @@
+services:
+  db:
+    image: postgres:17.4-bookworm
+    ports:
+      - 54322:5432
+    environment:
+      - LANG
+      - TZ
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+    volumes:
+      - ./postgres/init:/docker-entrypoint-initdb.d
+      - db-volume:/var/lib/postgresql/dataS
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "2"
+    restart: always
+
+volumes:
+  db-volume:
