@@ -23,6 +23,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import net.kem198.todos_api.domain.repository.todo.TodoRepository;
+import net.kem198.todos_api.domain.model.Todo;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class TodoRestControllerTests {
@@ -408,21 +409,18 @@ public class TodoRestControllerTests {
         }
     }
 
-    // ヘルパーメソッド：テスト用 Todo を作成し、ID を返す
-    private String createTodo(String title, String description) throws Exception {
-        String requestBody = String.format("""
-                    {
-                        "todoTitle": "%s",
-                        "todoDescription": "%s"
-                    }
-                """, title, description);
+    /**
+     * テスト用 Todo を作成して ID を返す
+     */
+    private String createTodo(String title, String description) {
+        Todo todo = new Todo();
+        todo.setTodoId(java.util.UUID.randomUUID().toString());
+        todo.setTodoTitle(title);
+        todo.setTodoDescription(description);
+        todo.setFinished(false);
+        todo.setCreatedAt(new java.util.Date());
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<String> requestEntity = new HttpEntity<>(requestBody, headers);
-
-        ResponseEntity<String> response = restTemplate.postForEntity("/v1/todos", requestEntity, String.class);
-        JsonNode responseBody = objectMapper.readTree(response.getBody());
-        return responseBody.get("todoId").asText();
+        todoRepository.create(todo);
+        return todo.getTodoId();
     }
 }
