@@ -24,8 +24,6 @@ jobs:
           POSTGRES_DB: todos_db
         ports:
           - 54322:5432
-        volumes:
-          - ${{ github.workspace }}/postgres/init:/docker-entrypoint-initdb.d
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -33,6 +31,10 @@ jobs:
           --health-retries 5
     steps:
       - uses: actions/checkout@v4
+      - name: Setup Database
+        run: |
+          PGPASSWORD=__ENTER_POSTGRES_PASSWORD_HERE__ psql -h localhost -p 54322 -U postgres -d todos_db -f ../../postgres/init/01_create_todos.sql
+          PGPASSWORD=__ENTER_POSTGRES_PASSWORD_HERE__ psql -h localhost -p 54322 -U postgres -d todos_db -f ../../postgres/init/99_create_examples.sql
       - name: Setup Java
         uses: actions/setup-java@v3
         with:
