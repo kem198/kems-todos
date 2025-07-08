@@ -119,7 +119,7 @@ public class TodoRestControllerTests {
             assertNotNull(savedTodo);
             assertEquals("Hello World!", savedTodo.getTodoTitle());
             assertEquals("Hello Todo Description!", savedTodo.getTodoDescription());
-            assertEquals(false, savedTodo.isFinished());
+            assertFalse(savedTodo.isFinished());
             assertNotNull(savedTodo.getCreatedAt());
         }
 
