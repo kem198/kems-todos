@@ -295,7 +295,7 @@ public class TodoRestControllerTests {
             // Assert
             assertEquals(HttpStatus.OK, response.getStatusCode());
             JsonNode responseBody = objectMapper.readTree(response.getBody());
-            assertEquals(true, responseBody.get("finished").asBoolean());
+            assertTrue(responseBody.get("finished").asBoolean());
         }
 
         @Test
