@@ -169,7 +169,7 @@ public class TodoRepositoryTests {
     class DeleteTests {
         @Test
         @DisplayName("存在する Todo を削除する")
-        public void deletesTodSuccessfully() {
+        public void deletesTodoSuccessfully() {
             // Arrange
             Todo todoToDelete = createTestTodo("Todo to Delete", false);
             todoRepository.create(todoToDelete);
