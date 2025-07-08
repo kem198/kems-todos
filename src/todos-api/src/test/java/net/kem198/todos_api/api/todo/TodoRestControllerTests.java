@@ -78,8 +78,11 @@ public class TodoRestControllerTests {
             // Assert
             assertEquals(HttpStatus.OK, response.getStatusCode());
             JsonNode responseBody = objectMapper.readTree(response.getBody());
+            assertEquals(todoId, responseBody.get("todoId").asText());
             assertEquals("Test Todo", responseBody.get("todoTitle").asText());
             assertEquals("Test Description", responseBody.get("todoDescription").asText());
+            assertFalse(responseBody.get("finished").asBoolean());
+            assertNotNull(responseBody.get("createdAt").asText());
         }
 
         @Test
@@ -115,6 +118,7 @@ public class TodoRestControllerTests {
             String createdTodoId = responseBody.get("todoId").asText();
             var savedTodo = todoRepository.findById(createdTodoId);
             assertNotNull(savedTodo);
+            assertEquals(createdTodoId, savedTodo.getTodoId());
             assertEquals("Hello World!", savedTodo.getTodoTitle());
             assertEquals("Hello Todo Description!", savedTodo.getTodoDescription());
             assertFalse(savedTodo.isFinished());
@@ -140,10 +144,10 @@ public class TodoRestControllerTests {
             // Assert
             assertEquals(HttpStatus.CREATED, response.getStatusCode());
             JsonNode responseBody = objectMapper.readTree(response.getBody());
+            assertNotNull(responseBody.get("todoId").asText());
             assertEquals("Hello World!", responseBody.get("todoTitle").asText());
             assertEquals("Hello Todo Description!", responseBody.get("todoDescription").asText());
             assertFalse(responseBody.get("finished").asBoolean());
-            assertNotNull(responseBody.get("todoId").asText());
             assertNotNull(responseBody.get("createdAt").asText());
         }
 
@@ -266,9 +270,11 @@ public class TodoRestControllerTests {
             // Assert
             var updatedTodo = todoRepository.findById(todoId);
             assertNotNull(updatedTodo);
-            assertTrue(updatedTodo.isFinished());
+            assertEquals(todoId, updatedTodo.getTodoId());
             assertEquals("Test Todo", updatedTodo.getTodoTitle());
             assertEquals("Test Description", updatedTodo.getTodoDescription());
+            assertTrue(updatedTodo.isFinished());
+            assertNotNull(updatedTodo.getCreatedAt());
         }
 
         @Test
@@ -287,7 +293,11 @@ public class TodoRestControllerTests {
             // Assert
             assertEquals(HttpStatus.OK, response.getStatusCode());
             JsonNode responseBody = objectMapper.readTree(response.getBody());
+            assertEquals(todoId, responseBody.get("todoId").asText());
+            assertEquals("Test Todo", responseBody.get("todoTitle").asText());
+            assertEquals("Test Description", responseBody.get("todoDescription").asText());
             assertTrue(responseBody.get("finished").asBoolean());
+            assertNotNull(responseBody.get("createdAt").asText());
         }
 
         @Test
