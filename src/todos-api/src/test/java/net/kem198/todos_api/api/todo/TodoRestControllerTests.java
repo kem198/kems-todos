@@ -1,6 +1,7 @@
 package net.kem198.todos_api.api.todo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -146,7 +147,7 @@ public class TodoRestControllerTests {
             JsonNode responseBody = objectMapper.readTree(response.getBody());
             assertEquals("Hello World!", responseBody.get("todoTitle").asText());
             assertEquals("Hello Todo Description!", responseBody.get("todoDescription").asText());
-            assertEquals(false, responseBody.get("finished").asBoolean());
+            assertFalse(responseBody.get("finished").asBoolean());
             assertNotNull(responseBody.get("todoId").asText());
             assertNotNull(responseBody.get("createdAt").asText());
         }
