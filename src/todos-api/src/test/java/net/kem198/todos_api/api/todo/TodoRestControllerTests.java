@@ -98,24 +98,21 @@ public class TodoRestControllerTests {
         @Test
         @DisplayName("Todo がデータベースに保存されること")
         void savesTodoToDatabase() throws Exception {
-            // Arrange
+            // Act
             String requestBody = """
                         {
                             "todoTitle": "Hello World!",
                             "todoDescription": "Hello Todo Description!"
                         }
                     """;
-
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             HttpEntity<String> requestEntity = new HttpEntity<>(requestBody, headers);
-
-            // Act
             ResponseEntity<String> response = restTemplate.postForEntity("/v1/todos", requestEntity, String.class);
-            JsonNode responseBody = objectMapper.readTree(response.getBody());
-            String createdTodoId = responseBody.get("todoId").asText();
 
             // Assert
+            JsonNode responseBody = objectMapper.readTree(response.getBody());
+            String createdTodoId = responseBody.get("todoId").asText();
             var savedTodo = todoRepository.findById(createdTodoId);
             assertNotNull(savedTodo);
             assertEquals("Hello World!", savedTodo.getTodoTitle());
@@ -127,7 +124,7 @@ public class TodoRestControllerTests {
         @Test
         @DisplayName("作成された Todo と 201 を返すこと")
         void returnsCreatedTodoWith201() throws Exception {
-            // Arrange
+            // Act
             String requestBody = """
                         {
                             "todoTitle": "Hello World!",
@@ -138,8 +135,6 @@ public class TodoRestControllerTests {
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             HttpEntity<String> requestEntity = new HttpEntity<>(requestBody, headers);
-
-            // Act
             ResponseEntity<String> response = restTemplate.postForEntity("/v1/todos", requestEntity, String.class);
 
             // Assert
@@ -155,11 +150,13 @@ public class TodoRestControllerTests {
         @Test
         @DisplayName("未完了 Todo が上限に達している場合は 400 を返すこと")
         void returnsBadRequestWith400WhenUnfinishedTodoLimitReached() throws Exception {
-            // Arrange (未完了 Todo を上限まで作成する)
+            // Arrange
+            // 未完了 Todo を上限まで作成する
             for (int i = 0; i < 5; i++) {
                 createTodo("Todo " + i, "Description " + i);
             }
 
+            // Act
             String requestBody = """
                         {
                             "todoTitle": "Overflow Todo",
@@ -170,8 +167,6 @@ public class TodoRestControllerTests {
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             HttpEntity<String> requestEntity = new HttpEntity<>(requestBody, headers);
-
-            // Act
             ResponseEntity<String> response = restTemplate.postForEntity("/v1/todos", requestEntity, String.class);
 
             // Assert
@@ -183,11 +178,13 @@ public class TodoRestControllerTests {
         @Test
         @DisplayName("未完了 Todo が上限に達している場合は新しい Todo が作成されないこと")
         void doesNotCreateTodoWhenUnfinishedTodoLimitReached() throws Exception {
-            // Arrange (未完了 Todo を上限まで作成する)
+            // Arrange
+            // 未完了 Todo を上限まで作成する
             for (int i = 0; i < 5; i++) {
                 createTodo("Todo " + i, "Description " + i);
             }
 
+            // Act
             String requestBody = """
                         {
                             "todoTitle": "Overflow Todo",
@@ -198,8 +195,6 @@ public class TodoRestControllerTests {
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             HttpEntity<String> requestEntity = new HttpEntity<>(requestBody, headers);
-
-            // Act
             restTemplate.postForEntity("/v1/todos", requestEntity, String.class);
 
             // Assert
@@ -211,7 +206,7 @@ public class TodoRestControllerTests {
         @Test
         @DisplayName("バリデーションエラーの場合は 400 を返すこと")
         void returnsBadRequestWith400ForValidationError() throws Exception {
-            // Arrange
+            // Act
             String requestBody = """
                         {
                             "todoTitle": "",
@@ -222,8 +217,6 @@ public class TodoRestControllerTests {
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             HttpEntity<String> requestEntity = new HttpEntity<>(requestBody, headers);
-
-            // Act
             ResponseEntity<String> response = restTemplate.postForEntity("/v1/todos", requestEntity, String.class);
 
             // Assert
@@ -233,21 +226,20 @@ public class TodoRestControllerTests {
         @Test
         @DisplayName("バリデーションエラーの場合は新しい Todo が作成されないこと")
         void doesNotCreateTodoForValidationError() throws Exception {
-            // Arrange (事前の Todo 数を確認)
+            // Arrange
+            // 事前の Todo 数を確認
             int initialCount = todoRepository.findAll().size();
 
+            // Act
             String requestBody = """
                         {
                             "todoTitle": "",
                             "todoDescription": "Description"
                         }
                     """;
-
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             HttpEntity<String> requestEntity = new HttpEntity<>(requestBody, headers);
-
-            // Act
             restTemplate.postForEntity("/v1/todos", requestEntity, String.class);
 
             // Assert
@@ -306,7 +298,8 @@ public class TodoRestControllerTests {
             // 一度完了させる
             restTemplate.exchange("/v1/todos/" + todoId, HttpMethod.PUT, null, String.class);
 
-            // Act - 再度完了させようとする
+            // Act
+            // 再度完了させようとする
             ResponseEntity<String> response = restTemplate.exchange(
                     "/v1/todos/" + todoId,
                     HttpMethod.PUT,
