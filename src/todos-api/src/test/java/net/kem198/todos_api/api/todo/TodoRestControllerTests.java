@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Collection;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -115,7 +117,7 @@ public class TodoRestControllerTests {
             // Assert
             JsonNode responseBody = objectMapper.readTree(response.getBody());
             String createdTodoId = responseBody.get("todoId").asText();
-            var savedTodo = todoRepository.findById(createdTodoId);
+            Todo savedTodo = todoRepository.findById(createdTodoId);
             assertNotNull(savedTodo);
             assertEquals(createdTodoId, savedTodo.getTodoId());
             assertEquals("Hello World!", savedTodo.getTodoTitle());
@@ -201,7 +203,7 @@ public class TodoRestControllerTests {
             restTemplate.postForEntity("/v1/todos", requestEntity, String.class);
 
             // Assert
-            var allTodos = todoRepository.findAll();
+            Collection<Todo> allTodos = todoRepository.findAll();
             assertEquals(5, allTodos.size()); // 上限の 5 個のままで増えていない
             assertTrue(allTodos.stream().noneMatch(todo -> "Overflow Todo".equals(todo.getTodoTitle())));
         }
@@ -246,7 +248,7 @@ public class TodoRestControllerTests {
             restTemplate.postForEntity("/v1/todos", requestEntity, String.class);
 
             // Assert
-            var todosAfter = todoRepository.findAll();
+            Collection<Todo> todosAfter = todoRepository.findAll();
             assertEquals(initialCount, todosAfter.size());
         }
     }
@@ -267,7 +269,7 @@ public class TodoRestControllerTests {
                     String.class);
 
             // Assert
-            var updatedTodo = todoRepository.findById(todoId);
+            Todo updatedTodo = todoRepository.findById(todoId);
             assertNotNull(updatedTodo);
             assertEquals(todoId, updatedTodo.getTodoId());
             assertEquals("Test Todo", updatedTodo.getTodoTitle());
@@ -354,7 +356,7 @@ public class TodoRestControllerTests {
                     String.class);
 
             // Assert
-            var deletedTodo = todoRepository.findById(todoId);
+            Todo deletedTodo = todoRepository.findById(todoId);
             assertNull(deletedTodo);
         }
 
