@@ -40,7 +40,6 @@ public class TodoRestControllerTests {
     @BeforeEach
     void setUp() {
         objectMapper = new ObjectMapper();
-        // テストデータをクリア
         todoRepository.findAll().forEach(todo -> todoRepository.delete(todo));
     }
 
@@ -203,7 +202,7 @@ public class TodoRestControllerTests {
 
             // Assert
             var allTodos = todoRepository.findAll();
-            assertEquals(5, allTodos.size()); // 上限の5個のままで増えていない
+            assertEquals(5, allTodos.size()); // 上限の 5 個のままで増えていない
             assertTrue(allTodos.stream().noneMatch(todo -> "Overflow Todo".equals(todo.getTodoTitle())));
         }
 
