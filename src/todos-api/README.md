@@ -1,5 +1,5 @@
 <!-- omit in toc -->
-# Restful Apps - API Layer Application
+# Restful apps - API Layer Application
 
 <!-- omit in toc -->
 ## TOC
