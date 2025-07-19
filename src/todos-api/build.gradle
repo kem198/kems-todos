@@ -24,7 +24,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.mapstruct:mapstruct:1.5.5.Final'
     implementation 'org.seasar.doma:doma-core:3.10.0'
-    implementation 'org.seasar.doma.boot:doma-spring-boot-starter:1.8.0'
+    implementation 'org.seasar.doma.boot:doma-spring-boot-starter:2.4.0'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
     annotationProcessor 'org.seasar.doma:doma-processor:3.10.0'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'

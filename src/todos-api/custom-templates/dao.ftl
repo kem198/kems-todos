@@ -10,6 +10,7 @@ package ${packageName};
 <#list importNames as importName>
 import ${importName};
 </#list>
+import org.seasar.doma.boot.ConfigAutowireable;
 
 /**
 <#if lib.author??>
@@ -17,6 +18,7 @@ import ${importName};
 </#if>
  */
 @Dao<#if configClassSimpleName??>(config = ${configClassSimpleName}.class)</#if>
+@ConfigAutowireable
 public interface ${simpleName} {
 
 <#if entityDesc.idEntityPropertyDescs?size gt 0>
