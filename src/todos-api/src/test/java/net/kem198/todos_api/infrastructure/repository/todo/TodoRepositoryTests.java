@@ -30,23 +30,13 @@ public class TodoRepositoryTests {
         todoRepository.findAll().forEach(todo -> todoRepository.delete(todo));
     }
 
-    private Todo createTestTodo(String title, boolean finished) {
-        Todo todo = new Todo();
-        todo.setTodoId(UUID.randomUUID().toString());
-        todo.setTodoTitle(title);
-        todo.setTodoDescription("Test Description");
-        todo.setFinished(finished);
-        todo.setCreatedAt(new Date());
-        return todo;
-    }
-
     @Nested
     class FindByIdTests {
         @Test
         @DisplayName("引数の todoId と一致する Todo を返す")
         public void returnsTodoForMatchingTodoId() {
             // Arrange
-            Todo expectedTodo = createTestTodo("Test Todo", false);
+            Todo expectedTodo = makeTestTodo("Test Todo", false);
             todoRepository.create(expectedTodo);
 
             // Act
@@ -80,8 +70,8 @@ public class TodoRepositoryTests {
         @DisplayName("全ての Todo を Collection 形式で返す")
         public void returnsAllTodosAsCollection() {
             // Arrange
-            Todo todo1 = createTestTodo("Test Todo 1", false);
-            Todo todo2 = createTestTodo("Test Todo 2", true);
+            Todo todo1 = makeTestTodo("Test Todo 1", false);
+            Todo todo2 = makeTestTodo("Test Todo 2", true);
             todoRepository.create(todo1);
             todoRepository.create(todo2);
 
@@ -112,7 +102,7 @@ public class TodoRepositoryTests {
         @DisplayName("Todo を作成する")
         public void createsTodoSuccessfully() {
             // Arrange
-            Todo newTodo = createTestTodo("New Todo", false);
+            Todo newTodo = makeTestTodo("New Todo", false);
 
             // Act
             todoRepository.create(newTodo);
@@ -133,7 +123,7 @@ public class TodoRepositoryTests {
         @DisplayName("存在する Todo を更新する")
         public void updatesTodoSuccessfully() {
             // Arrange
-            Todo originalTodo = createTestTodo("Original Todo", false);
+            Todo originalTodo = makeTestTodo("Original Todo", false);
             todoRepository.create(originalTodo);
 
             originalTodo.setTodoTitle("Updated Todo");
@@ -155,7 +145,7 @@ public class TodoRepositoryTests {
         @DisplayName("存在しない Todo の更新は false を返す")
         public void returnsFalseForNonExistentTodo() {
             // Arrange
-            Todo nonExistentTodo = createTestTodo("Non-existent Todo", false);
+            Todo nonExistentTodo = makeTestTodo("Non-existent Todo", false);
 
             // Act
             boolean result = todoRepository.update(nonExistentTodo);
@@ -171,7 +161,7 @@ public class TodoRepositoryTests {
         @DisplayName("存在する Todo を削除する")
         public void deletesTodoSuccessfully() {
             // Arrange
-            Todo todoToDelete = createTestTodo("Todo to Delete", false);
+            Todo todoToDelete = makeTestTodo("Todo to Delete", false);
             todoRepository.create(todoToDelete);
 
             // Act
@@ -186,7 +176,7 @@ public class TodoRepositoryTests {
         @DisplayName("存在しない Todo の削除でもエラーが発生しない")
         public void doesNotThrowErrorForNonExistentTodo() {
             // Arrange
-            Todo nonExistentTodo = createTestTodo("Non-existent Todo", false);
+            Todo nonExistentTodo = makeTestTodo("Non-existent Todo", false);
 
             // Act & Assert (例外が発生しないことを確認)
             todoRepository.delete(nonExistentTodo);
@@ -199,9 +189,9 @@ public class TodoRepositoryTests {
         @DisplayName("未完了の Todo の数を返す")
         public void returnsCorrectCountForUnfinishedTodos() {
             // Arrange
-            Todo unfinishedTodo1 = createTestTodo("Unfinished Todo 1", false);
-            Todo unfinishedTodo2 = createTestTodo("Unfinished Todo 2", false);
-            Todo finishedTodo = createTestTodo("Finished Todo", true);
+            Todo unfinishedTodo1 = makeTestTodo("Unfinished Todo 1", false);
+            Todo unfinishedTodo2 = makeTestTodo("Unfinished Todo 2", false);
+            Todo finishedTodo = makeTestTodo("Finished Todo", true);
 
             todoRepository.create(unfinishedTodo1);
             todoRepository.create(unfinishedTodo2);
@@ -218,9 +208,9 @@ public class TodoRepositoryTests {
         @DisplayName("完了済みの Todo の数を返す")
         public void returnsCorrectCountForFinishedTodos() {
             // Arrange
-            Todo unfinishedTodo = createTestTodo("Unfinished Todo", false);
-            Todo finishedTodo1 = createTestTodo("Finished Todo 1", true);
-            Todo finishedTodo2 = createTestTodo("Finished Todo 2", true);
+            Todo unfinishedTodo = makeTestTodo("Unfinished Todo", false);
+            Todo finishedTodo1 = makeTestTodo("Finished Todo 1", true);
+            Todo finishedTodo2 = makeTestTodo("Finished Todo 2", true);
 
             todoRepository.create(unfinishedTodo);
             todoRepository.create(finishedTodo1);
@@ -237,7 +227,7 @@ public class TodoRepositoryTests {
         @DisplayName("該当する Todo が存在しない場合は 0 を返す")
         public void returnsZeroWhenNoMatchingTodosExist() {
             // Arrange
-            Todo finishedTodo = createTestTodo("Finished Todo", true);
+            Todo finishedTodo = makeTestTodo("Finished Todo", true);
             todoRepository.create(finishedTodo);
 
             // Act
@@ -246,5 +236,15 @@ public class TodoRepositoryTests {
             // Assert
             assertEquals(0, unfinishedCount);
         }
+    }
+
+    private Todo makeTestTodo(String title, boolean finished) {
+        Todo todo = new Todo();
+        todo.setTodoId(UUID.randomUUID().toString());
+        todo.setTodoTitle(title);
+        todo.setTodoDescription("Test Description");
+        todo.setFinished(finished);
+        todo.setCreatedAt(new Date());
+        return todo;
     }
 }
