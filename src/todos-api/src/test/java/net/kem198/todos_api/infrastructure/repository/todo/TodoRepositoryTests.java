@@ -30,16 +30,6 @@ public class TodoRepositoryTests {
         todoRepository.findAll().forEach(todo -> todoRepository.delete(todo));
     }
 
-    private Todo createTestTodo(String title, boolean finished) {
-        Todo todo = new Todo();
-        todo.setTodoId(UUID.randomUUID().toString());
-        todo.setTodoTitle(title);
-        todo.setTodoDescription("Test Description");
-        todo.setFinished(finished);
-        todo.setCreatedAt(new Date());
-        return todo;
-    }
-
     @Nested
     class FindByIdTests {
         @Test
@@ -246,5 +236,15 @@ public class TodoRepositoryTests {
             // Assert
             assertEquals(0, unfinishedCount);
         }
+    }
+
+    private Todo createTestTodo(String title, boolean finished) {
+        Todo todo = new Todo();
+        todo.setTodoId(UUID.randomUUID().toString());
+        todo.setTodoTitle(title);
+        todo.setTodoDescription("Test Description");
+        todo.setFinished(finished);
+        todo.setCreatedAt(new Date());
+        return todo;
     }
 }
