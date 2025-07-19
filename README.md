@@ -18,8 +18,8 @@ This project is designed to practice the following:
     - [Recommended](#recommended)
 - [Setup](#setup)
     - [Setup environment](#setup-environment)
-    - [Run Database Server](#run-database-server)
-    - [Run API Server](#run-api-server)
+    - [Run database server](#run-database-server)
+    - [Run API server](#run-api-server)
 - [Demo APIs](#demo-apis)
     - [`/v1/greeting`](#v1greeting)
     - [`/v1/error`](#v1error)
@@ -85,12 +85,12 @@ $ git clone https://github.com/kem198/practice-restful-apps.git
 $ cd practice-restful-apps
 ```
 
-### Run Database Server
+### Run database server
 
 ```sh
 # Current directory is the repository root
 $ pwd
-/path/to/your/repo/todos-api
+/path/to/your/repo/practice-restful-apps
 
 # Copy and rename .env.example to .env
 $ cp .env.example .env
@@ -130,10 +130,10 @@ todos_db=# SELECT * FROM examples;
 todos_db=# exit
 ```
 
-### Run API Server
+### Run API server
 
 ```shell
-# Move to api application root
+# Change to api application root directory
 $ cd src/todos-api
 $ pwd
 /path/to/your/repo/practice-restful-apps/src/todos-api
@@ -142,7 +142,7 @@ $ pwd
 $ ./gradlew build
 $ java -jar build/libs/todos-api-0.0.1-SNAPSHOT.jar
 
-# Open new terminal and request to API
+# Open new terminal and request to API!
 $ curl 'http://localhost:8080/v1/greeting/hello'
 {"id":1,"content":"Hello, World!"}%
 ```
