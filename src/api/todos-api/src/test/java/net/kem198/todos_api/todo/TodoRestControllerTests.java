@@ -25,8 +25,8 @@ import org.springframework.http.ResponseEntity;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import net.kem198.todos_domain.model.Todo;
-import net.kem198.todos_domain.repository.todo.TodoRepository;
+import net.kem198.todos_core.domain.model.Todo;
+import net.kem198.todos_core.domain.repository.todo.TodoRepository;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class TodoRestControllerTests {
