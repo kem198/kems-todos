@@ -8,13 +8,12 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import org.springframework.boot.test.web.client.TestRestTemplate;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class FizzBuzzRestControllerTests {
@@ -44,7 +43,7 @@ public class FizzBuzzRestControllerTests {
                 // Assert
                 assertEquals(HttpStatus.OK, response.getStatusCode());
                 JsonNode responseBody = objectMapper.readTree(response.getBody());
-                assertEquals("Fizz", responseBody.get("result").asText());
+                assertEquals("Fizz\n", responseBody.get("result").asText());
             }
         }
 
