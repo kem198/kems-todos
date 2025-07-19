@@ -1,0 +1,42 @@
+package net.kem198.todos_api.infrastructure.dao;
+
+import net.kem198.todos_api.infrastructure.entity.Examples;
+import org.seasar.doma.Dao;
+import org.seasar.doma.Delete;
+import org.seasar.doma.Insert;
+import org.seasar.doma.Select;
+import org.seasar.doma.Update;
+
+/**
+ */
+@Dao
+public interface ExamplesDao {
+
+    /**
+     * @param id
+     * @return the Examples entity
+     */
+    @Select
+    Examples selectById(Integer id);
+
+    /**
+     * @param entity
+     * @return affected rows
+     */
+    @Insert
+    int insert(Examples entity);
+
+    /**
+     * @param entity
+     * @return affected rows
+     */
+    @Update
+    int update(Examples entity);
+
+    /**
+     * @param entity
+     * @return affected rows
+     */
+    @Delete
+    int delete(Examples entity);
+}

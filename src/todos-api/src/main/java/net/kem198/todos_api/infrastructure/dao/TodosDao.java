@@ -1,0 +1,42 @@
+package net.kem198.todos_api.infrastructure.dao;
+
+import net.kem198.todos_api.infrastructure.entity.Todos;
+import org.seasar.doma.Dao;
+import org.seasar.doma.Delete;
+import org.seasar.doma.Insert;
+import org.seasar.doma.Select;
+import org.seasar.doma.Update;
+
+/**
+ */
+@Dao
+public interface TodosDao {
+
+    /**
+     * @param todoId
+     * @return the Todos entity
+     */
+    @Select
+    Todos selectById(String todoId);
+
+    /**
+     * @param entity
+     * @return affected rows
+     */
+    @Insert
+    int insert(Todos entity);
+
+    /**
+     * @param entity
+     * @return affected rows
+     */
+    @Update
+    int update(Todos entity);
+
+    /**
+     * @param entity
+     * @return affected rows
+     */
+    @Delete
+    int delete(Todos entity);
+}
