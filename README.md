@@ -27,7 +27,7 @@ This project is designed to practice the following:
     - [`/v1/error`](#v1error)
 - [References](#references)
     - [Architecture](#architecture)
-    - [REST API](#rest-api)
+    - [Web API](#web-api)
     - [TDD](#tdd)
     - [Spring Boot](#spring-boot)
     - [Doma](#doma)
@@ -351,7 +351,7 @@ Connection: close
     - [11.2. チュートリアル(Todoアプリケーション REST編)](https://macchinetta.github.io/server-guideline-thymeleaf/current/ja/Tutorial/TutorialREST.html)
 - [ちょうぜつソフトウェア設計入門 \| 技術評論社](https://gihyo.jp/book/2022/978-4-297-13234-7)
 
-### REST API
+### Web API
 
 - [Web API: The Good Parts - O'Reilly Japan](https://www.oreilly.co.jp/books/9784873116860/)
 - [RFC 9457 - Problem Details for HTTP APIs](https://datatracker.ietf.org/doc/html/rfc9457)
