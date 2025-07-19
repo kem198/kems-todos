@@ -11,10 +11,13 @@ This project is designed to practice the following:
 ## TOC
 
 - [Apps](#apps)
+- [Requirements](#requirements)
+    - [Required](#required)
+    - [Recommended](#recommended)
 - [Setup](#setup)
     - [Setup environment](#setup-environment)
-    - [Run API Server](#run-api-server)
     - [Run DB Server on Docker Container](#run-db-server-on-docker-container)
+    - [Run API Server](#run-api-server)
 - [Demo APIs](#demo-apis)
     - [`/v1/greeting`](#v1greeting)
     - [`/v1/error`](#v1error)
@@ -31,6 +34,18 @@ This project is designed to practice the following:
 
 - [./src/todos-web](./src/todos-web/)
 - [./src/todos-api](./src/todos-api/)
+
+## Requirements
+
+### Required
+
+- [JDK 21](https://openjdk.org/projects/jdk/21/)
+- [Docker](https://www.docker.com/)
+
+### Recommended
+
+- [SDKMAN!](https://sdkman.io/)
+- [Visual Studio Code](https://azure.microsoft.com/ja-jp/products/visual-studio-code)
 
 ## Setup
 
@@ -64,24 +79,7 @@ $ cd /path/to/your/repo/
 $ git clone https://github.com/kem198/practice-restful-apps.git
 
 # Moving api apps directory
-$ cd src/todos-api
-```
-
-### Run API Server
-
-```shell
-# Move to application root
-$ cd todos-api
-$ pwd
-/path/to/your/repo/practice-restful-apps/src/todos-api
-
-# Build and Run application
-$ ./gradlew build
-$ java -jar build/libs/todos-api-0.0.1-SNAPSHOT.jar
-
-# Request to API
-$ curl 'http://localhost:8080/v1/greeting'
-{"id":1,"content":"Hello, World!"}%
+$ cd practice-restful-apps
 ```
 
 ### Run DB Server on Docker Container
@@ -100,7 +98,12 @@ $ vim .env
 # Start the database service
 $ docker compose up -d
 
-# Connect to the database and execute queries
+# (Optional) Check running the Docker service
+$ docker compose ls
+NAME                    STATUS              CONFIG FILES
+practice-restful-apps   running(1)          /home/kenkenpa198/works/repos/dev/test/practice-restful-apps/docker-compose.yml
+
+# (Optional) Connect to the database and execute queries
 $ docker compose exec db psql -U postgres -d todos_db
 psql (17.4 (Debian 17.4-1.pgdg120+2))
 Type "help" for help.
@@ -122,6 +125,23 @@ todos_db=# SELECT * FROM examples;
 (3 rows)
 
 todos_db=# exit
+```
+
+### Run API Server
+
+```shell
+# Move to api application root
+$ cd src/todos-api
+$ pwd
+/path/to/your/repo/practice-restful-apps/src/todos-api
+
+# Build and Run application
+$ ./gradlew build
+$ java -jar build/libs/todos-api-0.0.1-SNAPSHOT.jar
+
+# Open new terminal and request to API
+$ curl 'http://localhost:8080/v1/greeting/hello'
+{"id":1,"content":"Hello, World!"}%
 ```
 
 ## Demo APIs

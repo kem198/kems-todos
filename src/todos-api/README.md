@@ -4,27 +4,12 @@
 <!-- omit in toc -->
 ## TOC
 
-- [Requirements](#requirements)
-    - [Required](#required)
-    - [Recommended](#recommended)
 - [Commands](#commands)
     - [Test](#test)
     - [Run for Development](#run-for-development)
     - [Build](#build)
     - [Generate Dao, Entity, and SQL files by Doma CodeGen](#generate-dao-entity-and-sql-files-by-doma-codegen)
     - [Run](#run)
-
-## Requirements
-
-### Required
-
-- [JDK 21](https://openjdk.org/projects/jdk/21/)
-- [Docker](https://www.docker.com/)
-
-### Recommended
-
-- [SDKMAN!](https://sdkman.io/)
-- [Visual Studio Code](https://azure.microsoft.com/ja-jp/products/visual-studio-code)
 
 ## Commands
 
