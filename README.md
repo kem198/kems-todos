@@ -371,6 +371,7 @@ Date: Sun, 04 May 2025 09:51:28 GMT
 ### Doma
 
 - [Doma へようこそ — Doma ドキュメント](https://docs.domaframework.org/ja/stable/)
+    - [アプリケーションのビルド — Doma ドキュメント](https://docs.domaframework.org/ja/stable/build/)
     - [Doma CodeGen プラグイン — Doma ドキュメント](https://docs.domaframework.org/ja/stable/codegen/)
     - [domaframework/getting-started: Getting-started project for Doma](https://github.com/domaframework/getting-started)
     - [domaframework/simple-examples: Doma Simple Examples](https://github.com/domaframework/simple-examples)
