@@ -1,12 +1,12 @@
 package net.kem198.todos_api.infrastructure.repository.todo;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
-import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
+import net.kem198.todos_api.infrastructure.dao.TodosDao;
+import net.kem198.todos_api.infrastructure.entity.Todos;
+import net.kem198.todos_api.infrastructure.mapper.TodosMapper;
 import org.springframework.stereotype.Repository;
 
 import net.kem198.todos_api.domain.model.Todo;
@@ -14,67 +14,50 @@ import net.kem198.todos_api.domain.repository.todo.TodoRepository;
 
 @Repository
 public class TodoRepositoryImpl implements TodoRepository {
-    private final JdbcTemplate jdbcTemplate;
+    private final TodosDao todosDao;
+    private final TodosMapper todosMapper;
 
-    public TodoRepositoryImpl(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
+    public TodoRepositoryImpl(TodosDao todosDao, TodosMapper todosMapper) {
+        this.todosDao = todosDao;
+        this.todosMapper = todosMapper;
     }
-
-    private static final RowMapper<Todo> TODO_ROW_MAPPER = new RowMapper<Todo>() {
-        @Override
-        public Todo mapRow(ResultSet rs, int rowNum) throws SQLException {
-            Todo todo = new Todo();
-            todo.setTodoId(rs.getString("todo_id"));
-            todo.setTodoTitle(rs.getString("todo_title"));
-            todo.setTodoDescription(rs.getString("todo_description"));
-            todo.setFinished(rs.getBoolean("finished"));
-            todo.setCreatedAt(rs.getTimestamp("created_at"));
-            return todo;
-        }
-    };
 
     @Override
     public Todo findById(String todoId) {
-        try {
-            return jdbcTemplate.queryForObject(
-                    "SELECT todo_id, todo_title, todo_description, finished, created_at FROM todos WHERE todo_id = ?",
-                    TODO_ROW_MAPPER, todoId);
-        } catch (EmptyResultDataAccessException e) {
-            return null;
-        }
+        Todos entity = todosDao.selectById(todoId);
+        return todosMapper.toDomain(entity);
     }
 
     @Override
     public Collection<Todo> findAll() {
-        return jdbcTemplate.query(
-                "SELECT todo_id, todo_title, todo_description, finished, created_at FROM todos ORDER BY created_at",
-                TODO_ROW_MAPPER);
+        List<Todos> entities = todosDao.selectAll();
+        List<Todo> todos = new ArrayList<>();
+        for (Todos entity : entities) {
+            todos.add(todosMapper.toDomain(entity));
+        }
+        return todos;
     }
 
     @Override
     public void create(Todo todo) {
-        jdbcTemplate.update(
-                "INSERT INTO todos (todo_id, todo_title, todo_description, finished, created_at) VALUES (?, ?, ?, ?, ?)",
-                todo.getTodoId(), todo.getTodoTitle(), todo.getTodoDescription(), todo.isFinished(),
-                todo.getCreatedAt());
+        Todos entity = todosMapper.toEntity(todo);
+        todosDao.insert(entity);
     }
 
     @Override
     public boolean update(Todo todo) {
-        int updated = jdbcTemplate.update(
-                "UPDATE todos SET todo_title = ?, todo_description = ?, finished = ? WHERE todo_id = ?",
-                todo.getTodoTitle(), todo.getTodoDescription(), todo.isFinished(), todo.getTodoId());
-        return updated > 0;
+        Todos entity = todosMapper.toEntity(todo);
+        return todosDao.update(entity) > 0;
     }
 
     @Override
     public void delete(Todo todo) {
-        jdbcTemplate.update("DELETE FROM todos WHERE todo_id = ?", todo.getTodoId());
+        Todos entity = todosMapper.toEntity(todo);
+        todosDao.delete(entity);
     }
 
     @Override
     public long countByFinished(boolean finished) {
-        Long count = jdbcTemplate.queryForObject("SELECT count(*) FROM todos WHERE finished = ?", Long.class, finished);
-        return count != null ? count : 0;
+        return todosDao.countByFinished(finished);
     }
 }

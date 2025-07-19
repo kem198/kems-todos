@@ -23,7 +23,7 @@ jobs:
           POSTGRES_PASSWORD: __ENTER_POSTGRES_PASSWORD_HERE__
           POSTGRES_DB: todos_db
         ports:
-          - 54322:5432
+          - 5432:5432
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -35,8 +35,8 @@ jobs:
         run: |
           # HACK: docker-entrypoint-initdb.d 用の SQL ファイルを直接実行する
           # テスト実行用のテーブルを作成するため。もっといい方法あるはず
-          PGPASSWORD=__ENTER_POSTGRES_PASSWORD_HERE__ psql -h localhost -p 54322 -U postgres -d todos_db -f ../../postgres/init/01_create_todos.sql
-          PGPASSWORD=__ENTER_POSTGRES_PASSWORD_HERE__ psql -h localhost -p 54322 -U postgres -d todos_db -f ../../postgres/init/99_create_examples.sql
+          PGPASSWORD=__ENTER_POSTGRES_PASSWORD_HERE__ psql -h localhost -p 5432 -U postgres -d todos_db -f ../../postgres/init/01_create_todos.sql
+          PGPASSWORD=__ENTER_POSTGRES_PASSWORD_HERE__ psql -h localhost -p 5432 -U postgres -d todos_db -f ../../postgres/init/99_create_examples.sql
       - name: Setup Java
         uses: actions/setup-java@v3
         with:

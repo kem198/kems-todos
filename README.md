@@ -50,3 +50,7 @@ This project is designed to practice the following:
     - [Spring Boot 3.0 で入った RFC7807 サポートを色々試す \#Java - Qiita](https://qiita.com/koji-cw/items/422140bd7752e4a82baf)
     - [Spring Boot で Problem Details に対応するための kotlin での実装](https://zenn.dev/bm_sms/articles/aec9aeca1fee34)
 - [curl -s -f -D /dev/stderr が優勝 – 株式会社ルーター](https://rooter.jp/web-crawling/curl-s-f-d-dev-stderr-is-the-winner/)
+- [Doma へようこそ — Doma ドキュメント](https://docs.domaframework.org/ja/stable/)
+    - [Doma CodeGen プラグイン — Doma ドキュメント](https://docs.domaframework.org/ja/stable/codegen/)
+    - [domaframework/getting-started: Getting-started project for Doma](https://github.com/domaframework/getting-started)
+    - [domaframework/simple-examples: Doma Simple Examples](https://github.com/domaframework/simple-examples)
