@@ -1,6 +1,8 @@
 package net.kem198.todos_api.infrastructure.repository.todo;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import net.kem198.todos_api.infrastructure.dao.TodosDao;
 import net.kem198.todos_api.infrastructure.entity.Todos;
@@ -28,14 +30,12 @@ public class TodoRepositoryImpl implements TodoRepository {
 
     @Override
     public Collection<Todo> findAll() {
-        // TODO: Dao に findAll() ができたら実装する
-        Todo dummy = new Todo();
-        dummy.setTodoId("dummy-id");
-        dummy.setTodoTitle("Dummy Title");
-        dummy.setTodoDescription("Dummy Description");
-        dummy.setFinished(false);
-        dummy.setCreatedAt(new java.util.Date());
-        return java.util.List.of(dummy);
+        List<Todos> entities = todosDao.selectAll();
+        List<Todo> todos = new ArrayList<>();
+        for (Todos entity : entities) {
+            todos.add(todosMapper.toDomain(entity));
+        }
+        return todos;
     }
 
     @Override

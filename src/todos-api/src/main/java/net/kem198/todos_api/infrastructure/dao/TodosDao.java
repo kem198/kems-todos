@@ -1,6 +1,9 @@
 package net.kem198.todos_api.infrastructure.dao;
 
 import net.kem198.todos_api.infrastructure.entity.Todos;
+
+import java.util.List;
+
 import org.seasar.doma.Dao;
 import org.seasar.doma.Delete;
 import org.seasar.doma.Insert;
@@ -20,6 +23,12 @@ public interface TodosDao {
      */
     @Select
     Todos selectById(String todoId);
+
+    /**
+     * @return Todos entity list
+     */
+    @Select
+    List<Todos> selectAll();
 
     /**
      * @param entity
