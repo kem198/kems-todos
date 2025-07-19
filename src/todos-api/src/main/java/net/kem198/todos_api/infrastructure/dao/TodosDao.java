@@ -50,4 +50,10 @@ public interface TodosDao {
      */
     @Delete
     int delete(Todos entity);
+
+    /**
+     * @return finished Todos count
+     */
+    @Select
+    long countByFinished(boolean finished);
 }

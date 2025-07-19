@@ -58,7 +58,6 @@ public class TodoRepositoryImpl implements TodoRepository {
 
     @Override
     public long countByFinished(boolean finished) {
-        // TODO: Dao に countByFinished() ができたら実装する
-        return 1L;
+        return todosDao.countByFinished(finished);
     }
 }
