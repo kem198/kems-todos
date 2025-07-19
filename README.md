@@ -18,7 +18,7 @@ This project is designed to practice the following:
     - [Recommended](#recommended)
 - [Setup](#setup)
     - [Setup environment](#setup-environment)
-    - [Run DB Server on Docker Container](#run-db-server-on-docker-container)
+    - [Run Database Server](#run-database-server)
     - [Run API Server](#run-api-server)
 - [Demo APIs](#demo-apis)
     - [`/v1/greeting`](#v1greeting)
@@ -85,7 +85,7 @@ $ git clone https://github.com/kem198/practice-restful-apps.git
 $ cd practice-restful-apps
 ```
 
-### Run DB Server on Docker Container
+### Run Database Server
 
 ```sh
 # Current directory is the repository root
