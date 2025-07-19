@@ -84,6 +84,26 @@ public class TodosDaoTest {
      * @throws Exception
      */
     @Test
+    public void testCountByFinished(TestInfo testInfo) throws Exception {
+        SqlFile sqlFile = repository.getSqlFile(testInfo.getTestMethod().get(), "META-INF/net/kem198/todos_core/infrastructure/dao/TodosDao/countByFinished.sql", dialect);
+        execute(sqlFile);
+    }
+
+    /**
+     * 
+     * @throws Exception
+     */
+    @Test
+    public void testSelectAll(TestInfo testInfo) throws Exception {
+        SqlFile sqlFile = repository.getSqlFile(testInfo.getTestMethod().get(), "META-INF/net/kem198/todos_core/infrastructure/dao/TodosDao/selectAll.sql", dialect);
+        execute(sqlFile);
+    }
+
+    /**
+     * 
+     * @throws Exception
+     */
+    @Test
     public void testSelectById(TestInfo testInfo) throws Exception {
         SqlFile sqlFile = repository.getSqlFile(testInfo.getTestMethod().get(), "META-INF/net/kem198/todos_core/infrastructure/dao/TodosDao/selectById.sql", dialect);
         execute(sqlFile);
