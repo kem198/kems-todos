@@ -7,6 +7,10 @@ This project is designed to practice the following:
 - Applying **Test-Driven Development** (TDD) .
 - Implementing **Continuous Integration** (CI) for Java applications.
 
+![architecture-01](./docs/img/architecture-01.png)
+
+![architecture-02](./docs/img/architecture-02.png)
+
 <!-- omit in toc -->
 ## TOC
 
