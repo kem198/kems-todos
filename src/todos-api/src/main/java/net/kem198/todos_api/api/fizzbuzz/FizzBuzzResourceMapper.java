@@ -3,10 +3,10 @@ package net.kem198.todos_api.api.fizzbuzz;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
-public interface FizBuzzMapper {
+public interface FizzBuzzResourceMapper {
 
-    FizzBuzzResource map(String result);
+    FizzBuzzResource toResource(String result);
 
     // TODO: Change to FizzBuzz Model
-    Object map(FizzBuzzResource fizzBuzzResource);
+    Object toDomain(FizzBuzzResource fizzBuzzResource);
 }

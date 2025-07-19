@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 import net.kem198.todos_api.domain.service.fizzbuzz.FizzBuzzService;
 
 @RestController
@@ -12,17 +13,17 @@ import net.kem198.todos_api.domain.service.fizzbuzz.FizzBuzzService;
 public class FizzBuzzRestController {
 
     private final FizzBuzzService fizzBuzzService;
-    private final FizBuzzMapper fizzBuzzMapper;
+    private final FizzBuzzResourceMapper fizzBuzzResourceMapper;
 
-    public FizzBuzzRestController(FizzBuzzService fizzBuzzService, FizBuzzMapper fizzBuzzMapper) {
+    public FizzBuzzRestController(FizzBuzzService fizzBuzzService, FizzBuzzResourceMapper fizzBuzzResourceMapper) {
         this.fizzBuzzService = fizzBuzzService;
-        this.fizzBuzzMapper = fizzBuzzMapper;
+        this.fizzBuzzResourceMapper = fizzBuzzResourceMapper;
     }
 
     @GetMapping("/convert")
     public ResponseEntity<FizzBuzzResource> convert(@RequestParam(value = "num") int number) {
         String result = fizzBuzzService.processFizzBuzz(number);
-        FizzBuzzResource fizzBuzzResource = fizzBuzzMapper.map(result);
+        FizzBuzzResource fizzBuzzResource = fizzBuzzResourceMapper.toResource(result);
         return ResponseEntity.ok(fizzBuzzResource);
     }
 }
