@@ -52,3 +52,5 @@ This project is designed to practice the following:
 - [curl -s -f -D /dev/stderr が優勝 – 株式会社ルーター](https://rooter.jp/web-crawling/curl-s-f-d-dev-stderr-is-the-winner/)
 - [Doma へようこそ — Doma ドキュメント](https://docs.domaframework.org/ja/stable/)
     - [Doma CodeGen プラグイン — Doma ドキュメント](https://docs.domaframework.org/ja/stable/codegen/)
+    - [domaframework/getting-started: Getting-started project for Doma](https://github.com/domaframework/getting-started)
+    - [domaframework/simple-examples: Doma Simple Examples](https://github.com/domaframework/simple-examples)
