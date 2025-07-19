@@ -51,8 +51,10 @@ public class TodoRestControllerTests {
         @DisplayName("Todo 一覧と 200 を返すこと")
         void returnsTodoListWith200() throws Exception {
             // Arrange
-            createTodo("Test Todo 1", "Description 1");
-            createTodo("Test Todo 2", "Description 2");
+            Todo todo1 = makeTestTodo("Test Todo 1", "Description 1");
+            Todo todo2 = makeTestTodo("Test Todo 2", "Description 2");
+            todoRepository.create(todo1);
+            todoRepository.create(todo2);
 
             // Act
             ResponseEntity<String> response = restTemplate.getForEntity("/v1/todos", String.class);
@@ -71,7 +73,9 @@ public class TodoRestControllerTests {
         @DisplayName("指定された ID の Todo と 200 を返すこと")
         void returnsTodoByIdWith200() throws Exception {
             // Arrange
-            String todoId = createTodo("Test Todo", "Test Description");
+            Todo todo = makeTestTodo("Test Todo", "Test Description");
+            todoRepository.create(todo);
+            String todoId = todo.getTodoId();
 
             // Act
             ResponseEntity<String> response = restTemplate.getForEntity("/v1/todos/" + todoId, String.class);
@@ -158,7 +162,8 @@ public class TodoRestControllerTests {
             // Arrange
             // 未完了 Todo を上限まで作成する
             for (int i = 0; i < 5; i++) {
-                createTodo("Todo " + i, "Description " + i);
+                Todo todo = makeTestTodo("Todo " + i, "Description " + i);
+                todoRepository.create(todo);
             }
 
             // Act
@@ -186,7 +191,8 @@ public class TodoRestControllerTests {
             // Arrange
             // 未完了 Todo を上限まで作成する
             for (int i = 0; i < 5; i++) {
-                createTodo("Todo " + i, "Description " + i);
+                Todo todo = makeTestTodo("Todo " + i, "Description " + i);
+                todoRepository.create(todo);
             }
 
             // Act
@@ -259,7 +265,9 @@ public class TodoRestControllerTests {
         @DisplayName("Todo がデータベースで完了状態に更新されること")
         void updatesTodoToFinishedInDatabase() throws Exception {
             // Arrange
-            String todoId = createTodo("Test Todo", "Test Description");
+            Todo todo = makeTestTodo("Test Todo", "Test Description");
+            todoRepository.create(todo);
+            String todoId = todo.getTodoId();
 
             // Act
             restTemplate.exchange(
@@ -282,7 +290,9 @@ public class TodoRestControllerTests {
         @DisplayName("完了状態の Todo と 200 を返すこと")
         void returnsFinishedTodoWith200() throws Exception {
             // Arrange
-            String todoId = createTodo("Test Todo", "Test Description");
+            Todo todo = makeTestTodo("Test Todo", "Test Description");
+            todoRepository.create(todo);
+            String todoId = todo.getTodoId();
 
             // Act
             ResponseEntity<String> response = restTemplate.exchange(
@@ -305,7 +315,9 @@ public class TodoRestControllerTests {
         @DisplayName("既に完了済みの Todo の場合は 400 を返すこと")
         void returnsBadRequestWith400ForAlreadyFinishedTodo() throws Exception {
             // Arrange
-            String todoId = createTodo("Test Todo", "Test Description");
+            Todo todo = makeTestTodo("Test Todo", "Test Description");
+            todoRepository.create(todo);
+            String todoId = todo.getTodoId();
             // 一度完了させる
             restTemplate.exchange("/v1/todos/" + todoId, HttpMethod.PUT, null, String.class);
 
@@ -346,7 +358,9 @@ public class TodoRestControllerTests {
         @DisplayName("Todo がデータベースから削除されること")
         void deletesTodoFromDatabase() throws Exception {
             // Arrange
-            String todoId = createTodo("Test Todo", "Test Description");
+            Todo todo = makeTestTodo("Test Todo", "Test Description");
+            todoRepository.create(todo);
+            String todoId = todo.getTodoId();
 
             // Act
             restTemplate.exchange(
@@ -364,7 +378,9 @@ public class TodoRestControllerTests {
         @DisplayName("Todo が削除された際に 204 を返すこと")
         void deletesTodoAndReturns204() throws Exception {
             // Arrange
-            String todoId = createTodo("Test Todo", "Test Description");
+            Todo todo = makeTestTodo("Test Todo", "Test Description");
+            todoRepository.create(todo);
+            String todoId = todo.getTodoId();
 
             // Act
             ResponseEntity<String> response = restTemplate.exchange(
@@ -393,17 +409,15 @@ public class TodoRestControllerTests {
     }
 
     /**
-     * テスト用 Todo を作成して ID を返す
+     * テスト用 Todo オブジェクトを生成する
      */
-    private String createTodo(String title, String description) {
+    private Todo makeTestTodo(String title, String description) {
         Todo todo = new Todo();
         todo.setTodoId(java.util.UUID.randomUUID().toString());
         todo.setTodoTitle(title);
         todo.setTodoDescription(description);
         todo.setFinished(false);
         todo.setCreatedAt(new java.util.Date());
-
-        todoRepository.create(todo);
-        return todo.getTodoId();
+        return todo;
     }
 }
