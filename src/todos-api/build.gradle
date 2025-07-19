@@ -65,6 +65,7 @@ domaCodeGen {
         url.set('jdbc:postgresql://localhost:5432/todos_db')
         user.set('postgres')  // Replace with your PostgreSQL username
         password.set('__ENTER_POSTGRES_PASSWORD_HERE__')  // Replace with your PostgreSQL password
+        templateDir.set(file("${projectDir}/custom-templates"))
 
         // Entity generation settings
         entity {
