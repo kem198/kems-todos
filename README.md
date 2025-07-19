@@ -24,8 +24,9 @@ This project is designed to practice the following:
     - [`/v1/fizzbuzz`](#v1fizzbuzz)
     - [`/v1/todos`](#v1todos)
 - [References](#references)
-    - [Design Pattern](#design-pattern)
+    - [Architecture](#architecture)
     - [Environment](#environment)
+    - [TDD](#tdd)
     - [Spring Boot](#spring-boot)
     - [Doma](#doma)
     - [Others](#others)
@@ -339,17 +340,24 @@ Date: Sun, 04 May 2025 09:51:28 GMT
 
 ## References
 
-### Design Pattern
+### Architecture
 
 - [Macchinetta Server Framework (1.x) Development Guideline](https://macchinetta.github.io/server-guideline-thymeleaf/current/ja/index.html)
     - [2.4. アプリケーションのレイヤ化](https://macchinetta.github.io/server-guideline-thymeleaf/current/ja/Overview/ApplicationLayering.html)
     - [5.1. RESTful Web Service](https://macchinetta.github.io/server-guideline-thymeleaf/current/ja/ArchitectureInDetail/WebServiceDetail/REST.html)
     - [11.1. チュートリアル(Todoアプリケーション)](https://macchinetta.github.io/server-guideline-thymeleaf/current/ja/Tutorial/TutorialTodo.html)
     - [11.2. チュートリアル(Todoアプリケーション REST編)](https://macchinetta.github.io/server-guideline-thymeleaf/current/ja/Tutorial/TutorialREST.html)
+- [ちょうぜつソフトウェア設計入門 \| 技術評論社](https://gihyo.jp/book/2022/978-4-297-13234-7)
+- [Web API: The Good Parts - O'Reilly Japan](https://www.oreilly.co.jp/books/9784873116860/)
 
 ### Environment
 
 - [SDK Installation Candidates \| SDKMAN! the Software Development Kit Manager](https://sdkman.io/sdks/)
+
+### TDD
+
+- [テスト駆動開発 \| Ohmsha](https://www.ohmsha.co.jp/book/9784274217883/)
+- [TDD Boot Camp 2020 Online \#1 基調講演/ライブコーディング - YouTube](https://www.youtube.com/watch?v=Q-FJ3XmFlT8)
 
 ### Spring Boot
 
