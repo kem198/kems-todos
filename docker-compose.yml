@@ -2,7 +2,7 @@ services:
   db:
     image: postgres:17.4-bookworm
     ports:
-      - 54322:5432
+      - 5432:5432
     environment:
       - LANG
       - TZ
