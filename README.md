@@ -22,9 +22,9 @@ This project is designed to practice the following:
     - [Run API server](#run-api-server)
 - [Demo APIs](#demo-apis)
     - [`/v1/greeting`](#v1greeting)
-    - [`/v1/error`](#v1error)
     - [`/v1/fizzbuzz`](#v1fizzbuzz)
     - [`/v1/todos`](#v1todos)
+    - [`/v1/error`](#v1error)
 - [References](#references)
     - [Architecture](#architecture)
     - [Environment](#environment)
@@ -169,54 +169,6 @@ Date: Sat, 19 Jul 2025 17:06:00 GMT
 Hello, KeM198!
 ```
 
-### `/v1/error`
-
-```sh
-$ curl -s -D /dev/stderr -X GET 'http://localhost:8080/v1/error' | jq
-HTTP/1.1 500
-Content-Type: application/problem+json
-Transfer-Encoding: chunked
-Date: Tue, 06 May 2025 06:09:11 GMT
-Connection: close
-
-{
-  "type": "about:blank",
-  "title": "Internal Server Error",
-  "status": 500,
-  "instance": "/v1/error"
-}
-
-$ curl -s -D /dev/stderr -X GET 'http://localhost:8080/v1/error/detail' | jq
-HTTP/1.1 500
-Content-Type: application/problem+json
-Transfer-Encoding: chunked
-Date: Tue, 06 May 2025 06:19:59 GMT
-Connection: close
-
-{
-  "type": "https://example.com",
-  "title": "Internal Server Error",
-  "status": 500,
-  "detail": "Customized error details",
-  "instance": "/v1/error/detail"
-}
-
-$ curl -s -D /dev/stderr -X GET 'http://localhost:8080/v1/error/throw-system-error' | jq
-HTTP/1.1 500
-Content-Type: application/problem+json
-Transfer-Encoding: chunked
-Date: Tue, 06 May 2025 10:02:16 GMT
-Connection: close
-
-{
-  "type": "about:blank",
-  "title": "Internal Server Error",
-  "status": 500,
-  "detail": "An unexpected error occurred. Please contact support if the problem persists.",
-  "instance": "/v1/error/throw-system-error"
-}
-```
-
 ### `/v1/fizzbuzz`
 
 ```sh
@@ -338,6 +290,54 @@ Transfer-Encoding: chunked
 Date: Sun, 04 May 2025 09:51:28 GMT
 
 []
+```
+
+### `/v1/error`
+
+```sh
+$ curl -s -D /dev/stderr -X GET 'http://localhost:8080/v1/error' | jq
+HTTP/1.1 500
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Tue, 06 May 2025 06:09:11 GMT
+Connection: close
+
+{
+  "type": "about:blank",
+  "title": "Internal Server Error",
+  "status": 500,
+  "instance": "/v1/error"
+}
+
+$ curl -s -D /dev/stderr -X GET 'http://localhost:8080/v1/error/detail' | jq
+HTTP/1.1 500
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Tue, 06 May 2025 06:19:59 GMT
+Connection: close
+
+{
+  "type": "https://example.com",
+  "title": "Internal Server Error",
+  "status": 500,
+  "detail": "Customized error details",
+  "instance": "/v1/error/detail"
+}
+
+$ curl -s -D /dev/stderr -X GET 'http://localhost:8080/v1/error/throw-system-error' | jq
+HTTP/1.1 500
+Content-Type: application/problem+json
+Transfer-Encoding: chunked
+Date: Tue, 06 May 2025 10:02:16 GMT
+Connection: close
+
+{
+  "type": "about:blank",
+  "title": "Internal Server Error",
+  "status": 500,
+  "detail": "An unexpected error occurred. Please contact support if the problem persists.",
+  "instance": "/v1/error/throw-system-error"
+}
 ```
 
 ## References
