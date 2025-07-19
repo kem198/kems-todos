@@ -18,9 +18,9 @@ public class GreetingRestController {
     }
 
     @GetMapping("/hello")
-    public GreetingResource getContent(@RequestParam(value = "name", defaultValue = "World") String name) {
-        GreetingResource greetingResource = greetingService.processGreeting(name);
+    public String getContent(@RequestParam(value = "name", defaultValue = "World") String name) {
+        String greetingText = greetingService.execute(name);
 
-        return greetingResource;
+        return greetingText;
     }
 }

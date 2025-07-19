@@ -144,7 +144,7 @@ $ java -jar build/libs/todos-api-0.0.1-SNAPSHOT.jar
 
 # Open new terminal and request to API!
 $ curl 'http://localhost:8080/v1/greeting/hello'
-{"id":1,"content":"Hello, World!"}%
+Hello, World!
 ```
 
 ## Demo APIs
@@ -154,19 +154,19 @@ $ curl 'http://localhost:8080/v1/greeting/hello'
 ```sh
 $ curl -i -X GET 'http://localhost:8080/v1/greeting/hello'
 HTTP/1.1 200
-Content-Type: application/json
-Transfer-Encoding: chunked
-Date: Mon, 28 Apr 2025 05:32:49 GMT
+Content-Type: text/plain;charset=UTF-8
+Content-Length: 14
+Date: Sat, 19 Jul 2025 17:05:36 GMT
 
-{"id":1,"content":"Hello, World!"}%
+Hello, World!
 
-$ curl -i -X GET 'http://localhost:8080/v1/greeting/hello?name=kem198'
+$ curl -i -X GET 'http://localhost:8080/v1/greeting/hello?name=KeM198'
 HTTP/1.1 200
-Content-Type: application/json
-Transfer-Encoding: chunked
-Date: Mon, 28 Apr 2025 05:33:03 GMT
+Content-Type: text/plain;charset=UTF-8
+Content-Length: 15
+Date: Sat, 19 Jul 2025 17:06:00 GMT
 
-{"id":2,"content":"Hello, kem198!"}%
+Hello, KeM198!
 ```
 
 ### `/v1/error`
