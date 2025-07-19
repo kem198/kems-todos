@@ -7,7 +7,8 @@ import net.kem198.todos_api.domain.model.Todo;
 @Mapper(componentModel = "spring")
 public interface TodoResourceMapper {
 
-    TodoResource map(Todo todo);
+    Todo toDomain(TodoResource todoResource);
 
-    Todo map(TodoResource todoResource);
+    TodoResource toResource(Todo todo);
+
 }
