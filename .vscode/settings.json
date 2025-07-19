@@ -1,6 +1,7 @@
 {
-  "gradle.nestedProjects": true,
   "java.debug.settings.onBuildFailureProceed": true,
   "java.dependency.packagePresentation": "hierarchical",
-  "java.configuration.updateBuildConfiguration": "automatic"
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.saveActions.organizeImports": true,
+  "gradle.nestedProjects": true
 }
