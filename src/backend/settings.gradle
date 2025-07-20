@@ -1,2 +1,2 @@
-rootProject.name = 'practice-restful-apps-backend'
+rootProject.name = 'todos-backend'
 include('todos-core', 'todos-api')
