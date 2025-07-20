@@ -5,7 +5,7 @@ This project is developed to practice the following:
 
 - Building a **REST API application** with **Spring Boot** .
 - Designing **loosely coupled architecture** .
-- Implementing **TDD** and **CI** .
+- Implementing with **TDD** and **CI** .
 
 ![architecture](./docs/img/architecture.png)
 
