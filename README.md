@@ -12,7 +12,7 @@ This project is developed to practice the following:
 <!-- omit in toc -->
 ## TOC
 
-- [Apps](#apps)
+- [Packages](#packages)
 - [Requirements](#requirements)
     - [Required](#required)
     - [Recommended](#recommended)
@@ -33,10 +33,13 @@ This project is developed to practice the following:
     - [Doma](#doma)
     - [Others](#others)
 
-## Apps
+## Packages
 
-- [todos-api](./src/backend/todos-api/)
-- [todos-web](./src/frontend/todos-web/)
+- [todos-api](./src/backend/todos-api/) (Application Layer and Application's entrypoint)
+    - `net.kem198.todos.api`
+- [todos-core](./src/backend/todos-core/) (Domain and Infrastructure Layer)
+    - `net.kem198.todos.core.domain`
+    - `net.kem198.todos.core.infrastructure`
 
 ## Requirements
 
