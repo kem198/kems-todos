@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import net.kem198.todos_api.domain.service.greeting.GreetingService;
+import net.kem198.todos_core.domain.service.greeting.GreetingService;
 
 @RestController
 @RequestMapping("/v1/greeting")
