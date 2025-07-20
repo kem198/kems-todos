@@ -52,7 +52,6 @@ This project is developed to practice the following:
 - Required
     - [JDK 21](https://openjdk.org/projects/jdk/21/)
     - [Docker](https://www.docker.com/)
-
 - Recommended
     - [Ubuntu on WSL](https://learn.microsoft.com/ja-jp/windows/wsl/)
     - [SDKMAN!](https://sdkman.io/)
