@@ -12,11 +12,11 @@ This project is developed to practice the following:
 <!-- omit in toc -->
 ## TOC
 
-- [Packages](#packages)
-- [Requirements](#requirements)
-    - [Required](#required)
-    - [Recommended](#recommended)
+- [Application Overview](#application-overview)
+    - [todos-api](#todos-api)
+    - [todos-core](#todos-core)
 - [Setup](#setup)
+    - [Requirements](#requirements)
     - [Setup environment](#setup-environment)
     - [Run database server](#run-database-server)
     - [Run API server](#run-api-server)
@@ -33,27 +33,30 @@ This project is developed to practice the following:
     - [Doma](#doma)
     - [Others](#others)
 
-## Packages
+## Application Overview
 
-- [todos-api](./src/backend/todos-api/) (Application Layer and Application's entrypoint)
-    - `net.kem198.todos.api`
-- [todos-core](./src/backend/todos-core/) (Domain and Infrastructure Layer)
-    - `net.kem198.todos.core.domain`
-    - `net.kem198.todos.core.infrastructure`
+### [todos-api](./src/backend/todos-api/)
 
-## Requirements
+- Contains **Application Layer** and the application's entry point.
+- Handles API requests/response and calls business logic.
 
-### Required
+### [todos-core](./src/backend/todos-core/)
 
-- [JDK 21](https://openjdk.org/projects/jdk/21/)
-- [Docker](https://www.docker.com/)
-
-### Recommended
-
-- [SDKMAN!](https://sdkman.io/)
-- [Visual Studio Code](https://azure.microsoft.com/ja-jp/products/visual-studio-code)
+- Contains **Domain Layer** and **Infrastructure Layer** .
+- Executes business logic and stores data.
 
 ## Setup
+
+### Requirements
+
+- Required
+    - [JDK 21](https://openjdk.org/projects/jdk/21/)
+    - [Docker](https://www.docker.com/)
+
+- Recommended
+    - [Ubuntu on WSL](https://learn.microsoft.com/ja-jp/windows/wsl/)
+    - [SDKMAN!](https://sdkman.io/)
+    - [Visual Studio Code](https://azure.microsoft.com/ja-jp/products/visual-studio-code)
 
 ### Setup environment
 
