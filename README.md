@@ -1,11 +1,11 @@
 <!-- omit in toc -->
 # Practice - Restful apps
 
-This project is designed to practice the following:
+This project is developed to practice the following:
 
-- Building a **REST API** with **Spring Boot** .
-- Applying **Test-Driven Development** (TDD) .
-- Implementing **Continuous Integration** (CI) for Java applications.
+- Building a **REST API application** with **Spring Boot** .
+- Designing **loosely coupled architecture** .
+- Implementing **TDD** and **CI** .
 
 ![architecture](./docs/img/architecture.png)
 
