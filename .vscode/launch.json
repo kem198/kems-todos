@@ -1,21 +1,34 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "java",
-            "name": "Current File",
-            "request": "launch",
-            "mainClass": "${file}"
-        },
-        {
-            "type": "java",
-            "name": "PracticeRestApiWithSpringBootApplication",
-            "request": "launch",
-            "mainClass": "net.kem198.practice_rest_api_with_spring_boot.PracticeRestApiWithSpringBootApplication",
-            "projectName": "practice-rest-api-with-spring-boot"
-        }
-    ]
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Current File",
+      "request": "launch",
+      "mainClass": "${file}"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-TodosCoreApplication<todos-core>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "net.kem198.todos_core.TodosCoreApplication",
+      "projectName": "todos-core",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-TodosApiApplication<todos-api>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "net.kem198.todos_api.TodosApiApplication",
+      "projectName": "todos-api",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
 }
