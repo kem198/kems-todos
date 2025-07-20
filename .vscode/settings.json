@@ -4,5 +4,10 @@
   "java.dependency.packagePresentation": "hierarchical",
   "java.configuration.updateBuildConfiguration": "automatic",
   "java.saveActions.organizeImports": true,
-  "gradle.nestedProjects": true
+  "gradle.nestedProjects": true,
+
+  // bin ディレクトリを自動生成しない
+  // Doma の SQL の検索先ディレクトリが変わってしまいエラーになることを防ぐ
+  "java.autobuild.enabled": false,
+  "java.project.outputPath": ""
 }
