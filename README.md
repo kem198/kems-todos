@@ -35,8 +35,8 @@ This project is designed to practice the following:
 
 ## Apps
 
-- [./src/todos-web](./src/todos-web/)
-- [./src/backend/todos-api](./src/backend/todos-api/)
+- [todos-api](./src/backend/todos-api/)
+- [todos-web](./src/frontend/todos-web/)
 
 ## Requirements
 
