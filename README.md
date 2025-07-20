@@ -36,7 +36,7 @@ This project is designed to practice the following:
 ## Apps
 
 - [./src/todos-web](./src/todos-web/)
-- [./src/todos-api](./src/todos-api/)
+- [./src/backend/todos-api](./src/backend/todos-api/)
 
 ## Requirements
 
@@ -134,9 +134,9 @@ todos_db=# exit
 
 ```shell
 # Change to api application root directory
-$ cd src/todos-api
+$ cd src/backend/todos-api
 $ pwd
-/path/to/your/repo/practice-restful-apps/src/todos-api
+/path/to/your/repo/practice-restful-apps/src/backend/todos-api
 
 # Build and Run application
 $ ./gradlew build
