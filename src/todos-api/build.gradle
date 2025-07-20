@@ -39,24 +39,6 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-// Doma 用設定 (1)
-// リソース (SQL ファイルなど) のコピー処理が実行されてから Java のコンパイルを開始する。
-// Doma の Dao 生成時に SQL ファイルがクラスパス上に存在していないとビルドが失敗するため。
-compileJava.dependsOn processResources
-
-// Doma 用設定 (2)
-// リソース (SQL ファイルなど) の検索元とコピー先を明示的に指定する。
-// Doma は SQL ファイルを Java のクラスパス (`build/classes/java/main`) から検索するため、
-// SQL ファイルが同ディレクトリに配置されている必要がある。
-sourceSets {
-    main {
-        resources {
-            srcDirs = ['src/main/resources']
-        }
-        output.resourcesDir = file("$buildDir/classes/java/main")
-    }
-}
-
 // cf. https://docs.domaframework.org/ja/stable/codegen/
 domaCodeGen {
     def basePackage = 'net.kem198.todos_api.infrastructure'
