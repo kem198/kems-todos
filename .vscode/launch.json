@@ -12,21 +12,21 @@
     },
     {
       "type": "java",
-      "name": "Spring Boot-TodosCoreApplication<todos-core>",
+      "name": "Spring Boot-TodosApiApplication<todos-api>",
       "request": "launch",
       "cwd": "${workspaceFolder}",
-      "mainClass": "net.kem198.todos_core.TodosCoreApplication",
-      "projectName": "todos-core",
+      "mainClass": "net.kem198.todos.api.TodosApiApplication",
+      "projectName": "todos-api",
       "args": "",
       "envFile": "${workspaceFolder}/.env"
     },
     {
       "type": "java",
-      "name": "Spring Boot-TodosApiApplication<todos-api>",
+      "name": "Spring Boot-TodosCoreApplication<todos-core>",
       "request": "launch",
       "cwd": "${workspaceFolder}",
-      "mainClass": "net.kem198.todos_api.TodosApiApplication",
-      "projectName": "todos-api",
+      "mainClass": "net.kem198.todos.core.TodosCoreApplication",
+      "projectName": "todos-core",
       "args": "",
       "envFile": "${workspaceFolder}/.env"
     }

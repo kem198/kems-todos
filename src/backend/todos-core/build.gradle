@@ -39,9 +39,17 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
+
 // cf. https://docs.domaframework.org/ja/stable/codegen/
 domaCodeGen {
-    def basePackage = 'net.kem198.todos_core.infrastructure'
+    def basePackage = 'net.kem198.todos.core.infrastructure'
 
     register('postgresql') {
         // Database connection to local PostgreSQL
