@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import net.kem198.todos.core.domain.exception.common.BusinessException;
+import net.kem198.todos.core.exception.common.BusinessException;
 
 @ControllerAdvice
 public class RestGlobalExceptionHandler extends ResponseEntityExceptionHandler {
