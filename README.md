@@ -43,7 +43,7 @@ This project is developed to practice the following:
 ### [todos-core](./src/backend/todos-core/)
 
 - Contains **Domain Layer** and **Infrastructure Layer** .
-- Executes business logic and stores data.
+- Provides business logic and stores data.
 
 ## Setup
 
