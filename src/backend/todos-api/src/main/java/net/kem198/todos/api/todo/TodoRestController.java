@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import net.kem198.todos.core.domain.model.Todo;
-import net.kem198.todos.core.domain.service.todo.TodoService;
+import net.kem198.todos.core.model.Todo;
+import net.kem198.todos.core.service.todo.TodoService;
 
 @RestController
 @RequestMapping("/v1/todos")

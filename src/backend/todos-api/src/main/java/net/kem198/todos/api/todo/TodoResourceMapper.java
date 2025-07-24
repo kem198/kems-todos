@@ -2,7 +2,7 @@ package net.kem198.todos.api.todo;
 
 import org.mapstruct.Mapper;
 
-import net.kem198.todos.core.domain.model.Todo;
+import net.kem198.todos.core.model.Todo;
 
 @Mapper(componentModel = "spring")
 public interface TodoResourceMapper {

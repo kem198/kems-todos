@@ -1,0 +1,83 @@
+plugins {
+    id 'java'
+    // マルチモジュールプロジェクトのための設定 (1)
+    // ライブラリプロジェクトの実行可能 jar をビルドしない
+    // cf. https://spring.pleiades.io/guides/gs/multi-module
+    id 'org.springframework.boot' version '3.5.3' apply false
+    id 'io.spring.dependency-management' version '1.1.7'
+    id 'org.domaframework.doma.compile' version '3.0.1'
+    id 'org.domaframework.doma.codegen' version '3.2.1'
+}
+
+group = 'net.kem198'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':todos-core')
+    implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+    implementation 'org.seasar.doma:doma-core:3.10.0'
+    implementation 'org.seasar.doma.boot:doma-spring-boot-starter:2.4.0'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+    annotationProcessor 'org.seasar.doma:doma-processor:3.10.0'
+    runtimeOnly 'org.postgresql:postgresql:42.7.7'
+    testImplementation 'org.springframework.boot:spring-boot-starter'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    domaCodeGen 'org.postgresql:postgresql:42.7.7'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+// マルチモジュールプロジェクトのための設定 (2)
+// ライブラリプロジェクトの実行可能 jar をビルドしない
+// cf. https://spring.pleiades.io/guides/gs/multi-module
+dependencyManagement {
+    imports {
+        mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
+    }
+}
+
+// マルチモジュールプロジェクトのための設定 (3)
+// JavaCompiler タスクを手動で構成する
+// cf. https://spring.pleiades.io/guides/gs/multi-module
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs.add("-parameters")
+}
+
+// cf. https://docs.domaframework.org/ja/stable/codegen/
+domaCodeGen {
+    def basePackage = 'net.kem198.todos.infrastructure'
+
+    register('postgresql') {
+        // Database connection to local PostgreSQL
+        url.set('jdbc:postgresql://localhost:5432/todos_db')
+        user.set('postgres')  // Replace with your PostgreSQL username
+        password.set('__ENTER_POSTGRES_PASSWORD_HERE__')  // Replace with your PostgreSQL password
+        templateDir.set(file("${projectDir}/custom-templates"))
+
+        // Entity generation settings
+        entity {
+            packageName.set("${basePackage}.entity")
+            useAccessor.set(true)           // Generate getters/setters
+            useListener.set(true)           // Generate entity listeners
+            showDbComment.set(true)         // Include database comments
+        }
+
+        // DAO generation settings
+        dao {
+            packageName.set("${basePackage}.dao")
+        }
+    }
+}

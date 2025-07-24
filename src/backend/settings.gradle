@@ -1,4 +1,5 @@
 rootProject.name = 'todos-backend'
 
 include 'todos-core'
+include 'todos-infrastructure'
 include 'todos-api'
