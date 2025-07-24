@@ -1,9 +1,6 @@
 plugins {
     id 'java'
-    // マルチモジュールプロジェクトのための設定 (1)
-    // ライブラリプロジェクトの実行可能 jar をビルドしない
-    // cf. https://spring.pleiades.io/guides/gs/multi-module
-    id 'org.springframework.boot' version '3.5.3' apply false
+    id 'org.springframework.boot' version '3.5.3'
     id 'io.spring.dependency-management' version '1.1.7'
 }
 
@@ -21,10 +18,12 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot'
+    // implementation 'org.springframework.boot:spring-boot'
+    implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework:spring-tx'
     implementation 'org.springframework:spring-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation project(':todos-infrastructure')
 }
 
 tasks.named('test') {
