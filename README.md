@@ -15,6 +15,7 @@ This project is developed to practice the following:
 - [Application Overview](#application-overview)
     - [todos-api](#todos-api)
     - [todos-core](#todos-core)
+    - [todos-infrastructure](#todos-infrastructure)
 - [Setup](#setup)
     - [Requirements](#requirements)
     - [Setup environment](#setup-environment)
@@ -35,15 +36,22 @@ This project is developed to practice the following:
 
 ## Application Overview
 
+This application is built using a [Multi Module Project](https://spring.io/guides/gs/multi-module) approach.
+
 ### [todos-api](./src/backend/todos-api/)
 
 - Contains **Application Layer** and the application's entry point.
-- Handles API requests/response and calls business logic.
+- Handles API requests/responses and calls business logic.
 
 ### [todos-core](./src/backend/todos-core/)
 
-- Contains **Domain Layer** and **Infrastructure Layer** .
-- Provides business logic and stores data.
+- Contains **Domain Layer** .
+- Provides domain models and business logic.
+
+### [todos-infrastructure](./src/backend/todos-infrastructure/)
+
+- Contains **Infrastructure Layer** .
+- Executes CRUD operations on the data store.
 
 ## Setup
 
