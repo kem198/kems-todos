@@ -4,7 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 // HACK: infrastructure 層にはエントリポイントは必要ないが、テスト実行のため残している
-// できれば消したい
+// できれば下記ドキュメントに倣って消したい
+// https://spring.pleiades.io/guides/gs/multi-module
 @SpringBootApplication(scanBasePackages = "net.kem198.todos")
 public class TodosInfrastructureApplication {
 

@@ -1,9 +1,6 @@
 plugins {
     id 'java'
-    // マルチモジュールプロジェクトのための設定 (1)
-    // ライブラリプロジェクトの実行可能 jar をビルドしない
-    // cf. https://spring.pleiades.io/guides/gs/multi-module
-    id 'org.springframework.boot' version '3.5.3' apply false
+    id 'org.springframework.boot' version '3.5.3'
     id 'io.spring.dependency-management' version '1.1.7'
     id 'org.domaframework.doma.compile' version '3.0.1'
     id 'org.domaframework.doma.codegen' version '3.2.1'
