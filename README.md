@@ -146,7 +146,7 @@ $ pwd
 
 # Build and Run application
 $ ./gradlew build
-$ java -jar build/libs/todos-api-0.0.1-SNAPSHOT.jar
+$ java -jar todos-api/build/libs/todos-api-0.0.1-SNAPSHOT.jar
 
 # Open new terminal and request to API!
 $ curl 'http://localhost:8080/v1/greeting/hello'
