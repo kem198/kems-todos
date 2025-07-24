@@ -1,5 +1,6 @@
 rootProject.name = 'todos-backend'
 
-include 'todos-core'
-include 'todos-infrastructure'
-include 'todos-api'
+include('todos-core', 'todos-infrastructure', 'todos-api')
+project(':todos-core').projectDir = new File('modules/todos-core')
+project(':todos-infrastructure').projectDir = new File('modules/todos-infrastructure')
+project(':todos-api').projectDir = new File('modules/todos-api')
