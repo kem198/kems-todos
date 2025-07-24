@@ -21,7 +21,7 @@ import net.kem198.todos.core.model.Todo;
 import net.kem198.todos.core.repository.todo.TodoRepository;
 
 @SpringBootTest
-public class TodoRepositoryTests {
+public class TodoRepositoryImplTests {
     @Autowired
     TodoRepository todoRepository;
 
