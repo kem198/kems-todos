@@ -376,6 +376,7 @@ Connection: close
 
 - [Spring Boot in Visual Studio Code](https://code.visualstudio.com/docs/java/java-spring-boot)
 - [Spring Boot REST API の作成 - 公式サンプルコード](https://spring.pleiades.io/guides/gs/rest-service)
+- [Spring Boot マルチモジュールプロジェクトの作成 - 公式サンプルコード](https://spring.pleiades.io/guides/gs/multi-module)
 
 ### Doma
 
