@@ -1,22 +1,22 @@
 <!-- omit in toc -->
 # Practice - Restful apps
 
-This project is designed to practice the following:
+This project is developed to practice the following:
 
-- Building a **REST API** with **Spring Boot** .
-- Applying **Test-Driven Development** (TDD) .
-- Implementing **Continuous Integration** (CI) for Java applications.
+- Building a **REST API application** with **Spring Boot** .
+- Designing **loosely coupled architecture** .
+- Implementing with **TDD** and **CI** .
 
 ![architecture](./docs/img/architecture.png)
 
 <!-- omit in toc -->
 ## TOC
 
-- [Apps](#apps)
-- [Requirements](#requirements)
-    - [Required](#required)
-    - [Recommended](#recommended)
+- [Application Overview](#application-overview)
+    - [todos-api](#todos-api)
+    - [todos-core](#todos-core)
 - [Setup](#setup)
+    - [Requirements](#requirements)
     - [Setup environment](#setup-environment)
     - [Run database server](#run-database-server)
     - [Run API server](#run-api-server)
@@ -33,24 +33,30 @@ This project is designed to practice the following:
     - [Doma](#doma)
     - [Others](#others)
 
-## Apps
+## Application Overview
 
-- [todos-api](./src/backend/todos-api/)
-- [todos-web](./src/frontend/todos-web/)
+### [todos-api](./src/backend/todos-api/)
 
-## Requirements
+- Contains **Application Layer** and the application's entry point.
+- Handles API requests/response and calls business logic.
 
-### Required
+### [todos-core](./src/backend/todos-core/)
 
-- [JDK 21](https://openjdk.org/projects/jdk/21/)
-- [Docker](https://www.docker.com/)
-
-### Recommended
-
-- [SDKMAN!](https://sdkman.io/)
-- [Visual Studio Code](https://azure.microsoft.com/ja-jp/products/visual-studio-code)
+- Contains **Domain Layer** and **Infrastructure Layer** .
+- Provides business logic and stores data.
 
 ## Setup
+
+### Requirements
+
+- Required
+    - [JDK 21](https://openjdk.org/projects/jdk/21/)
+    - [Docker](https://www.docker.com/)
+
+- Recommended
+    - [Ubuntu on WSL](https://learn.microsoft.com/ja-jp/windows/wsl/)
+    - [SDKMAN!](https://sdkman.io/)
+    - [Visual Studio Code](https://azure.microsoft.com/ja-jp/products/visual-studio-code)
 
 ### Setup environment
 

@@ -1,14 +1,12 @@
 <!-- omit in toc -->
-# Restful apps - API Layer Application
+# todos-api
 
 <!-- omit in toc -->
 ## TOC
 
 - [Commands](#commands)
     - [Test](#test)
-    - [Run for Development](#run-for-development)
     - [Build](#build)
-    - [Generate Dao, Entity, and SQL files by Doma CodeGen](#generate-dao-entity-and-sql-files-by-doma-codegen)
     - [Run](#run)
 
 ## Commands
@@ -19,22 +17,10 @@
 ./gradlew test
 ```
 
-### Run for Development
-
-```shell
-./gradlew bootRun
-```
-
 ### Build
 
 ```shell
 ./gradlew build
-```
-
-### Generate Dao, Entity, and SQL files by [Doma CodeGen](https://docs.domaframework.org/ja/stable/codegen/)
-
-```shell
-./gradlew domaCodeGenPostgresqlAll
 ```
 
 ### Run
