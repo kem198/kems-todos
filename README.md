@@ -140,9 +140,9 @@ todos_db=# exit
 
 ```shell
 # Change to api application root directory
-$ cd src/backend/todos-api
+$ cd src/backend
 $ pwd
-/path/to/your/repo/practice-restful-apps/src/backend/todos-api
+/path/to/your/repo/practice-restful-apps/src/backend
 
 # Build and Run application
 $ ./gradlew build
