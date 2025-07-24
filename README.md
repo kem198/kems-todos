@@ -173,6 +173,8 @@ $ curl 'http://localhost:8080/v1/greeting/hello'
 Hello, World!
 ```
 
+If you want to see more commands, please refer to [backend/README.md](./src/backend/README.md) .
+
 ## Demo APIs
 
 ### `/v1/greeting`
