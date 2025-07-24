@@ -1,2 +1,5 @@
 rootProject.name = 'todos-backend'
-include('todos-core', 'todos-api', 'todos-infrastructure')
+
+include 'todos-core'
+include 'todos-infrastructure'
+include 'todos-api'
