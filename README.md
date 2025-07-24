@@ -19,6 +19,7 @@ This project is developed to practice the following:
 - [Setup](#setup)
     - [Requirements](#requirements)
     - [Setup environment](#setup-environment)
+    - [Edit with Visual Studio Code](#edit-with-visual-studio-code)
     - [Run database server](#run-database-server)
     - [Run API server](#run-api-server)
 - [Demo APIs](#demo-apis)
@@ -97,6 +98,17 @@ $ git clone https://github.com/kem198/practice-restful-apps.git
 
 # Moving api apps directory
 $ cd practice-restful-apps
+```
+
+### Edit with Visual Studio Code
+
+```sh
+# Current directory is the repository root
+$ pwd
+/path/to/your/repo/practice-restful-apps
+
+# Open with VS Code
+$ code .
 ```
 
 ### Run database server
