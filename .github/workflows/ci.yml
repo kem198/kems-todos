@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./src/backend/todos-api
+        working-directory: ./src/backend
     services:
       db:
         image: postgres:17.4-bookworm
