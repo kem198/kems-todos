@@ -37,12 +37,20 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-bootJar {
-    enabled = false
+// マルチモジュールプロジェクトのための設定 (1)
+// ライブラリプロジェクトの実行可能 jar をビルドしない
+// cf. https://spring.pleiades.io/guides/gs/multi-module
+dependencyManagement {
+  imports {
+    mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
+  }
 }
 
-jar {
-    enabled = true
+// マルチモジュールプロジェクトのための設定 (2)
+// JavaCompiler タスクを手動で構成する
+// cf. https://spring.pleiades.io/guides/gs/multi-module
+tasks.withType(JavaCompile).configureEach {
+	options.compilerArgs.add("-parameters")
 }
 
 // cf. https://docs.domaframework.org/ja/stable/codegen/
