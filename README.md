@@ -38,17 +38,17 @@ This project is developed to practice the following:
 
 This application is built using a [Multi Module Project](https://spring.io/guides/gs/multi-module) approach.
 
-### [todos-api](./src/backend/todos-api/)
+### [todos-api](./src/backend/modules/todos-api/)
 
 - Contains **Application Layer** and the application's entry point.
 - Handles API requests/responses and calls business logic.
 
-### [todos-core](./src/backend/todos-core/)
+### [todos-core](./src/backend/modules/todos-core/)
 
 - Contains **Domain Layer** .
 - Provides domain models and business logic.
 
-### [todos-infrastructure](./src/backend/todos-infrastructure/)
+### [todos-infrastructure](./src/backend/modules/todos-infrastructure/)
 
 - Contains **Infrastructure Layer** .
 - Executes CRUD operations on the data store.
