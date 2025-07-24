@@ -28,10 +28,16 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-bootJar {
-    enabled = false
+// マルチモジュールプロジェクトのための設定
+// cf. https://spring.pleiades.io/guides/gs/multi-module
+// ここから ----------------
+dependencyManagement {
+  imports {
+    mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
+  }
 }
 
-jar {
-    enabled = true
+tasks.withType(JavaCompile).configureEach {
+	options.compilerArgs.add("-parameters")
 }
+// ここまで ----------------
