@@ -54,6 +54,7 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 // Doma CodeGen 設定
+// cf. https://docs.domaframework.org/ja/stable/codegen/
 domaCodeGen {
     def basePackage = 'net.kem198.todos.core.infrastructure'
 
