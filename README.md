@@ -140,13 +140,13 @@ todos_db=# exit
 
 ```shell
 # Change to api application root directory
-$ cd src/backend/todos-api
+$ cd src/backend
 $ pwd
-/path/to/your/repo/practice-restful-apps/src/backend/todos-api
+/path/to/your/repo/practice-restful-apps/src/backend
 
 # Build and Run application
 $ ./gradlew build
-$ java -jar build/libs/todos-api-0.0.1-SNAPSHOT.jar
+$ java -jar todos-api/build/libs/todos-api-0.0.1-SNAPSHOT.jar
 
 # Open new terminal and request to API!
 $ curl 'http://localhost:8080/v1/greeting/hello'
@@ -376,6 +376,7 @@ Connection: close
 
 - [Spring Boot in Visual Studio Code](https://code.visualstudio.com/docs/java/java-spring-boot)
 - [Spring Boot REST API の作成 - 公式サンプルコード](https://spring.pleiades.io/guides/gs/rest-service)
+- [Spring Boot マルチモジュールプロジェクトの作成 - 公式サンプルコード](https://spring.pleiades.io/guides/gs/multi-module)
 
 ### Doma
 

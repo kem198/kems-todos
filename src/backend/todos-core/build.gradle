@@ -1,6 +1,9 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.5.3'
+    // マルチモジュールプロジェクトのための設定 (1)
+    // ライブラリプロジェクトの実行可能 jar をビルドしない
+    // cf. https://spring.pleiades.io/guides/gs/multi-module
+    id 'org.springframework.boot' version '3.5.3' apply false
     id 'io.spring.dependency-management' version '1.1.7'
     id 'org.domaframework.doma.compile' version '3.0.1'
     id 'org.domaframework.doma.codegen' version '3.2.1'
@@ -20,16 +23,16 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-    implementation 'org.springframework.boot:spring-boot-starter-validation'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot'
+    implementation 'org.springframework:spring-tx'
+    implementation 'org.springframework:spring-web'
     implementation 'org.mapstruct:mapstruct:1.5.5.Final'
     implementation 'org.seasar.doma:doma-core:3.10.0'
     implementation 'org.seasar.doma.boot:doma-spring-boot-starter:2.4.0'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
     annotationProcessor 'org.seasar.doma:doma-processor:3.10.0'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'org.postgresql:postgresql:42.7.7'
+    testImplementation 'org.springframework.boot:spring-boot-starter'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     domaCodeGen 'org.postgresql:postgresql:42.7.7'
@@ -39,14 +42,23 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-bootJar {
-    enabled = false
+// マルチモジュールプロジェクトのための設定 (2)
+// ライブラリプロジェクトの実行可能 jar をビルドしない
+// cf. https://spring.pleiades.io/guides/gs/multi-module
+dependencyManagement {
+    imports {
+        mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
+    }
 }
 
-jar {
-    enabled = true
+// マルチモジュールプロジェクトのための設定 (3)
+// JavaCompiler タスクを手動で構成する
+// cf. https://spring.pleiades.io/guides/gs/multi-module
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs.add("-parameters")
 }
 
+// Doma CodeGen 設定
 // cf. https://docs.domaframework.org/ja/stable/codegen/
 domaCodeGen {
     def basePackage = 'net.kem198.todos.core.infrastructure'
