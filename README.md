@@ -164,8 +164,10 @@ $ cd src/backend
 $ pwd
 /path/to/your/repo/practice-restful-apps/src/backend
 
-# Build and Run application
+# Build application
 $ ./gradlew build
+
+# Run application
 $ java -jar modules/todos-api/build/libs/todos-api-0.0.1-SNAPSHOT.jar
 
 # Open new terminal and request to API!
