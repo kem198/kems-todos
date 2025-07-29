@@ -1,18 +1,14 @@
 package net.kem198.todos.core.exception.common;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ProblemDetail;
-
 public abstract class BusinessException extends RuntimeException {
-    private final ProblemDetail problemDetail;
+    private final ErrorCode errorCode;
 
-    protected BusinessException(HttpStatus status, String detail) {
-        super(detail);
-        this.problemDetail = ProblemDetail.forStatus(status);
-        this.problemDetail.setDetail(detail);
+    protected BusinessException(ErrorCode errorCode, String message) {
+        super(message);
+        this.errorCode = errorCode;
     }
 
-    public ProblemDetail getProblemDetail() {
-        return problemDetail;
+    public String getErrorCode() {
+        return errorCode.getCode();
     }
 }

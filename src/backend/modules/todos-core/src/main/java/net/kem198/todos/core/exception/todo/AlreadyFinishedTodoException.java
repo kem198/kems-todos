@@ -1,12 +1,10 @@
 package net.kem198.todos.core.exception.todo;
 
-import org.springframework.http.HttpStatus;
-
 import net.kem198.todos.core.exception.common.BusinessException;
+import net.kem198.todos.core.exception.common.ErrorCode;
 
 public class AlreadyFinishedTodoException extends BusinessException {
-    public AlreadyFinishedTodoException(String resourceName) {
-        super(HttpStatus.BAD_REQUEST,
-                "[E003] [" + resourceName + "] The Todo is already finished.");
+    public AlreadyFinishedTodoException() {
+        super(ErrorCode.BUSINESS_ERROR, "The Todo is already finished.");
     }
 }

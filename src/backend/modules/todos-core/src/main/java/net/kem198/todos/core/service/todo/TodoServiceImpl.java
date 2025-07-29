@@ -29,7 +29,7 @@ public class TodoServiceImpl implements TodoService {
     public Todo findOne(String todoId) {
         Todo todo = todoRepository.findById(todoId);
         if (todo == null) {
-            throw new ResourceNotFoundException(this.getClass().getName(), todoId);
+            throw new ResourceNotFoundException("todoId", todoId);
         }
         return todo;
     }
@@ -44,7 +44,7 @@ public class TodoServiceImpl implements TodoService {
     public Todo create(Todo todo) {
         long unfinishedCount = todoRepository.countByFinished(false);
         if (unfinishedCount >= MAX_UNFINISHED_COUNT) {
-            throw new MaxUnfinishedTodoException(this.getClass().getName(), MAX_UNFINISHED_COUNT);
+            throw new MaxUnfinishedTodoException(MAX_UNFINISHED_COUNT);
         }
 
         String todoId = UUID.randomUUID().toString();
@@ -63,7 +63,7 @@ public class TodoServiceImpl implements TodoService {
     public Todo finish(String todoId) {
         Todo todo = findOne(todoId);
         if (todo.isFinished()) {
-            throw new AlreadyFinishedTodoException(this.getClass().getName());
+            throw new AlreadyFinishedTodoException();
         }
         todo.setFinished(true);
         todoRepository.update(todo);
