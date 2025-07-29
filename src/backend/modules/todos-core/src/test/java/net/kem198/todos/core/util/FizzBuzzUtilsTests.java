@@ -10,11 +10,11 @@ public class FizzBuzzUtilsTests {
     @Nested
     class ConvertMethodTests {
         @Nested
-        @DisplayName("3 の倍数の場合は「Fizz」に変換する")
+        @DisplayName("3 の倍数の場合は「Fizz」に変換すること")
         class ConvertsMultiplesOf3ToFizz {
             @Test
-            @DisplayName("3 を渡すと文字列 Fizz を返す")
-            void returnsFizzFor3() {
+            @DisplayName("3 を渡すと文字列 Fizz を返すこと")
+            void shouldReturnFizzFor3() {
                 // Act
                 String actual = FizzBuzzUtils.convert(3);
 
@@ -24,11 +24,11 @@ public class FizzBuzzUtilsTests {
         }
 
         @Nested
-        @DisplayName("5 の倍数の場合は「Buzz」に変換する")
+        @DisplayName("5 の倍数の場合は「Buzz」に変換すること")
         class ConvertsMultiplesOf5ToBuzz {
             @Test
-            @DisplayName("5 を渡すと文字列 Buzz を返す")
-            void returnsBuzzFor5() {
+            @DisplayName("5 を渡すと文字列 Buzz を返すこと")
+            void shouldReturnBuzzFor5() {
                 // Act
                 String actual = FizzBuzzUtils.convert(5);
 
@@ -38,11 +38,11 @@ public class FizzBuzzUtilsTests {
         }
 
         @Nested
-        @DisplayName("3 と 5 両方の倍数の場合は「FizzBuzz」に変換する")
+        @DisplayName("3 と 5 両方の倍数の場合は「FizzBuzz」に変換すること")
         class ConvertsMultiplesOf3And5ToFizzBuzz {
             @Test
-            @DisplayName("15 を渡すと文字列 FizzBuzz を返す")
-            void returnsFizzBuzzFor15() {
+            @DisplayName("15 を渡すと文字列 FizzBuzz を返すこと")
+            void shouldReturnFizzBuzzFor15() {
                 // Act
                 String actual = FizzBuzzUtils.convert(15);
 
@@ -52,11 +52,11 @@ public class FizzBuzzUtilsTests {
         }
 
         @Nested
-        @DisplayName("その他の数の場合はそのまま文字列に変換する")
+        @DisplayName("その他の数の場合はそのまま文字列に変換すること")
         class ConvertsOtherNumbersToString {
             @Test
-            @DisplayName("1 を渡すと文字列 1 を返す")
-            void returns1For1() {
+            @DisplayName("1 を渡すと文字列 1 を返すこと")
+            void shouldReturn1For1() {
                 // Act
                 String actual = FizzBuzzUtils.convert(1);
 

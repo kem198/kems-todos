@@ -31,11 +31,11 @@ public class FizzBuzzRestControllerTests {
     @Nested
     class GetRequestTests {
         @Nested
-        @DisplayName("正常なリクエストでは FizzBuzz 結果のレスポンスを返す")
+        @DisplayName("正常なリクエストでは FizzBuzz 結果のレスポンスを返すこと")
         class ValidRequestTests {
             @Test
-            @DisplayName("\"?num=3\" でリクエストされた場合は {\"result\": \"Fizz\"} を返す")
-            void returnsFizzFor3() throws Exception {
+            @DisplayName("\"?num=3\" でリクエストされた場合は {\"result\": \"Fizz\"} を返すこと")
+            void shouldReturnFizzFor3() throws Exception {
                 // Act
                 ResponseEntity<String> response = restTemplate.getForEntity("/v1/fizzbuzz/convert?num=3",
                         String.class);
@@ -48,11 +48,11 @@ public class FizzBuzzRestControllerTests {
         }
 
         @Nested
-        @DisplayName("不正なリクエストではエラーレスポンスを返す")
+        @DisplayName("不正なリクエストではエラーレスポンスを返すこと")
         class InvalidRequestTests {
             @Test
-            @DisplayName("パラメータ無しでリクエストされた場合はエラーレスポンスを返す")
-            void returnsErrorResponseForMissingParameter() throws Exception {
+            @DisplayName("パラメータ無しでリクエストされた場合はエラーレスポンスを返すこと")
+            void shouldReturnErrorResponseForMissingParameter() throws Exception {
                 // Act
                 ResponseEntity<String> response = restTemplate.getForEntity("/v1/fizzbuzz/convert", String.class);
 
@@ -64,8 +64,8 @@ public class FizzBuzzRestControllerTests {
             }
 
             @Test
-            @DisplayName("数値として扱えない値でリクエストされた場合はエラーレスポンスを返す")
-            void returnsErrorResponseForInvalidNumber() throws Exception {
+            @DisplayName("数値として扱えない値でリクエストされた場合はエラーレスポンスを返すこと")
+            void shouldReturnErrorResponseForInvalidNumber() throws Exception {
                 // Act
                 ResponseEntity<String> response = restTemplate.getForEntity("/v1/fizzbuzz/convert?num=abc",
                         String.class);
