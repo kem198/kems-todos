@@ -49,7 +49,7 @@ public class TodoRestControllerTests {
     class GetTodosTests {
         @Test
         @DisplayName("Todo 一覧と 200 を返すこと")
-        void returnsTodoListWith200() throws Exception {
+        void shouldReturnTodoListWith200() throws Exception {
             // Arrange
             Todo todo1 = makeTestTodo("Test Todo 1", "Description 1");
             Todo todo2 = makeTestTodo("Test Todo 2", "Description 2");
@@ -71,7 +71,7 @@ public class TodoRestControllerTests {
     class GetTodoTests {
         @Test
         @DisplayName("指定された ID の Todo と 200 を返すこと")
-        void returnsTodoByIdWith200() throws Exception {
+        void shouldReturnTodoByIdWith200() throws Exception {
             // Arrange
             Todo todo = makeTestTodo("Test Todo", "Test Description");
             todoRepository.create(todo);
@@ -92,7 +92,7 @@ public class TodoRestControllerTests {
 
         @Test
         @DisplayName("存在しない ID の場合は 404 を返すこと")
-        void returnsNotFoundWith404ForNonExistentId() throws Exception {
+        void shouldReturnNotFoundWith404ForNonExistentId() throws Exception {
             // Act
             ResponseEntity<String> response = restTemplate.getForEntity("/v1/todos/nonexistent", String.class);
 
@@ -105,7 +105,7 @@ public class TodoRestControllerTests {
     class PostTodoTests {
         @Test
         @DisplayName("Todo がデータベースに保存されること")
-        void savesTodoToDatabase() throws Exception {
+        void shouldSaveTodoToDatabase() throws Exception {
             // Act
             String requestBody = """
                         {
@@ -132,7 +132,7 @@ public class TodoRestControllerTests {
 
         @Test
         @DisplayName("作成された Todo と 201 を返すこと")
-        void returnsCreatedTodoWith201() throws Exception {
+        void shouldReturnCreatedTodoWith201() throws Exception {
             // Act
             String requestBody = """
                         {
@@ -158,7 +158,7 @@ public class TodoRestControllerTests {
 
         @Test
         @DisplayName("未完了 Todo が上限に達している場合は 400 を返すこと")
-        void returnsBadRequestWith400WhenUnfinishedTodoLimitReached() throws Exception {
+        void shouldReturnBadRequestWith400WhenUnfinishedTodoLimitReached() throws Exception {
             // Arrange
             // 未完了 Todo を上限まで作成する
             for (int i = 0; i < 5; i++) {
@@ -187,7 +187,7 @@ public class TodoRestControllerTests {
 
         @Test
         @DisplayName("未完了 Todo が上限に達している場合は新しい Todo が作成されないこと")
-        void doesNotCreateTodoWhenUnfinishedTodoLimitReached() throws Exception {
+        void shouldNotCreateTodoWhenUnfinishedTodoLimitReached() throws Exception {
             // Arrange
             // 未完了 Todo を上限まで作成する
             for (int i = 0; i < 5; i++) {
@@ -216,7 +216,7 @@ public class TodoRestControllerTests {
 
         @Test
         @DisplayName("バリデーションエラーの場合は 400 を返すこと")
-        void returnsBadRequestWith400ForValidationError() throws Exception {
+        void shouldReturnBadRequestWith400ForValidationError() throws Exception {
             // Act
             String requestBody = """
                         {
@@ -236,7 +236,7 @@ public class TodoRestControllerTests {
 
         @Test
         @DisplayName("バリデーションエラーの場合は新しい Todo が作成されないこと")
-        void doesNotCreateTodoForValidationError() throws Exception {
+        void shouldNotCreateTodoForValidationError() throws Exception {
             // Arrange
             // 事前の Todo 数を確認
             int initialCount = todoRepository.findAll().size();
@@ -263,7 +263,7 @@ public class TodoRestControllerTests {
     class PutTodoTests {
         @Test
         @DisplayName("Todo がデータベースで完了状態に更新されること")
-        void updatesTodoToFinishedInDatabase() throws Exception {
+        void shouldUpdateTodoToFinishedInDatabase() throws Exception {
             // Arrange
             Todo todo = makeTestTodo("Test Todo", "Test Description");
             todoRepository.create(todo);
@@ -288,7 +288,7 @@ public class TodoRestControllerTests {
 
         @Test
         @DisplayName("完了状態の Todo と 200 を返すこと")
-        void returnsFinishedTodoWith200() throws Exception {
+        void shouldReturnFinishedTodoWith200() throws Exception {
             // Arrange
             Todo todo = makeTestTodo("Test Todo", "Test Description");
             todoRepository.create(todo);
@@ -313,7 +313,7 @@ public class TodoRestControllerTests {
 
         @Test
         @DisplayName("既に完了済みの Todo の場合は 400 を返すこと")
-        void returnsBadRequestWith400ForAlreadyFinishedTodo() throws Exception {
+        void shouldReturnBadRequestWith400ForAlreadyFinishedTodo() throws Exception {
             // Arrange
             Todo todo = makeTestTodo("Test Todo", "Test Description");
             todoRepository.create(todo);
@@ -337,7 +337,7 @@ public class TodoRestControllerTests {
 
         @Test
         @DisplayName("存在しない Todo の場合は 404 を返すこと")
-        void returnsNotFoundWith404ForNonExistentTodo() throws Exception {
+        void shouldReturnNotFoundWith404ForNonExistentTodo() throws Exception {
             // Act
             ResponseEntity<String> response = restTemplate.exchange(
                     "/v1/todos/nonexistent",
@@ -356,7 +356,7 @@ public class TodoRestControllerTests {
     class DeleteTodoTests {
         @Test
         @DisplayName("Todo がデータベースから削除されること")
-        void deletesTodoFromDatabase() throws Exception {
+        void shouldDeleteTodoFromDatabase() throws Exception {
             // Arrange
             Todo todo = makeTestTodo("Test Todo", "Test Description");
             todoRepository.create(todo);
@@ -376,7 +376,7 @@ public class TodoRestControllerTests {
 
         @Test
         @DisplayName("Todo が削除された際に 204 を返すこと")
-        void deletesTodoAndReturns204() throws Exception {
+        void shouldDeleteTodoAndReturn204() throws Exception {
             // Arrange
             Todo todo = makeTestTodo("Test Todo", "Test Description");
             todoRepository.create(todo);
@@ -395,7 +395,7 @@ public class TodoRestControllerTests {
 
         @Test
         @DisplayName("存在しない Todo の場合は 404 を返すこと")
-        void returnsNotFoundWith404ForNonExistentTodo() throws Exception {
+        void shouldReturnNotFoundWith404ForNonExistentTodoOnDelete() throws Exception {
             // Act
             ResponseEntity<String> response = restTemplate.exchange(
                     "/v1/todos/nonexistent",

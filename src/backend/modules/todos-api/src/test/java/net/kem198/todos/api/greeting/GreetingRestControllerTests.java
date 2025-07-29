@@ -20,8 +20,8 @@ public class GreetingRestControllerTests {
     @Nested
     class GetRequestTests {
         @Test
-        @DisplayName("デフォルトの名前で挨拶を返す")
-        void returnsGreetingWithDefaultName() {
+        @DisplayName("デフォルトの名前で挨拶を返すこと")
+        void shouldReturnGreetingWithDefaultName() {
             // Act
             ResponseEntity<String> response = restTemplate.getForEntity("/v1/greeting/hello",
                     String.class);
@@ -32,8 +32,8 @@ public class GreetingRestControllerTests {
         }
 
         @Test
-        @DisplayName("指定された名前で挨拶を返す")
-        void returnsGreetingWithSpecifiedName() {
+        @DisplayName("指定された名前で挨拶を返すこと")
+        void shouldReturnGreetingWithSpecifiedName() {
             // Act
             ResponseEntity<String> response = restTemplate.getForEntity("/v1/greeting/hello?name=KeM198",
                     String.class);

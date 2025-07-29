@@ -33,8 +33,8 @@ public class TodoRepositoryImplTests {
     @Nested
     class FindByIdTests {
         @Test
-        @DisplayName("引数の todoId と一致する Todo を返す")
-        public void returnsTodoForMatchingTodoId() {
+        @DisplayName("引数の todoId と一致する Todo を返すこと")
+        public void shouldReturnTodoForMatchingTodoId() {
             // Arrange
             Todo expectedTodo = makeTestTodo("Test Todo", false);
             todoRepository.create(expectedTodo);
@@ -51,8 +51,8 @@ public class TodoRepositoryImplTests {
         }
 
         @Test
-        @DisplayName("引数の todoId と一致する Todo が存在しない場合は null を返す")
-        public void returnsNullForNonExistentTodoId() {
+        @DisplayName("引数の todoId と一致する Todo が存在しない場合は null を返すこと")
+        public void shouldReturnNullForNonExistentTodoId() {
             // Arrange
             String nonExistentId = UUID.randomUUID().toString();
 
@@ -67,8 +67,8 @@ public class TodoRepositoryImplTests {
     @Nested
     class FindAllTests {
         @Test
-        @DisplayName("全ての Todo を Collection 形式で返す")
-        public void returnsAllTodosAsCollection() {
+        @DisplayName("全ての Todo を Collection 形式で返すこと")
+        public void shouldReturnAllTodosAsCollection() {
             // Arrange
             Todo todo1 = makeTestTodo("Test Todo 1", false);
             Todo todo2 = makeTestTodo("Test Todo 2", true);
@@ -85,8 +85,8 @@ public class TodoRepositoryImplTests {
         }
 
         @Test
-        @DisplayName("Todo が存在しない場合は空の Collection を返す")
-        public void returnsEmptyCollectionWhenNoTodosExist() {
+        @DisplayName("Todo が存在しない場合は空の Collection を返すこと")
+        public void shouldReturnEmptyCollectionWhenNoTodosExist() {
             // Act
             Collection<Todo> todos = todoRepository.findAll();
 
@@ -99,8 +99,8 @@ public class TodoRepositoryImplTests {
     @Nested
     class CreateTests {
         @Test
-        @DisplayName("Todo を作成する")
-        public void createsTodoSuccessfully() {
+        @DisplayName("Todo を作成すること")
+        public void shouldCreateTodoSuccessfully() {
             // Arrange
             Todo newTodo = makeTestTodo("New Todo", false);
 
@@ -120,8 +120,8 @@ public class TodoRepositoryImplTests {
     @Nested
     class UpdateTests {
         @Test
-        @DisplayName("存在する Todo を更新する")
-        public void updatesTodoSuccessfully() {
+        @DisplayName("存在する Todo を更新すること")
+        public void shouldUpdateTodoSuccessfully() {
             // Arrange
             Todo originalTodo = makeTestTodo("Original Todo", false);
             todoRepository.create(originalTodo);
@@ -142,8 +142,8 @@ public class TodoRepositoryImplTests {
         }
 
         @Test
-        @DisplayName("存在しない Todo の更新は false を返す")
-        public void returnsFalseForNonExistentTodo() {
+        @DisplayName("存在しない Todo の更新は false を返すこと")
+        public void shouldReturnFalseForNonExistentTodo() {
             // Arrange
             Todo nonExistentTodo = makeTestTodo("Non-existent Todo", false);
 
@@ -158,8 +158,8 @@ public class TodoRepositoryImplTests {
     @Nested
     class DeleteTests {
         @Test
-        @DisplayName("存在する Todo を削除する")
-        public void deletesTodoSuccessfully() {
+        @DisplayName("存在する Todo を削除すること")
+        public void shouldDeleteTodoSuccessfully() {
             // Arrange
             Todo todoToDelete = makeTestTodo("Todo to Delete", false);
             todoRepository.create(todoToDelete);
@@ -173,8 +173,8 @@ public class TodoRepositoryImplTests {
         }
 
         @Test
-        @DisplayName("存在しない Todo の削除でもエラーが発生しない")
-        public void doesNotThrowErrorForNonExistentTodo() {
+        @DisplayName("存在しない Todo の削除でもエラーが発生しないこと")
+        public void shouldNotThrowErrorForNonExistentTodo() {
             // Arrange
             Todo nonExistentTodo = makeTestTodo("Non-existent Todo", false);
 
@@ -186,8 +186,8 @@ public class TodoRepositoryImplTests {
     @Nested
     class CountByFinishedTests {
         @Test
-        @DisplayName("未完了の Todo の数を返す")
-        public void returnsCorrectCountForUnfinishedTodos() {
+        @DisplayName("未完了の Todo の数を返すこと")
+        public void shouldReturnCorrectCountForUnfinishedTodos() {
             // Arrange
             Todo unfinishedTodo1 = makeTestTodo("Unfinished Todo 1", false);
             Todo unfinishedTodo2 = makeTestTodo("Unfinished Todo 2", false);
@@ -205,8 +205,8 @@ public class TodoRepositoryImplTests {
         }
 
         @Test
-        @DisplayName("完了済みの Todo の数を返す")
-        public void returnsCorrectCountForFinishedTodos() {
+        @DisplayName("完了済みの Todo の数を返すこと")
+        public void shouldReturnCorrectCountForFinishedTodos() {
             // Arrange
             Todo unfinishedTodo = makeTestTodo("Unfinished Todo", false);
             Todo finishedTodo1 = makeTestTodo("Finished Todo 1", true);
@@ -224,8 +224,8 @@ public class TodoRepositoryImplTests {
         }
 
         @Test
-        @DisplayName("該当する Todo が存在しない場合は 0 を返す")
-        public void returnsZeroWhenNoMatchingTodosExist() {
+        @DisplayName("該当する Todo が存在しない場合は 0 を返すこと")
+        public void shouldReturnZeroWhenNoMatchingTodosExist() {
             // Arrange
             Todo finishedTodo = makeTestTodo("Finished Todo", true);
             todoRepository.create(finishedTodo);

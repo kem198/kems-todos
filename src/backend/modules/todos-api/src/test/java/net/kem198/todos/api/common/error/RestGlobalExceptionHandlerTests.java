@@ -40,8 +40,8 @@ public class RestGlobalExceptionHandlerTests {
     @Nested
     class HandleSystemErrorTests {
         @Test
-        @DisplayName("システムエラーは \"500 Internal Server Error\" で返す")
-        void returns500InternalServerErrorWhenSystemError() throws JsonMappingException, JsonProcessingException {
+        @DisplayName("システムエラーは \"500 Internal Server Error\" で返すこと")
+        void shouldReturn500InternalServerErrorWhenSystemError() throws JsonMappingException, JsonProcessingException {
             // Act
             ResponseEntity<String> response = restTemplate.getForEntity(
                     "/v1/error/throw-system-error",
@@ -55,8 +55,8 @@ public class RestGlobalExceptionHandlerTests {
         }
 
         @Test
-        @DisplayName("システムエラーが発生したときはスタックトレースを返さない")
-        void notReturnsStackTraceWhenSystemError() throws JsonMappingException, JsonProcessingException {
+        @DisplayName("システムエラーが発生したときはスタックトレースを返さないこと")
+        void shouldNotReturnStackTraceWhenSystemError() throws JsonMappingException, JsonProcessingException {
             // Act
             ResponseEntity<String> response = restTemplate.getForEntity(
                     "/v1/error/throw-system-error",
@@ -71,8 +71,8 @@ public class RestGlobalExceptionHandlerTests {
     @Nested
     class HandleMethodArgumentNotValidTests {
         @Test
-        @DisplayName("引数のバリデーションエラーは \"400 Bad Request\" で返す")
-        void returns400BadRequestWhenMethodArgumentNotValidException()
+        @DisplayName("引数のバリデーションエラーは \"400 Bad Request\" で返すこと")
+        void shouldReturn400BadRequestWhenMethodArgumentNotValidException()
                 throws JsonMappingException, JsonProcessingException {
             // Arrange
             String requestBody = """
@@ -96,8 +96,8 @@ public class RestGlobalExceptionHandlerTests {
         }
 
         @Test
-        @DisplayName("引数のバリデーションエラーの数だけ errors の配列を返す")
-        void returnsErrorsForArgumentErrorTimes()
+        @DisplayName("引数のバリデーションエラーの数だけ errors の配列を返すこと")
+        void shouldReturnErrorsForArgumentErrorTimes()
                 throws JsonMappingException, JsonProcessingException {
             // Arrange
             String requestBody = """
@@ -120,8 +120,8 @@ public class RestGlobalExceptionHandlerTests {
         }
 
         @Test
-        @DisplayName("引数のバリデーションエラー要素に所定のエラー詳細内容を含む")
-        void returnsErrorsWithContainedErrorDetails()
+        @DisplayName("引数のバリデーションエラー要素に所定のエラー詳細内容を含むこと")
+        void shouldReturnErrorsWithContainedErrorDetails()
                 throws JsonMappingException, JsonProcessingException {
             // Arrange
             String requestBody = """
