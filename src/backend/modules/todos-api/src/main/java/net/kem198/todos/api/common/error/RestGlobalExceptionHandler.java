@@ -15,6 +15,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import net.kem198.todos.core.exception.common.BusinessException;
+import net.kem198.todos.core.exception.common.ResourceNotFoundException;
 
 @ControllerAdvice
 public class RestGlobalExceptionHandler extends ResponseEntityExceptionHandler {
@@ -42,8 +43,17 @@ public class RestGlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(BusinessException.class)
     public ResponseEntity<ProblemDetail> handleBusinessException(BusinessException ex) {
-        return ResponseEntity
-                .status(ex.getProblemDetail().getStatus())
-                .body(ex.getProblemDetail());
+        ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.BAD_REQUEST);
+        problemDetail.setDetail(ex.getMessage());
+        problemDetail.setProperty("errorCode", ex.getErrorCode());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(problemDetail);
+    }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ProblemDetail> handleResourceNotFound(ResourceNotFoundException ex) {
+        ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.NOT_FOUND);
+        problemDetail.setDetail(ex.getMessage());
+        problemDetail.setProperty("errorCode", ex.getErrorCode());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(problemDetail);
     }
 }

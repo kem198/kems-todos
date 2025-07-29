@@ -1,9 +1,11 @@
 package net.kem198.todos.core.exception.common;
 
-import org.springframework.http.HttpStatus;
-
 public class ResourceNotFoundException extends BusinessException {
-    public ResourceNotFoundException(String resourceName, Object resourceId) {
-        super(HttpStatus.NOT_FOUND, "[E002] [" + resourceName + "] Resource is not found: " + resourceId);
+    public ResourceNotFoundException(String resourceName) {
+        super(ErrorCode.RESOURCE_NOT_FOUND, String.format("Resource is not found: %s", resourceName));
+    }
+
+    public ResourceNotFoundException(String resourceKey, Object resourceValue) {
+        super(ErrorCode.RESOURCE_NOT_FOUND, String.format("Resource is not found: %s: %s", resourceKey, resourceValue));
     }
 }
