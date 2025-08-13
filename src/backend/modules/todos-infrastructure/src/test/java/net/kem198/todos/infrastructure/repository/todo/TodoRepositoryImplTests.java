@@ -10,25 +10,21 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.UUID;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import net.kem198.todos.core.model.Todo;
 import net.kem198.todos.core.repository.todo.TodoRepository;
 
 @SpringBootTest
+@Transactional
 public class TodoRepositoryImplTests {
     @Autowired
     TodoRepository todoRepository;
-
-    @BeforeEach
-    void setUp() {
-        todoRepository.findAll().forEach(todo -> todoRepository.delete(todo));
-    }
 
     @Nested
     class FindByIdTests {
