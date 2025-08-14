@@ -66,6 +66,8 @@ public class TodoRepositoryImplTests {
         @DisplayName("全ての Todo を Collection 形式で返すこと")
         public void shouldReturnAllTodosAsCollection() {
             // Arrange
+            todoRepository.findAll().forEach(todo -> todoRepository.delete(todo));
+
             Todo todo1 = makeTestTodo("Test Todo 1", false);
             Todo todo2 = makeTestTodo("Test Todo 2", true);
             todoRepository.create(todo1);
