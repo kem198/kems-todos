@@ -31,6 +31,9 @@
     "tailwindcss": "^4",
     "typescript": "^5"
   },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  },
   "volta": {
     "node": "22.20.0"
   }
