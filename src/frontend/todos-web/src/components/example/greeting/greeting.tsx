@@ -1,7 +1,7 @@
 "use client";
 
+import { ApiResponseData } from "@/types/example/common/api-response-data";
 import { useEffect, useState } from "react";
-import { ApiResponseData } from "../../../types/example/api-response-data";
 
 export const GreetingCard = ({
   title,
