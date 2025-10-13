@@ -29,7 +29,6 @@ export default [
   eslintPluginUnicorn.configs.recommended,
   {
     rules: {
-      ...eslintPluginUnicorn.configs.recommended.rules,
       "unicorn/consistent-function-scoping": "off",
       "unicorn/numeric-separators-style": "off",
       "unicorn/prevent-abbreviations": "off",
@@ -38,6 +37,5 @@ export default [
       "unicorn/no-useless-undefined": "off",
     },
   },
-  ,
   eslintConfigPrettier,
 ];
