@@ -67,7 +67,7 @@ public class WebMvcConfigTests {
             result.andExpect(status().isOk())
                     .andExpect(header().string("Access-Control-Allow-Origin", allowedOrigin))
                     .andExpect(header().string("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS"))
-                    .andExpect(header().string("Access-Control-Allow-Headers", requestHeaders)) // 実際のヘッダー値
+                    .andExpect(header().string("Access-Control-Allow-Headers", requestHeaders))
                     .andExpect(header().string("Access-Control-Allow-Credentials", "true"));
         }
 
