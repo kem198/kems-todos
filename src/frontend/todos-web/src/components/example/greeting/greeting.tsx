@@ -34,6 +34,8 @@ export const GreetingCardContent = ({ name = "" }: { name?: string }) => {
       try {
         setLoading(true);
         setError("");
+
+        // TODO: http://localhost:8080 を環境変数にする
         const url = name
           ? `http://localhost:8080/v1/greeting/hello?name=${encodeURIComponent(name)}`
           : "http://localhost:8080/v1/greeting/hello";
