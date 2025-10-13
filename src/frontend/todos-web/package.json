@@ -15,7 +15,6 @@
     "react-dom": "19.1.0"
   },
   "devDependencies": {
-    // TODO: vitest 入れる
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
@@ -30,7 +29,9 @@
     "prettier": "^3.6.2",
     "prettier-plugin-organize-imports": "^4.3.0",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.2.4"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
