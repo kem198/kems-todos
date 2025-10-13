@@ -119,7 +119,7 @@ const GreetingResultArea = ({
   responseData,
 }: {
   greeting: string;
-  responseData: unknown;
+  responseData: ApiResponseData | undefined;
 }) => {
   return (
     <div className="flex w-full flex-col gap-4 rounded bg-gray-100 p-4">
