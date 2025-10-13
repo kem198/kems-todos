@@ -30,6 +30,7 @@ export const GreetingCardContent = ({ name = "" }: { name?: string }) => {
   );
 
   useEffect(() => {
+    // TODO: この辺キレイにする
     const fetchGreeting = async () => {
       try {
         setLoading(true);
