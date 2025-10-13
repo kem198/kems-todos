@@ -1,33 +1,25 @@
 package net.kem198.todos.api.common.config;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.options;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class WebMvcConfigTests {
 
     @Autowired
-    private WebApplicationContext webApplicationContext;
-
-    private MockMvc mockMvc;
-
-    @BeforeEach
-    void setUp() {
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-    }
+    private TestRestTemplate restTemplate;
 
     @Nested
     @DisplayName("CORS 設定のテスト")
@@ -38,15 +30,21 @@ public class WebMvcConfigTests {
         void shouldSetCorsHeadersForAllowedOrigin() throws Exception {
             // Arrange
             String allowedOrigin = "http://localhost:3000";
+            HttpHeaders headers = new HttpHeaders();
+            headers.set("Origin", allowedOrigin);
+            HttpEntity<String> requestEntity = new HttpEntity<>(headers);
 
             // Act
-            ResultActions result = mockMvc.perform(get("/v1/greeting/hello")
-                    .header("Origin", allowedOrigin));
+            ResponseEntity<String> response = restTemplate.exchange(
+                    "/v1/greeting/hello",
+                    HttpMethod.GET,
+                    requestEntity,
+                    String.class);
 
             // Assert
-            result.andExpect(status().isOk())
-                    .andExpect(header().string("Access-Control-Allow-Origin", allowedOrigin))
-                    .andExpect(header().string("Access-Control-Allow-Credentials", "true"));
+            assertEquals(HttpStatus.OK, response.getStatusCode());
+            assertEquals(allowedOrigin, response.getHeaders().getFirst("Access-Control-Allow-Origin"));
+            assertEquals("true", response.getHeaders().getFirst("Access-Control-Allow-Credentials"));
         }
 
         @Test
@@ -57,18 +55,26 @@ public class WebMvcConfigTests {
             String requestMethod = "GET";
             String requestHeaders = "Content-Type";
 
+            HttpHeaders headers = new HttpHeaders();
+            headers.set("Origin", allowedOrigin);
+            headers.set("Access-Control-Request-Method", requestMethod);
+            headers.set("Access-Control-Request-Headers", requestHeaders);
+            HttpEntity<String> requestEntity = new HttpEntity<>(headers);
+
             // Act
-            ResultActions result = mockMvc.perform(options("/v1/greeting/hello")
-                    .header("Origin", allowedOrigin)
-                    .header("Access-Control-Request-Method", requestMethod)
-                    .header("Access-Control-Request-Headers", requestHeaders));
+            ResponseEntity<String> response = restTemplate.exchange(
+                    "/v1/greeting/hello",
+                    HttpMethod.OPTIONS,
+                    requestEntity,
+                    String.class);
 
             // Assert
-            result.andExpect(status().isOk())
-                    .andExpect(header().string("Access-Control-Allow-Origin", allowedOrigin))
-                    .andExpect(header().string("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS"))
-                    .andExpect(header().string("Access-Control-Allow-Headers", requestHeaders))
-                    .andExpect(header().string("Access-Control-Allow-Credentials", "true"));
+            assertEquals(HttpStatus.OK, response.getStatusCode());
+            assertEquals(allowedOrigin, response.getHeaders().getFirst("Access-Control-Allow-Origin"));
+            assertTrue(response.getHeaders().getFirst("Access-Control-Allow-Methods")
+                    .contains("GET,POST,PUT,DELETE,OPTIONS"));
+            assertEquals(requestHeaders, response.getHeaders().getFirst("Access-Control-Allow-Headers"));
+            assertEquals("true", response.getHeaders().getFirst("Access-Control-Allow-Credentials"));
         }
 
     }
