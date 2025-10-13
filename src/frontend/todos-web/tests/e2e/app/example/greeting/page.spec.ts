@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 test("Greeting ページが表示されること", async ({ page }) => {
-  // Arrange
+  // Act
   await page.goto("/example/greeting");
 
   // Assert
