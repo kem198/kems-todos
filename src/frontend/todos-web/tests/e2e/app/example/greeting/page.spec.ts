@@ -25,7 +25,7 @@ test.describe("Greeting ページのテスト", () => {
       await page.goto("/example/greeting");
 
       // Assert
-      await expect(page.getByText("Hello, World!").first()).toBeVisible();
+      await expect(page.getByText("Hello, KeM198!").first()).toBeVisible();
     });
   });
 });
