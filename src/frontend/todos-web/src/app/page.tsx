@@ -13,6 +13,11 @@ export default function Home() {
             <Button variant="link">/example</Button>
           </Link>
         </li>
+        <li>
+          <Link href="/todos">
+            <Button variant="link">/todos</Button>
+          </Link>
+        </li>
       </ul>
     </Page>
   );
