@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 
 export default function ShadcnPage() {
   return (
-    <div className="flex h-screen gap-4 bg-yellow-50">
+    <div className="flex h-screen gap-4">
       <div className="flex w-40 flex-col gap-4 p-4">
         <Button>default</Button>
         <Button variant="destructive">destructive</Button>
