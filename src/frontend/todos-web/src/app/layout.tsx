@@ -1,3 +1,4 @@
+import { HeaderNavigation } from "@/components/layout/header-navigation";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -25,9 +26,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
       >
-        {children}
+        <header className="bg-neutral-800 p-2 text-white">
+          <HeaderNavigation />
+        </header>
+        <div className="p-4">{children}</div>
       </body>
     </html>
   );

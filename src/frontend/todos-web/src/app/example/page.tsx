@@ -1,9 +1,12 @@
+import { Page } from "@/components/layout/page";
+import { TypographyH1 } from "@/components/typography/typography-h1";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export default function ExamplePage() {
   return (
-    <div className="flex flex-col gap-4">
+    <Page>
+      <TypographyH1>Example</TypographyH1>
       <ul>
         <li>
           <Link href="/example/greeting">
@@ -21,6 +24,6 @@ export default function ExamplePage() {
           </Link>
         </li>
       </ul>
-    </div>
+    </Page>
   );
 }
