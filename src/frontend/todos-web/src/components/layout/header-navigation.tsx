@@ -17,6 +17,7 @@ export function HeaderNavigation() {
             asChild
             className="hover:bg-white/10 hover:text-white focus:bg-white/10 focus:text-white"
           >
+            {/* リンクをクリック後、フォーカスが当たったままになるため明示的に外す */}
             <Link href="/" onClick={(e) => e.currentTarget.blur()}>
               todos-web
             </Link>
