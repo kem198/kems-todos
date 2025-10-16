@@ -1,4 +1,4 @@
-name: CI - E2E
+name: CI - End-to-End
 
 on:
   push:
