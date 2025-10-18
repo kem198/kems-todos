@@ -22,21 +22,56 @@ jobs:
   ci-e2e:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    services:
+      db:
+        image: postgres:17.4-bookworm
+        env:
+          TZ: Asia/Tokyo
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: todos_db
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     defaults:
       run:
-        working-directory: ./src/frontend/todos-web
+        working-directory: ./
     steps:
       - uses: actions/checkout@v4
+
+      # Setup Java
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: "21"
+          distribution: "temurin"
+          cache: gradle
+      - name: Build and Start Backend
+        working-directory: ./src/backend
+        run: |
+          ./gradlew build --no-daemon
+          java -jar modules/todos-api/build/libs/todos-api-0.0.1-SNAPSHOT.jar &
+          echo $! > backend.pid
+          timeout 60 bash -c 'until curl -f http://localhost:8080/v1/greeting/hello; do sleep 2; done'
+
+      # Setup Node.js
       - name: Extract Node.js version from package.json
-        run: echo "NODE_VERSION=$(jq -r '.volta.node' package.json)" >> $GITHUB_ENV
+        run: echo "NODE_VERSION=$(jq -r '.volta.node' src/frontend/todos-web/package.json)" >> $GITHUB_ENV
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
           cache-dependency-path: "./src/frontend/todos-web/package-lock.json"
-      - name: Install Frontend dependencies
-        run: npm ci
+      - name: Install Frontend Dependencies and Browsers
+        working-directory: ./src/frontend/todos-web
+        run: |
+          npm ci
+          npx playwright install --with-deps
       - name: Cache Playwright browsers
         uses: actions/cache@v4
         id: playwright-cache
@@ -45,15 +80,29 @@ jobs:
           key: ${{ runner.os }}-playwright-${{ hashFiles('src/frontend/todos-web/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-playwright-
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+
+      # Run E2E tests
       - name: Run E2E tests
+        working-directory: ./src/frontend/todos-web
         env:
           NEXT_PUBLIC_API_URL: http://localhost:8080
+          SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/todos_db
+          SPRING_DATASOURCE_USERNAME: postgres
+          SPRING_DATASOURCE_PASSWORD: password
         run: npm run e2e
+
+      # Upload artifacts
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
           name: playwright-report
-          path: playwright-report/
+          path: src/frontend/todos-web/playwright-report/
           retention-days: 30
+
+      # Cleanup
+      - name: Stop servers
+        if: always()
+        run: |
+          if [ -f ./src/backend/backend.pid ]; then
+            kill $(cat ./src/backend/backend.pid) || true
+          fi
