@@ -16,7 +16,7 @@ export function TodosClient() {
     const fetchTodo = async () => {
       try {
         // TODO: Web サーバ上で実行する
-        // TODO: http://localhost:8080 を環境変数にする
+        // TODO: http://localhost:8080 を環境変数かなんかにする
         const url = "http://localhost:8080/v1/todos";
         const response = await fetch(url);
 
