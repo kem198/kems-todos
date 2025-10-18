@@ -19,8 +19,10 @@ This project focuses on practicing modern software engineering through:
         - [todos-api](#todos-api)
         - [todos-core](#todos-core)
         - [todos-infrastructure](#todos-infrastructure)
+- [Requirements](#requirements)
+    - [Required](#required)
+    - [Recommended](#recommended)
 - [Setup](#setup)
-    - [Requirements](#requirements)
     - [Setup environment](#setup-environment)
     - [Edit with Visual Studio Code](#edit-with-visual-studio-code)
     - [Run database server](#run-database-server)
@@ -72,19 +74,22 @@ Contains **Infrastructure Layer** .
 
 - Executes CRUD operations on the data store.
 
+## Requirements
+
+### Required
+
+- [Node.js](https://nodejs.org/ja)
+- [JDK 21](https://openjdk.org/projects/jdk/21/)
+- [Docker](https://www.docker.com/)
+
+### Recommended
+
+- [Ubuntu on WSL](https://learn.microsoft.com/ja-jp/windows/wsl/)
+- [Volta](https://volta.sh/)
+- [SDKMAN!](https://sdkman.io/)
+- [Visual Studio Code](https://azure.microsoft.com/ja-jp/products/visual-studio-code)
+
 ## Setup
-
-### Requirements
-
-- Required
-    - [Node.js](https://nodejs.org/ja)
-    - [JDK 21](https://openjdk.org/projects/jdk/21/)
-    - [Docker](https://www.docker.com/)
-
-- Recommended
-    - [Ubuntu on WSL](https://learn.microsoft.com/ja-jp/windows/wsl/)
-    - [SDKMAN!](https://sdkman.io/)
-    - [Visual Studio Code](https://azure.microsoft.com/ja-jp/products/visual-studio-code)
 
 ### Setup environment
 
