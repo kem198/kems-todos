@@ -5,6 +5,8 @@ test.describe("Todos ページのテスト", () => {
     test("追加済みのタスク「Added Task 1」が表示されること", async ({
       page,
     }) => {
+      // TODO: API 通信であらかじめ "Added Task 1" を挿入しておく
+
       // Act
       await page.goto("/todos");
 
@@ -13,7 +15,7 @@ test.describe("Todos ページのテスト", () => {
 
       // Capture screenshot after action
       await page.screenshot({
-        path: "screenshots/todos/001-initial-test/added-task-1-after.png",
+        path: "screenshots/todos/initial-test/added-task-1-after.png",
         fullPage: true,
       });
     });
@@ -28,7 +30,7 @@ test.describe("Todos ページのテスト", () => {
 
       // Capture screenshot before action
       await page.screenshot({
-        path: "screenshots/todos/002-create-test/added-task-2-before.png",
+        path: "screenshots/todos/create-test/added-task-2-before.png",
         fullPage: true,
       });
 
@@ -42,7 +44,7 @@ test.describe("Todos ページのテスト", () => {
 
       // Capture screenshot after action
       await page.screenshot({
-        path: "screenshots/todos/002-create-test/added-task-2-after.png",
+        path: "screenshots/todos/create-test/added-task-2-after.png",
         fullPage: true,
       });
     });
