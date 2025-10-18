@@ -43,6 +43,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Setup Database
+      - name: Setup Database
+        run: |
+          PGPASSWORD=__ENTER_POSTGRES_PASSWORD_HERE__ psql -h localhost -p 5432 -U postgres -d todos_db -f ./postgres/init/01_create_todos.sql
+          PGPASSWORD=__ENTER_POSTGRES_PASSWORD_HERE__ psql -h localhost -p 5432 -U postgres -d todos_db -f ./postgres/init/99_create_examples.sql
+
       # Setup Java
       - name: Setup Java
         uses: actions/setup-java@v4
