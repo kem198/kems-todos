@@ -28,7 +28,7 @@ jobs:
         env:
           TZ: Asia/Tokyo
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: password
+          POSTGRES_PASSWORD: __ENTER_POSTGRES_PASSWORD_HERE__
           POSTGRES_DB: todos_db
         ports:
           - 5432:5432
@@ -88,7 +88,7 @@ jobs:
           NEXT_PUBLIC_API_URL: http://localhost:8080
           SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/todos_db
           SPRING_DATASOURCE_USERNAME: postgres
-          SPRING_DATASOURCE_PASSWORD: password
+          SPRING_DATASOURCE_PASSWORD: __ENTER_POSTGRES_PASSWORD_HERE__
         run: npm run e2e
 
       # Upload artifacts
