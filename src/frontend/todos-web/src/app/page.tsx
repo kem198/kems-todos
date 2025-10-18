@@ -9,13 +9,13 @@ export default function Home() {
       <TypographyH1>todos-web</TypographyH1>
       <ul>
         <li>
-          <Link href="/example">
-            <Button variant="link">/example</Button>
+          <Link href="/todos">
+            <Button variant="link">/todos</Button>
           </Link>
         </li>
         <li>
-          <Link href="/todos">
-            <Button variant="link">/todos</Button>
+          <Link href="/examples">
+            <Button variant="link">/examples</Button>
           </Link>
         </li>
       </ul>

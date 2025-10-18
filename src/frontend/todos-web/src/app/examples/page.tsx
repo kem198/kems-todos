@@ -6,21 +6,21 @@ import Link from "next/link";
 export default function ExamplePage() {
   return (
     <Page>
-      <TypographyH1>Example</TypographyH1>
+      <TypographyH1>Examples</TypographyH1>
       <ul>
         <li>
-          <Link href="/example/greeting">
-            <Button variant="link">/example/greeting</Button>
+          <Link href="/examples/greeting">
+            <Button variant="link">/examples/greeting</Button>
           </Link>
         </li>
         <li>
-          <Link href="/example/hello">
-            <Button variant="link">/example/hello</Button>
+          <Link href="/examples/hello">
+            <Button variant="link">/examples/hello</Button>
           </Link>
         </li>
         <li>
-          <Link href="/example/shadcn">
-            <Button variant="link">/example/shadcn</Button>
+          <Link href="/examples/shadcn">
+            <Button variant="link">/examples/shadcn</Button>
           </Link>
         </li>
       </ul>

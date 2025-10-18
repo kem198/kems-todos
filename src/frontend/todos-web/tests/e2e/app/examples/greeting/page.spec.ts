@@ -4,7 +4,7 @@ test.describe("Greeting ページのテスト", () => {
   test.describe("初期表示のテスト", () => {
     test("Greeting ページが表示されること", async ({ page }) => {
       // Act
-      await page.goto("/example/greeting");
+      await page.goto("/examples/greeting");
 
       // Assert
       await expect(
@@ -14,7 +14,7 @@ test.describe("Greeting ページのテスト", () => {
 
     test("文字列「Hello, World!」が表示されること", async ({ page }) => {
       // Act
-      await page.goto("/example/greeting");
+      await page.goto("/examples/greeting");
 
       // Assert
       await expect(page.getByText("Hello, World!").first()).toBeVisible();
@@ -22,7 +22,7 @@ test.describe("Greeting ページのテスト", () => {
 
     test("文字列「Hello, KeM198!」が表示されること", async ({ page }) => {
       // Act
-      await page.goto("/example/greeting");
+      await page.goto("/examples/greeting");
 
       // Assert
       await expect(page.getByText("Hello, KeM198!").first()).toBeVisible();

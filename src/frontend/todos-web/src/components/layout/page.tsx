@@ -6,7 +6,7 @@ type PageProps = {
 
 export function Page({ children }: PageProps) {
   return (
-    <main className="flex flex-col items-center gap-8 sm:items-start">
+    <main className="flex flex-col items-center gap-4 sm:items-start">
       {children}
     </main>
   );
