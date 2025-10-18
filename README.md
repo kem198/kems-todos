@@ -42,15 +42,20 @@ This project focuses on practicing modern software engineering through:
 
 ### Frontend
 
-This application is built using a Next.js.
+This application is built with [Next.js](https://nextjs.org/).
 
 #### [todos-web](./src/frontend/todos-web/)
 
-=== Now working in [develop branch](https://github.com/kem198/kems-todos/tree/develop/src/frontend/todos-web) ===
+Acts as the **Driver Side** of the application.
+
+- Provides a user interface for end users.
+
+> [!NOTE]  
+> Currently working on the [develop branch](https://github.com/kem198/kems-todos/tree/develop/src/frontend/todos-web). Coming soon...
 
 ### Backend
 
-This application is built using a [Multi Module Project](https://spring.io/guides/gs/multi-module) approach.
+This application is built using a [Multi Module Project](https://spring.io/guides/gs/multi-module) approach by [Spring Boot](https://spring.io/projects/spring-boot) .
 
 #### [todos-api](./src/backend/modules/todos-api/)
 
@@ -194,7 +199,17 @@ Hello, World!
 
 If you want to see more commands, please refer to [backend/README.md](./src/backend/README.md) .
 
-## Demo APIs
+### Run Web server
+
+> [!NOTE]  
+> Currently working on the [develop branch](https://github.com/kem198/kems-todos/tree/develop/src/frontend/todos-web). Coming soon...
+
+## Demo Todo application
+
+> [!NOTE]  
+> Currently working on the [develop branch](https://github.com/kem198/kems-todos/tree/develop/src/frontend/todos-web). Coming soon...
+
+## Demo Backend APIs
 
 ### `/v1/greeting`
 
