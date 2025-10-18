@@ -2,12 +2,12 @@ import {
   GreetingCard,
   GreetingCardContent,
 } from "@/components/example/greeting/greeting";
-import { Page } from "@/components/layout/page";
+import { AppPage } from "@/components/layout/app-page";
 import { TypographyH1 } from "@/components/typography/typography-h1";
 
 export default function GreetingPage() {
   return (
-    <Page>
+    <AppPage>
       <TypographyH1>API Greeting Demo</TypographyH1>
       <div className="flex flex-col gap-8">
         <GreetingCard
@@ -24,6 +24,6 @@ export default function GreetingPage() {
           <GreetingCardContent name="KeM198" />
         </GreetingCard>
       </div>
-    </Page>
+    </AppPage>
   );
 }

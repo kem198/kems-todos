@@ -1,14 +1,12 @@
-import { Page } from "@/components/layout/page";
+import { AppPage } from "@/components/layout/app-page";
 import { TypographyH1 } from "@/components/typography/typography-h1";
+import { TodosClient } from "@/features/todos/todos-client";
 
-export default function Home() {
+export default function TodosPage() {
   return (
-    <Page>
+    <AppPage>
       <TypographyH1>Todos</TypographyH1>
-      <div>
-        <p>Added Task 1</p>
-        <p>Added Task 2</p>
-      </div>
-    </Page>
+      <TodosClient />
+    </AppPage>
   );
 }

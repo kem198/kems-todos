@@ -5,6 +5,18 @@ test.describe("Todos ページのテスト", () => {
     test("追加済みのタスク「Added Task 1」が表示されること", async ({
       page,
     }) => {
+      // Arrange
+      const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL;
+      const res = await page.request.post(`${apiBaseUrl}/v1/todos`, {
+        headers: { "Content-Type": "application/json" },
+        data: {
+          todoTitle: "Added Task 1",
+          todoDescription: "Added Task 1 description",
+        },
+      });
+      expect(res.ok()).toBeTruthy();
+      const { todoId } = (await res.json()) as { todoId?: string };
+
       // Act
       await page.goto("/todos");
 
@@ -13,9 +25,16 @@ test.describe("Todos ページのテスト", () => {
 
       // Capture screenshot after action
       await page.screenshot({
-        path: "screenshots/todos/001-initial-test/added-task-1-after.png",
+        path: "screenshots/todos/initial-test/added-task-1-after.png",
         fullPage: true,
       });
+
+      // Cleanup
+      if (todoId) {
+        await page.request
+          .delete(`${apiBaseUrl}/v1/todos/${todoId}`)
+          .catch(() => {});
+      }
     });
   });
 
@@ -28,7 +47,7 @@ test.describe("Todos ページのテスト", () => {
 
       // Capture screenshot before action
       await page.screenshot({
-        path: "screenshots/todos/002-create-test/added-task-2-before.png",
+        path: "screenshots/todos/create-test/added-task-2-before.png",
         fullPage: true,
       });
 
@@ -42,7 +61,7 @@ test.describe("Todos ページのテスト", () => {
 
       // Capture screenshot after action
       await page.screenshot({
-        path: "screenshots/todos/002-create-test/added-task-2-after.png",
+        path: "screenshots/todos/create-test/added-task-2-after.png",
         fullPage: true,
       });
     });

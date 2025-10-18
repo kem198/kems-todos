@@ -33,6 +33,7 @@ This project is developed to practice the following:
     - [TDD](#tdd)
     - [Spring Boot](#spring-boot)
     - [Doma](#doma)
+    - [Playwright](#playwright)
     - [Others](#others)
 
 ## Application Overview
@@ -411,6 +412,11 @@ Connection: close
     - [Doma CodeGen プラグイン — Doma ドキュメント](https://docs.domaframework.org/ja/stable/codegen/)
     - [domaframework/getting-started: Getting-started project for Doma](https://github.com/domaframework/getting-started)
     - [domaframework/simple-examples: Doma Simple Examples](https://github.com/domaframework/simple-examples)
+
+### Playwright
+
+- [Fast and reliable end-to-end testing for modern web apps \| Playwright](https://playwright.dev/)
+    - [Installation \| Playwright](https://playwright.dev/docs/intro)
 
 ### Others
 
