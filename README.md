@@ -1,11 +1,11 @@
 <!-- omit in toc -->
-# Practice - Restful apps
+# KeM's Todos
 
-This project is developed to practice the following:
+This project focuses on practicing modern software engineering through:
 
-- Building a **REST API application** with **Spring Boot** .
-- Designing **loosely coupled architecture** .
-- Implementing with **TDD** and **CI** .
+- Developing a **REST API** based on **Clean Architecture**
+- Applying **TDD** with **automated testing**
+- Maintaining quality via **continuous integration (CI)**
 
 ![architecture](./docs/img/architecture.png)
 
@@ -13,9 +13,12 @@ This project is developed to practice the following:
 ## TOC
 
 - [Application Overview](#application-overview)
-    - [todos-api](#todos-api)
-    - [todos-core](#todos-core)
-    - [todos-infrastructure](#todos-infrastructure)
+    - [Frontend](#frontend)
+        - [todos-web](#todos-web)
+    - [Backend](#backend)
+        - [todos-api](#todos-api)
+        - [todos-core](#todos-core)
+        - [todos-infrastructure](#todos-infrastructure)
 - [Setup](#setup)
     - [Requirements](#requirements)
     - [Setup environment](#setup-environment)
@@ -37,21 +40,35 @@ This project is developed to practice the following:
 
 ## Application Overview
 
+### Frontend
+
+This application is built using a Next.js.
+
+#### [todos-web](./src/frontend/todos-web/)
+
+=== Now working in [develop branch](https://github.com/kem198/kems-todos/tree/develop/src/frontend/todos-web) ===
+
+### Backend
+
 This application is built using a [Multi Module Project](https://spring.io/guides/gs/multi-module) approach.
 
-### [todos-api](./src/backend/modules/todos-api/)
+#### [todos-api](./src/backend/modules/todos-api/)
 
-- Contains **Application Layer** and the application's entry point.
-- Handles API requests/responses and calls business logic.
+Contains **Application Layer** and the application's entry point.
 
-### [todos-core](./src/backend/modules/todos-core/)
+- Handles API requests/responses.
+- Calls business logic.
 
-- Contains **Domain Layer** .
+#### [todos-core](./src/backend/modules/todos-core/)
+
+Contains **Domain Layer** .
+
 - Provides domain models and business logic.
 
-### [todos-infrastructure](./src/backend/modules/todos-infrastructure/)
+#### [todos-infrastructure](./src/backend/modules/todos-infrastructure/)
 
-- Contains **Infrastructure Layer** .
+Contains **Infrastructure Layer** .
+
 - Executes CRUD operations on the data store.
 
 ## Setup
