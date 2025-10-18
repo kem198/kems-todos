@@ -6,6 +6,7 @@ test.describe("Todos ページのテスト", () => {
       page,
     }) => {
       // Arrange
+      // TODO: オリジンを共通にする
       const res = await page.request.post(`http://localhost:8080/v1/todos`, {
         headers: { "Content-Type": "application/json" },
         data: {
