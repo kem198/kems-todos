@@ -6,9 +6,7 @@ test.describe("Todos ページのテスト", () => {
       page,
     }) => {
       // Arrange
-      // TODO: オリジンを共通にする
-      const apiBaseUrl =
-        process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
+      const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL;
       const res = await page.request.post(`${apiBaseUrl}/v1/todos`, {
         headers: { "Content-Type": "application/json" },
         data: {
