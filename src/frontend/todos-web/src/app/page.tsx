@@ -1,11 +1,11 @@
-import { Page } from "@/components/layout/page";
+import { AppPage } from "@/components/layout/app-page";
 import { TypographyH1 } from "@/components/typography/typography-h1";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <Page>
+    <AppPage>
       <TypographyH1>todos-web</TypographyH1>
       <ul>
         <li>
@@ -19,6 +19,6 @@ export default function Home() {
           </Link>
         </li>
       </ul>
-    </Page>
+    </AppPage>
   );
 }
