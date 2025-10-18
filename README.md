@@ -55,7 +55,7 @@ Acts as the **Driver Side** of the application.
 
 ### Backend
 
-This application is built using a [Multi Module Project](https://spring.io/guides/gs/multi-module) approach by [Spring Boot](https://spring.io/projects/spring-boot) .
+This application is built using a [Multi Module Project](https://spring.io/guides/gs/multi-module) approach with [Spring Boot](https://spring.io/projects/spring-boot) .
 
 #### [todos-api](./src/backend/modules/todos-api/)
 
