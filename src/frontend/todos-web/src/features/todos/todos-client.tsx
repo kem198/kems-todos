@@ -1,19 +1,21 @@
 "use client";
 
 import { JsonDisplay } from "@/components/display/json-display";
+import { Separator } from "@/components/ui/separator";
 import { ApiResponseData } from "@/types/example/common/api-response-data";
+import { Todo } from "@/types/todo/todo";
 import { useEffect, useState } from "react";
 
 export function TodosClient() {
-  const [todo, setTodo] = useState<string>("");
+  const [todos, setTodos] = useState<Todo[]>([]);
   const [responseData, setResponseData] = useState<ApiResponseData | undefined>(
     undefined,
   );
 
   useEffect(() => {
-    // TODO: この辺キレイにする
     const fetchTodo = async () => {
       try {
+        // TODO: Web サーバ上で実行する
         // TODO: http://localhost:8080 を環境変数にする
         const url = "http://localhost:8080/v1/todos";
         const response = await fetch(url);
@@ -23,7 +25,7 @@ export function TodosClient() {
           headers[key] = value;
         }
 
-        const todoArray = await response.text();
+        const respondedTodos = await response.json();
         const responseInfo = {
           status: response.status,
           statusText: response.statusText,
@@ -32,13 +34,15 @@ export function TodosClient() {
           redirected: response.redirected,
           url: response.url,
           headers,
-          body: todoArray,
+          body: respondedTodos,
           bodyUsed: response.bodyUsed,
         };
+
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        setTodo(todoArray);
+
+        setTodos(respondedTodos);
         setResponseData(responseInfo);
       } catch (error_) {
         // TODO: エラー時は画面上に通知する
@@ -50,9 +54,19 @@ export function TodosClient() {
 
   return (
     <>
-      <p>Added Task 1</p>
-      <p>Added Task 2</p>
-      <p>{todo}</p>
+      <ul>
+        {todos.map((todo) => (
+          <li key={String(todo.todoId)}>
+            <p>{todo.todoTitle}</p>
+            <p>{todo.todoDescription}</p>
+            <p>{todo.finished}</p>
+            <p>{String(todo.createdAt)}</p>
+          </li>
+        ))}
+      </ul>
+
+      <Separator />
+
       <JsonDisplay data={responseData} />
     </>
   );
