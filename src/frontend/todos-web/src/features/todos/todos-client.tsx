@@ -69,6 +69,14 @@ export function TodosClient() {
 
       <Separator />
 
+      <ul className="flex w-full flex-col gap-2">
+        <li className="rounded border border-gray-500 p-2">
+          <p>Added Task 2</p>
+        </li>
+      </ul>
+
+      <Separator />
+
       <JsonDisplay data={responseData} />
     </>
   );
