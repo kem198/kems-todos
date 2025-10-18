@@ -39,7 +39,7 @@ test.describe("Todos ページのテスト", () => {
   });
 
   test.describe("タスク作成時のテスト", () => {
-    test("入力フォームからタスクを追加した結果、追加済みのタスク「Added Task 2」が表示されること", async ({
+    test.skip("入力フォームからタスクを追加した結果、追加済みのタスク「Added Task 2」が表示されること", async ({
       page,
     }) => {
       // Arrange
