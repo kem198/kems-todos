@@ -33,12 +33,6 @@ This project focuses on practicing modern software engineering through:
     - [`/v1/todos`](#v1todos)
     - [`/v1/error`](#v1error)
 - [References](#references)
-    - [Architecture](#architecture)
-    - [Web API](#web-api)
-    - [TDD](#tdd)
-    - [Spring Boot](#spring-boot)
-    - [Doma](#doma)
-    - [Others](#others)
 
 ## Application Overview
 
@@ -407,6 +401,7 @@ Connection: close
 
 ## References
 
+<!-- omit in toc -->
 ### Architecture
 
 - [Macchinetta Server Framework (1.x) Development Guideline](https://macchinetta.github.io/server-guideline-thymeleaf/current/ja/index.html)
@@ -416,6 +411,7 @@ Connection: close
     - [11.2. チュートリアル(Todoアプリケーション REST編)](https://macchinetta.github.io/server-guideline-thymeleaf/current/ja/Tutorial/TutorialREST.html)
 - [ちょうぜつソフトウェア設計入門 \| 技術評論社](https://gihyo.jp/book/2022/978-4-297-13234-7)
 
+<!-- omit in toc -->
 ### Web API
 
 - [Web API: The Good Parts - O'Reilly Japan](https://www.oreilly.co.jp/books/9784873116860/)
@@ -426,17 +422,20 @@ Connection: close
     - [Spring Boot 3.0 で入った RFC7807 サポートを色々試す \#Java - Qiita](https://qiita.com/koji-cw/items/422140bd7752e4a82baf)
     - [Spring Boot で Problem Details に対応するための kotlin での実装](https://zenn.dev/bm_sms/articles/aec9aeca1fee34)
 
+<!-- omit in toc -->
 ### TDD
 
 - [テスト駆動開発 \| Ohmsha](https://www.ohmsha.co.jp/book/9784274217883/)
 - [TDD Boot Camp 2020 Online \#1 基調講演/ライブコーディング - YouTube](https://www.youtube.com/watch?v=Q-FJ3XmFlT8)
 
+<!-- omit in toc -->
 ### Spring Boot
 
 - [Spring Boot in Visual Studio Code](https://code.visualstudio.com/docs/java/java-spring-boot)
 - [Spring Boot REST API の作成 - 公式サンプルコード](https://spring.pleiades.io/guides/gs/rest-service)
 - [Spring Boot マルチモジュールプロジェクトの作成 - 公式サンプルコード](https://spring.pleiades.io/guides/gs/multi-module)
 
+<!-- omit in toc -->
 ### Doma
 
 - [Doma へようこそ — Doma ドキュメント](https://docs.domaframework.org/ja/stable/)
@@ -445,6 +444,7 @@ Connection: close
     - [domaframework/getting-started: Getting-started project for Doma](https://github.com/domaframework/getting-started)
     - [domaframework/simple-examples: Doma Simple Examples](https://github.com/domaframework/simple-examples)
 
+<!-- omit in toc -->
 ### Others
 
 - [SDK Installation Candidates \| SDKMAN! the Software Development Kit Manager](https://sdkman.io/sdks/)
