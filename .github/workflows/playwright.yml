@@ -1,4 +1,4 @@
-name: Playwright Tests
+name: CI - End-to-End (new)
 on:
   push:
     branches:
@@ -7,7 +7,6 @@ on:
     paths:
       - "src/**"
       - "postgres/**"
-      - ".github/workflows/ci-e2e.yml"
       - ".github/workflows/playwright.yml"
   pull_request:
     branches:
@@ -16,12 +15,11 @@ on:
     paths:
       - "src/**"
       - "postgres/**"
-      - ".github/workflows/ci-e2e.yml"
       - ".github/workflows/playwright.yml"
   workflow_dispatch:
 
 jobs:
-  test:
+  ci-e2e:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
@@ -29,7 +27,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - name: Install dependencies
+      - name: Install Frontend dependencies
+        working-directory: ./src/frontend/todos-web
         run: npm ci
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
