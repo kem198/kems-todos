@@ -34,7 +34,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
-          cache-dependency-path: "./package-lock.json"
+          cache-dependency-path: "./src/frontend/todos-web/package-lock.json"
       - name: Install Frontend dependencies
         run: npm ci
       - name: Install Playwright Browsers
