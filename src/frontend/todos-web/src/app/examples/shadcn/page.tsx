@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 export default function ShadcnPage() {
   return (
     <Page>
-      <TypographyH1>shadcn-ui</TypographyH1>
+      <TypographyH1>shadcn/ui</TypographyH1>
 
       <div className="flex gap-4">
         <div className="flex w-40 flex-col gap-4">
