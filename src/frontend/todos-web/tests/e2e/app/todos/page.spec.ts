@@ -7,7 +7,9 @@ test.describe("Todos ページのテスト", () => {
     }) => {
       // Arrange
       // TODO: オリジンを共通にする
-      const res = await page.request.post(`http://localhost:8080/v1/todos`, {
+      const apiBaseUrl =
+        process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
+      const res = await page.request.post(`${apiBaseUrl}/v1/todos`, {
         headers: { "Content-Type": "application/json" },
         data: {
           todoTitle: "Added Task 1",
@@ -32,7 +34,7 @@ test.describe("Todos ページのテスト", () => {
       // Cleanup
       if (todoId) {
         await page.request
-          .delete(`http://localhost:8080/v1/todos/${todoId}`)
+          .delete(`${apiBaseUrl}/v1/todos/${todoId}`)
           .catch(() => {});
       }
     });

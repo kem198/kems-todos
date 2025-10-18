@@ -37,10 +37,10 @@ export const GreetingCardContent = ({ name = "" }: { name?: string }) => {
         setLoading(true);
         setError("");
 
-        // TODO: http://localhost:8080 を環境変数にする
+        const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL;
         const url = name
-          ? `http://localhost:8080/v1/greeting/hello?name=${encodeURIComponent(name)}`
-          : "http://localhost:8080/v1/greeting/hello";
+          ? `${apiBaseUrl}/v1/greeting/hello?name=${encodeURIComponent(name)}`
+          : `${apiBaseUrl}/v1/greeting/hello`;
         const response = await fetch(url);
         const headers: Record<string, string> = {};
         for (const [key, value] of response.headers) {

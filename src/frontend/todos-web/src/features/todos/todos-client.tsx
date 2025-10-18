@@ -15,9 +15,8 @@ export function TodosClient() {
   useEffect(() => {
     const fetchTodo = async () => {
       try {
-        // TODO: Web サーバ上で実行する
-        // TODO: http://localhost:8080 を環境変数かなんかにする
-        const url = "http://localhost:8080/v1/todos";
+        const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL;
+        const url = `${apiBaseUrl}/v1/todos`;
         const response = await fetch(url);
 
         const headers: Record<string, string> = {};
