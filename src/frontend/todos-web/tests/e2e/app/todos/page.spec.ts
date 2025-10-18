@@ -5,7 +5,16 @@ test.describe("Todos ページのテスト", () => {
     test("追加済みのタスク「Added Task 1」が表示されること", async ({
       page,
     }) => {
-      // TODO: API 通信であらかじめ "Added Task 1" を挿入しておく
+      // Arrange
+      const res = await page.request.post(`http://localhost:8080/v1/todos`, {
+        headers: { "Content-Type": "application/json" },
+        data: {
+          todoTitle: "Added Task 1",
+          todoDescription: "Added Task 1 description",
+        },
+      });
+      expect(res.ok()).toBeTruthy();
+      const { todoId } = (await res.json()) as { todoId?: string };
 
       // Act
       await page.goto("/todos");
@@ -18,6 +27,13 @@ test.describe("Todos ページのテスト", () => {
         path: "screenshots/todos/initial-test/added-task-1-after.png",
         fullPage: true,
       });
+
+      // Cleanup
+      if (todoId) {
+        await page.request
+          .delete(`http://localhost:8080/v1/todos/${todoId}`)
+          .catch(() => {});
+      }
     });
   });
 
