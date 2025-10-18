@@ -81,6 +81,7 @@ Contains **Infrastructure Layer** .
 ### Requirements
 
 - Required
+    - [Node.js](https://nodejs.org/ja)
     - [JDK 21](https://openjdk.org/projects/jdk/21/)
     - [Docker](https://www.docker.com/)
 
