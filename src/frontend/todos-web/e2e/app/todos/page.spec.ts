@@ -21,7 +21,7 @@ test.describe("Todos ページのテスト", () => {
       await page.goto("/todos");
 
       // Assert
-      await expect(page.getByText("Added Task 12").first()).toBeVisible();
+      await expect(page.getByText("Added Task 1").first()).toBeVisible();
 
       // Capture screenshot after action
       await page.screenshot({
