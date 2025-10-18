@@ -54,12 +54,15 @@ export function TodosClient() {
 
   return (
     <>
-      <ul>
+      <ul className="flex w-full flex-col gap-2">
         {todos.map((todo) => (
-          <li key={String(todo.todoId)}>
+          <li
+            key={String(todo.todoId)}
+            className="rounded border border-gray-500 p-2"
+          >
             <p>{todo.todoTitle}</p>
             <p>{todo.todoDescription}</p>
-            <p>{todo.finished}</p>
+            <p>{String(todo.finished)}</p>
             <p>{String(todo.createdAt)}</p>
           </li>
         ))}
