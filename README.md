@@ -4,8 +4,8 @@
 This project focuses on practicing modern software engineering through:
 
 - Developing a **REST API** based on **Clean Architecture**
-- Applying **Test-Driven Development (TDD)** with **automated testing**
-- Maintaining quality via **continuous integration (CI)**
+- Applying **Test-Driven Development (TDD)** with **Automated Testing**
+- Maintaining quality via **Continuous Integration (CI)**
 
 ![architecture](./docs/img/architecture.png)
 
