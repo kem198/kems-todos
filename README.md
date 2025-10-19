@@ -12,7 +12,7 @@ This project focuses on practicing modern software engineering through:
 <!-- omit in toc -->
 ## TOC
 
-- [Application Overview](#application-overview)
+- [Overview](#overview)
     - [Frontend](#frontend)
         - [todos-web](#todos-web)
     - [Backend](#backend)
@@ -23,21 +23,21 @@ This project focuses on practicing modern software engineering through:
     - [Required](#required)
     - [Recommended](#recommended)
 - [Setup](#setup)
-    - [Setup environment](#setup-environment)
-    - [Edit with Visual Studio Code](#edit-with-visual-studio-code)
-    - [Run database server](#run-database-server)
+    - [Setup Environment](#setup-environment)
+    - [Run Database server](#run-database-server)
     - [Run API server](#run-api-server)
     - [Run Web server](#run-web-server)
-    - [Execute Testing](#execute-testing)
-- [Demo Todo application](#demo-todo-application)
-- [Demo Backend APIs](#demo-backend-apis)
+- [Development](#development)
+    - [Execute Tests](#execute-tests)
+- [Demo: Todo application](#demo-todo-application)
+- [Demo: Backend APIs](#demo-backend-apis)
     - [`/v1/greeting`](#v1greeting)
     - [`/v1/fizzbuzz`](#v1fizzbuzz)
     - [`/v1/todos`](#v1todos)
     - [`/v1/error`](#v1error)
 - [References](#references)
 
-## Application Overview
+## Overview
 
 ### Frontend
 
@@ -92,7 +92,7 @@ Contains **Infrastructure Layer** .
 
 ## Setup
 
-### Setup environment
+### Setup Environment
 
 ```shell
 # Example Environment: Ubuntu 24.04 on WSL
@@ -125,18 +125,7 @@ $ git clone https://github.com/kem198/practice-restful-apps.git
 $ cd practice-restful-apps
 ```
 
-### Edit with Visual Studio Code
-
-```sh
-# Current directory is the repository root
-$ pwd
-/path/to/your/repo/practice-restful-apps
-
-# Open with VS Code
-$ code .
-```
-
-### Run database server
+### Run Database server
 
 ```sh
 # Current directory is the repository root
@@ -204,20 +193,22 @@ If you want to see more commands, please refer to [backend/README.md](./src/back
 
 ### Run Web server
 
-> [!NOTE]  
+> [!NOTE]
 > Currently working on the [develop branch](https://github.com/kem198/kems-todos/tree/develop/src/frontend/todos-web). Coming soon...
 
-### Execute Testing
+## Development
+
+### Execute Tests
 
 > [!NOTE]
 > This section is not written yet. Coming soon...
 
-## Demo Todo application
+## Demo: Todo application
 
-> [!NOTE]  
+> [!NOTE]
 > Currently working on the [develop branch](https://github.com/kem198/kems-todos/tree/develop/src/frontend/todos-web). Coming soon...
 
-## Demo Backend APIs
+## Demo: Backend APIs
 
 ### `/v1/greeting`
 
