@@ -207,15 +207,15 @@ If you want to see more commands, please refer to [backend/README.md](./src/back
 > [!NOTE]  
 > Currently working on the [develop branch](https://github.com/kem198/kems-todos/tree/develop/src/frontend/todos-web). Coming soon...
 
-## Demo Todo application
-
-> [!NOTE]  
-> Currently working on the [develop branch](https://github.com/kem198/kems-todos/tree/develop/src/frontend/todos-web). Coming soon...
-
 ### Run Testing
 
 > [!NOTE]
 > This section is not written yet. Coming soon...
+
+## Demo Todo application
+
+> [!NOTE]  
+> Currently working on the [develop branch](https://github.com/kem198/kems-todos/tree/develop/src/frontend/todos-web). Coming soon...
 
 ## Demo Backend APIs
 
