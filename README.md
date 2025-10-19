@@ -12,7 +12,7 @@ This project focuses on practicing modern software engineering through:
 <!-- omit in toc -->
 ## TOC
 
-- [Overview](#overview)
+- [Application Overview](#application-overview)
     - [Frontend](#frontend)
         - [todos-web](#todos-web)
     - [Backend](#backend)
@@ -37,7 +37,7 @@ This project focuses on practicing modern software engineering through:
     - [`/v1/error`](#v1error)
 - [References](#references)
 
-## Overview
+## Application Overview
 
 ### Frontend
 
