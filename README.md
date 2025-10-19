@@ -12,38 +12,38 @@ This project focuses on practicing modern software engineering through:
 <!-- omit in toc -->
 ## TOC
 
-- [Application Overview](#application-overview)
-    - [Frontend](#frontend)
-        - [todos-web](#todos-web)
-    - [Backend](#backend)
-        - [todos-api](#todos-api)
-        - [todos-core](#todos-core)
-        - [todos-infrastructure](#todos-infrastructure)
-- [Requirements](#requirements)
-    - [Required](#required)
-    - [Recommended](#recommended)
-- [Setup](#setup)
-    - [Setup Environment](#setup-environment)
-    - [Run Database server](#run-database-server)
-    - [Run API server](#run-api-server)
-    - [Run Web server](#run-web-server)
-- [Development](#development)
-    - [Execute Tests](#execute-tests)
-- [Demo: Todo application](#demo-todo-application)
-- [Demo: Backend APIs](#demo-backend-apis)
-    - [`/v1/greeting`](#v1greeting)
-    - [`/v1/fizzbuzz`](#v1fizzbuzz)
-    - [`/v1/todos`](#v1todos)
-    - [`/v1/error`](#v1error)
-- [References](#references)
+- [1. Application Overview](#1-application-overview)
+    - [1.1. Frontend](#11-frontend)
+        - [1.1.1. todos-web](#111-todos-web)
+    - [1.2. Backend](#12-backend)
+        - [1.2.1. todos-api](#121-todos-api)
+        - [1.2.2. todos-core](#122-todos-core)
+        - [1.2.3. todos-infrastructure](#123-todos-infrastructure)
+- [2. Requirements](#2-requirements)
+    - [2.1. Required](#21-required)
+    - [2.2. Recommended](#22-recommended)
+- [3. Setup](#3-setup)
+    - [3.1. Setup Environment](#31-setup-environment)
+    - [3.2. Run Database server](#32-run-database-server)
+    - [3.3. Run API server](#33-run-api-server)
+    - [3.4. Run Web server](#34-run-web-server)
+- [4. Development](#4-development)
+    - [4.1. Execute Tests](#41-execute-tests)
+- [5. Demo: Todo application](#5-demo-todo-application)
+- [6. Demo: Backend APIs](#6-demo-backend-apis)
+    - [6.1. `/v1/greeting`](#61-v1greeting)
+    - [6.2. `/v1/fizzbuzz`](#62-v1fizzbuzz)
+    - [6.3. `/v1/todos`](#63-v1todos)
+    - [6.4. `/v1/error`](#64-v1error)
+- [7. References](#7-references)
 
-## Application Overview
+## 1. Application Overview
 
-### Frontend
+### 1.1. Frontend
 
 This application is built with [Next.js](https://nextjs.org/).
 
-#### [todos-web](./src/frontend/todos-web/)
+#### 1.1.1. [todos-web](./src/frontend/todos-web/)
 
 Acts as the **Driver Side** of the application.
 
@@ -52,47 +52,47 @@ Acts as the **Driver Side** of the application.
 > [!NOTE]  
 > Currently working on the [develop branch](https://github.com/kem198/kems-todos/tree/develop/src/frontend/todos-web). Coming soon...
 
-### Backend
+### 1.2. Backend
 
 This application is built using a [Multi Module Project](https://spring.io/guides/gs/multi-module) approach with [Spring Boot](https://spring.io/projects/spring-boot) .
 
-#### [todos-api](./src/backend/modules/todos-api/)
+#### 1.2.1. [todos-api](./src/backend/modules/todos-api/)
 
 Contains **Application Layer** and the application's entry point.
 
 - Handles API requests/responses.
 - Calls business logic.
 
-#### [todos-core](./src/backend/modules/todos-core/)
+#### 1.2.2. [todos-core](./src/backend/modules/todos-core/)
 
 Contains **Domain Layer** .
 
 - Provides domain models and business logic.
 
-#### [todos-infrastructure](./src/backend/modules/todos-infrastructure/)
+#### 1.2.3. [todos-infrastructure](./src/backend/modules/todos-infrastructure/)
 
 Contains **Infrastructure Layer** .
 
 - Executes CRUD operations on the data store.
 
-## Requirements
+## 2. Requirements
 
-### Required
+### 2.1. Required
 
 - [Node.js](https://nodejs.org/ja)
 - [JDK 21](https://openjdk.org/projects/jdk/21/)
 - [Docker Engine](https://docs.docker.com/engine/)
 
-### Recommended
+### 2.2. Recommended
 
 - [Ubuntu on WSL](https://learn.microsoft.com/ja-jp/windows/wsl/)
 - [Volta](https://volta.sh/)
 - [SDKMAN!](https://sdkman.io/)
 - [Visual Studio Code](https://azure.microsoft.com/ja-jp/products/visual-studio-code)
 
-## Setup
+## 3. Setup
 
-### Setup Environment
+### 3.1. Setup Environment
 
 ```shell
 # Example Environment: Ubuntu 24.04 on WSL
@@ -125,7 +125,7 @@ $ git clone https://github.com/kem198/practice-restful-apps.git
 $ cd practice-restful-apps
 ```
 
-### Run Database server
+### 3.2. Run Database server
 
 ```sh
 # Current directory is the repository root
@@ -170,7 +170,7 @@ todos_db=# SELECT * FROM examples;
 todos_db=# exit
 ```
 
-### Run API server
+### 3.3. Run API server
 
 ```shell
 # Change to api application root directory
@@ -191,26 +191,26 @@ Hello, World!
 
 If you want to see more commands, please refer to [backend/README.md](./src/backend/README.md) .
 
-### Run Web server
+### 3.4. Run Web server
 
 > [!NOTE]
 > Currently working on the [develop branch](https://github.com/kem198/kems-todos/tree/develop/src/frontend/todos-web). Coming soon...
 
-## Development
+## 4. Development
 
-### Execute Tests
+### 4.1. Execute Tests
 
 > [!NOTE]
 > This section is not written yet. Coming soon...
 
-## Demo: Todo application
+## 5. Demo: Todo application
 
 > [!NOTE]
 > Currently working on the [develop branch](https://github.com/kem198/kems-todos/tree/develop/src/frontend/todos-web). Coming soon...
 
-## Demo: Backend APIs
+## 6. Demo: Backend APIs
 
-### `/v1/greeting`
+### 6.1. `/v1/greeting`
 
 ```sh
 $ curl -i -X GET 'http://localhost:8080/v1/greeting/hello'
@@ -230,7 +230,7 @@ Date: Sat, 19 Jul 2025 17:06:00 GMT
 Hello, KeM198!
 ```
 
-### `/v1/fizzbuzz`
+### 6.2. `/v1/fizzbuzz`
 
 ```sh
 $ curl -s -D /dev/stderr -X GET 'http://localhost:8080/v1/fizzbuzz/convert?num=3' | jq
@@ -274,7 +274,7 @@ Connection: close
 }
 ```
 
-### `/v1/todos`
+### 6.3. `/v1/todos`
 
 ```sh
 $ curl -s -D /dev/stderr -X GET 'http://localhost:8080/v1/todos' | jq
@@ -353,7 +353,7 @@ Date: Sun, 04 May 2025 09:51:28 GMT
 []
 ```
 
-### `/v1/error`
+### 6.4. `/v1/error`
 
 ```sh
 $ curl -s -D /dev/stderr -X GET 'http://localhost:8080/v1/error' | jq
@@ -401,7 +401,7 @@ Connection: close
 }
 ```
 
-## References
+## 7. References
 
 <!-- omit in toc -->
 ### Architecture
