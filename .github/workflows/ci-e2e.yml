@@ -89,6 +89,11 @@ jobs:
           key: ${{ runner.os }}-playwright-${{ hashFiles('src/frontend/todos-web/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-playwright-
+      - name: Build and Start Frontend
+        working-directory: ./src/frontend/todos-web
+        run: |
+          npm run build
+          npm run start
 
       # Run E2E tests
       - name: Run E2E tests
