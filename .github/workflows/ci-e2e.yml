@@ -91,6 +91,8 @@ jobs:
             ${{ runner.os }}-playwright-
       - name: Build and Start Frontend
         working-directory: ./src/frontend/todos-web
+        env:
+          API_BASE_URL: http://localhost:8080
         run: |
           npm run build
           npm run start
