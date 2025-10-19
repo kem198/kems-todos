@@ -44,6 +44,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Kill existing servers
+      - name: Kill existing servers
+        run: |
+          pkill -f "next start" || true
+          pkill -f "todos-api-0.0.1-SNAPSHOT.jar" || true
+
       # Setup Database
       - name: Setup Database
         run: |
@@ -62,7 +68,6 @@ jobs:
         run: |
           ./gradlew build --no-daemon
           java -jar modules/todos-api/build/libs/todos-api-0.0.1-SNAPSHOT.jar &
-          echo $! > backend.pid
           timeout 60 bash -c 'until curl -f http://localhost:8080/v1/greeting/hello; do sleep 2; done'
 
       # Setup and Run Frontend
@@ -96,7 +101,6 @@ jobs:
         run: |
           npm run build
           npm run start &
-          echo $! > frontend.pid
           timeout 60 bash -c 'until curl -f http://localhost:3000; do sleep 2; done'
 
       # Run E2E tests
@@ -118,9 +122,5 @@ jobs:
       - name: Stop servers
         if: always()
         run: |
-          if [ -f ./src/backend/backend.pid ]; then
-            kill $(cat ./src/backend/backend.pid) || true
-          fi
-          if [ -f ./src/frontend/todos-web/frontend.pid ]; then
-            kill $(cat ./src/frontend/todos-web/frontend.pid) || true
-          fi
+          pkill -f "next start" || true
+          pkill -f "todos-api-0.0.1-SNAPSHOT.jar" || true
