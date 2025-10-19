@@ -2,25 +2,20 @@
 
 import { JsonDisplay } from "@/components/display/json-display";
 import { Separator } from "@/components/ui/separator";
-import { ApiResponseData } from "@/types/example/common/api-response-data";
+import { ApiResponseData } from "@/types/common/api-response-data";
 import { Todo } from "@/types/todo/todo";
-import { useState } from "react";
 
 // propsの型を定義
 type TodosClientProps = {
   initialTodos: Todo[];
+  responseData: ApiResponseData;
 };
 
-export function TodosClient({ initialTodos }: TodosClientProps) {
-  const [todos, setTodos] = useState<Todo[]>(initialTodos);
-  const [responseData, setResponseData] = useState<ApiResponseData | undefined>(
-    undefined,
-  );
-
+export function TodosClient({ initialTodos, responseData }: TodosClientProps) {
   return (
     <>
       <ul className="flex w-full flex-col gap-2">
-        {todos.map((todo) => (
+        {initialTodos.map((todo) => (
           <li
             key={String(todo.todoId)}
             className="rounded border border-gray-500 p-2"

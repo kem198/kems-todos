@@ -1,7 +1,7 @@
 "use client";
 
 import { JsonDisplay } from "@/components/display/json-display";
-import { ApiResponseData } from "@/types/example/common/api-response-data";
+import { ApiResponseData } from "@/types/common/api-response-data";
 import { useEffect, useState } from "react";
 
 export const GreetingCard = ({

@@ -4,12 +4,12 @@ import { TodosClient } from "@/features/todos/components/todos-client";
 import { getTodos } from "@/features/todos/utils/actions";
 
 export default async function TodosPage() {
-  const todos = await getTodos();
+  const [todos, responseData] = await getTodos();
 
   return (
     <AppPage>
       <TypographyH1>Todos</TypographyH1>
-      <TodosClient initialTodos={todos} />
+      <TodosClient initialTodos={todos} responseData={responseData} />
     </AppPage>
   );
 }
