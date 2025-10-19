@@ -1,11 +1,13 @@
 <!-- omit in toc -->
 # KeM's Todos
 
-This project focuses on practicing modern software engineering through:
+KeM's Todos is a showcase of my current skills.
 
-- Developing a **REST API** based on **Clean Architecture**
-- Applying **Test-Driven Development (TDD)** with **Automated Testing**
-- Maintaining quality via **Continuous Integration (CI)**
+This project focuses on:
+
+- Developing a **REST API** following **Clean Architecture**
+- Applying **Test-Driven Development (TDD)** and **Automated Testing**
+- Maintaining code quality through **Continuous Integration (CI)**
 
 ![architecture](./docs/img/architecture.png)
 
