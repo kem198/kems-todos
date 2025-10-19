@@ -44,12 +44,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Kill existing servers
-      - name: Kill existing servers
-        run: |
-          pkill -f "next start" || true
-          pkill -f "todos-api-0.0.1-SNAPSHOT.jar" || true
-
       # Setup Database
       - name: Setup Database
         run: |
@@ -109,10 +103,3 @@ jobs:
           name: playwright-report
           path: src/frontend/todos-web/playwright-report/
           retention-days: 30
-
-      # Cleanup
-      - name: Stop servers
-        if: always()
-        run: |
-          pkill -f "next start" || true
-          pkill -f "todos-api-0.0.1-SNAPSHOT.jar" || true
