@@ -37,7 +37,7 @@ export const GreetingCardContent = ({ name = "" }: { name?: string }) => {
         setLoading(true);
         setError("");
 
-        const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL;
+        const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
         const url = name
           ? `${apiBaseUrl}/v1/greeting/hello?name=${encodeURIComponent(name)}`
           : `${apiBaseUrl}/v1/greeting/hello`;
