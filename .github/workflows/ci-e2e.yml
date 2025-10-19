@@ -95,7 +95,9 @@ jobs:
           API_BASE_URL: http://localhost:8080
         run: |
           npm run build
-          npm run start
+          npm run start &
+          echo $! > frontend.pid
+          timeout 60 bash -c 'until curl -f http://localhost:3000; do sleep 2; done'
 
       # Run E2E tests
       - name: Run E2E tests
@@ -118,4 +120,7 @@ jobs:
         run: |
           if [ -f ./src/backend/backend.pid ]; then
             kill $(cat ./src/backend/backend.pid) || true
+          fi
+          if [ -f ./src/frontend/todos-web/frontend.pid ]; then
+            kill $(cat ./src/frontend/todos-web/frontend.pid) || true
           fi
