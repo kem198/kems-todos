@@ -1,11 +1,11 @@
 <!-- omit in toc -->
-# Practice - Restful apps
+# KeM's Todos
 
-This project is developed to practice the following:
+This project focuses on practicing modern software engineering through:
 
-- Building a **REST API application** with **Spring Boot** .
-- Designing **loosely coupled architecture** .
-- Implementing with **TDD** and **CI** .
+- Developing a **REST API** based on **Clean Architecture**
+- Applying **Test-Driven Development (TDD)** with **Automated Testing**
+- Maintaining quality via **Continuous Integration (CI)**
 
 ![architecture](./docs/img/architecture.png)
 
@@ -13,64 +13,86 @@ This project is developed to practice the following:
 ## TOC
 
 - [Application Overview](#application-overview)
-    - [todos-api](#todos-api)
-    - [todos-core](#todos-core)
-    - [todos-infrastructure](#todos-infrastructure)
+    - [Frontend](#frontend)
+        - [todos-web](#todos-web)
+    - [Backend](#backend)
+        - [todos-api](#todos-api)
+        - [todos-core](#todos-core)
+        - [todos-infrastructure](#todos-infrastructure)
+- [Requirements](#requirements)
+    - [Required](#required)
+    - [Recommended](#recommended)
 - [Setup](#setup)
-    - [Requirements](#requirements)
-    - [Setup environment](#setup-environment)
-    - [Edit with Visual Studio Code](#edit-with-visual-studio-code)
-    - [Run database server](#run-database-server)
+    - [Setup Environment](#setup-environment)
+    - [Run Database server](#run-database-server)
     - [Run API server](#run-api-server)
-- [Demo APIs](#demo-apis)
+    - [Run Web server](#run-web-server)
+- [Development](#development)
+    - [Execute Tests](#execute-tests)
+- [Demo: Todo application](#demo-todo-application)
+- [Demo: Backend APIs](#demo-backend-apis)
     - [`/v1/greeting`](#v1greeting)
     - [`/v1/fizzbuzz`](#v1fizzbuzz)
     - [`/v1/todos`](#v1todos)
     - [`/v1/error`](#v1error)
 - [References](#references)
-    - [Architecture](#architecture)
-    - [Web API](#web-api)
-    - [TDD](#tdd)
-    - [Spring Boot](#spring-boot)
-    - [Doma](#doma)
-    - [Playwright](#playwright)
-    - [Others](#others)
 
 ## Application Overview
 
-<!-- TODO: todos-web 載せる -->
+### Frontend
 
-This application is built using a [Multi Module Project](https://spring.io/guides/gs/multi-module) approach.
+This application is built with [Next.js](https://nextjs.org/).
 
-### [todos-api](./src/backend/modules/todos-api/)
+#### [todos-web](./src/frontend/todos-web/)
 
-- Contains **Application Layer** and the application's entry point.
-- Handles API requests/responses and calls business logic.
+Acts as the **Driver Side** of the application.
 
-### [todos-core](./src/backend/modules/todos-core/)
+- Provides a user interface for end users.
 
-- Contains **Domain Layer** .
+> [!NOTE]  
+> Currently working on the [develop branch](https://github.com/kem198/kems-todos/tree/develop/src/frontend/todos-web). Coming soon...
+
+### Backend
+
+This application is built using a [Multi Module Project](https://spring.io/guides/gs/multi-module) approach with [Spring Boot](https://spring.io/projects/spring-boot) .
+
+#### [todos-api](./src/backend/modules/todos-api/)
+
+Contains **Application Layer** and the application's entry point.
+
+- Handles API requests/responses.
+- Calls business logic.
+
+#### [todos-core](./src/backend/modules/todos-core/)
+
+Contains **Domain Layer** .
+
 - Provides domain models and business logic.
 
-### [todos-infrastructure](./src/backend/modules/todos-infrastructure/)
+#### [todos-infrastructure](./src/backend/modules/todos-infrastructure/)
 
-- Contains **Infrastructure Layer** .
+Contains **Infrastructure Layer** .
+
 - Executes CRUD operations on the data store.
+
+## Requirements
+
+### Required
+
+- [Node.js](https://nodejs.org/ja)
+- [JDK 21](https://openjdk.org/projects/jdk/21/)
+- [Docker Engine](https://docs.docker.com/engine/)
+
+### Recommended
+
+- [Ubuntu on WSL](https://learn.microsoft.com/ja-jp/windows/wsl/)
+- [Volta](https://volta.sh/)
+- [SDKMAN!](https://sdkman.io/)
+- [Visual Studio Code](https://azure.microsoft.com/ja-jp/products/visual-studio-code)
 
 ## Setup
 
-### Requirements
-
-- Required
-    - [JDK 21](https://openjdk.org/projects/jdk/21/)
-    - [Docker](https://www.docker.com/)
-
-- Recommended
-    - [Ubuntu on WSL](https://learn.microsoft.com/ja-jp/windows/wsl/)
-    - [SDKMAN!](https://sdkman.io/)
-    - [Visual Studio Code](https://azure.microsoft.com/ja-jp/products/visual-studio-code)
-
-### Setup environment
+### Setup Environment
 
 ```shell
 # Example Environment: Ubuntu 24.04 on WSL
@@ -103,18 +125,7 @@ $ git clone https://github.com/kem198/practice-restful-apps.git
 $ cd practice-restful-apps
 ```
 
-### Edit with Visual Studio Code
-
-```sh
-# Current directory is the repository root
-$ pwd
-/path/to/your/repo/practice-restful-apps
-
-# Open with VS Code
-$ code .
-```
-
-### Run database server
+### Run Database server
 
 ```sh
 # Current directory is the repository root
@@ -180,7 +191,24 @@ Hello, World!
 
 If you want to see more commands, please refer to [backend/README.md](./src/backend/README.md) .
 
-## Demo APIs
+### Run Web server
+
+> [!NOTE]
+> Currently working on the [develop branch](https://github.com/kem198/kems-todos/tree/develop/src/frontend/todos-web). Coming soon...
+
+## Development
+
+### Execute Tests
+
+> [!NOTE]
+> This section is not written yet. Coming soon...
+
+## Demo: Todo application
+
+> [!NOTE]
+> Currently working on the [develop branch](https://github.com/kem198/kems-todos/tree/develop/src/frontend/todos-web). Coming soon...
+
+## Demo: Backend APIs
 
 ### `/v1/greeting`
 
@@ -375,6 +403,7 @@ Connection: close
 
 ## References
 
+<!-- omit in toc -->
 ### Architecture
 
 - [Macchinetta Server Framework (1.x) Development Guideline](https://macchinetta.github.io/server-guideline-thymeleaf/current/ja/index.html)
@@ -384,6 +413,7 @@ Connection: close
     - [11.2. チュートリアル(Todoアプリケーション REST編)](https://macchinetta.github.io/server-guideline-thymeleaf/current/ja/Tutorial/TutorialREST.html)
 - [ちょうぜつソフトウェア設計入門 \| 技術評論社](https://gihyo.jp/book/2022/978-4-297-13234-7)
 
+<!-- omit in toc -->
 ### Web API
 
 - [Web API: The Good Parts - O'Reilly Japan](https://www.oreilly.co.jp/books/9784873116860/)
@@ -394,17 +424,20 @@ Connection: close
     - [Spring Boot 3.0 で入った RFC7807 サポートを色々試す \#Java - Qiita](https://qiita.com/koji-cw/items/422140bd7752e4a82baf)
     - [Spring Boot で Problem Details に対応するための kotlin での実装](https://zenn.dev/bm_sms/articles/aec9aeca1fee34)
 
+<!-- omit in toc -->
 ### TDD
 
 - [テスト駆動開発 \| Ohmsha](https://www.ohmsha.co.jp/book/9784274217883/)
 - [TDD Boot Camp 2020 Online \#1 基調講演/ライブコーディング - YouTube](https://www.youtube.com/watch?v=Q-FJ3XmFlT8)
 
+<!-- omit in toc -->
 ### Spring Boot
 
 - [Spring Boot in Visual Studio Code](https://code.visualstudio.com/docs/java/java-spring-boot)
 - [Spring Boot REST API の作成 - 公式サンプルコード](https://spring.pleiades.io/guides/gs/rest-service)
 - [Spring Boot マルチモジュールプロジェクトの作成 - 公式サンプルコード](https://spring.pleiades.io/guides/gs/multi-module)
 
+<!-- omit in toc -->
 ### Doma
 
 - [Doma へようこそ — Doma ドキュメント](https://docs.domaframework.org/ja/stable/)
@@ -413,11 +446,7 @@ Connection: close
     - [domaframework/getting-started: Getting-started project for Doma](https://github.com/domaframework/getting-started)
     - [domaframework/simple-examples: Doma Simple Examples](https://github.com/domaframework/simple-examples)
 
-### Playwright
-
-- [Fast and reliable end-to-end testing for modern web apps \| Playwright](https://playwright.dev/)
-    - [Installation \| Playwright](https://playwright.dev/docs/intro)
-
+<!-- omit in toc -->
 ### Others
 
 - [SDK Installation Candidates \| SDKMAN! the Software Development Kit Manager](https://sdkman.io/sdks/)
