@@ -28,7 +28,7 @@ This project focuses on practicing modern software engineering through:
     - [Run database server](#run-database-server)
     - [Run API server](#run-api-server)
     - [Run Web server](#run-web-server)
-    - [Run Testing](#run-testing)
+    - [Execute Testing](#execute-testing)
 - [Demo Todo application](#demo-todo-application)
 - [Demo Backend APIs](#demo-backend-apis)
     - [`/v1/greeting`](#v1greeting)
@@ -207,7 +207,7 @@ If you want to see more commands, please refer to [backend/README.md](./src/back
 > [!NOTE]  
 > Currently working on the [develop branch](https://github.com/kem198/kems-todos/tree/develop/src/frontend/todos-web). Coming soon...
 
-### Run Testing
+### Execute Testing
 
 > [!NOTE]
 > This section is not written yet. Coming soon...
