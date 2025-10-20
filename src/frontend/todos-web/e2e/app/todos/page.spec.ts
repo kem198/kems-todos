@@ -8,8 +8,7 @@ test.describe("Todos ページのテスト", () => {
       // Arrange
       // DB へ初期データを投入しておく
       const apiBaseUrl = process.env.API_BASE_URL;
-      // TODO: 環境変数の API_BASE_URL を読み込む
-      const res = await page.request.post(`http://localhost:8080/v1/todos`, {
+      const res = await page.request.post(`${apiBaseUrl}/v1/todos`, {
         headers: { "Content-Type": "application/json" },
         data: {
           todoTitle: "Added Task 1",
