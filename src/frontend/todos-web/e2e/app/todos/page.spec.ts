@@ -6,7 +6,8 @@ test.describe("Todos ページのテスト", () => {
       page,
     }) => {
       // Arrange
-      const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL;
+      // DB へ初期データを投入しておく
+      const apiBaseUrl = process.env.API_BASE_URL;
       const res = await page.request.post(`${apiBaseUrl}/v1/todos`, {
         headers: { "Content-Type": "application/json" },
         data: {
@@ -16,9 +17,11 @@ test.describe("Todos ページのテスト", () => {
       });
       expect(res.ok()).toBeTruthy();
       const { todoId } = (await res.json()) as { todoId?: string };
+      // テスト対象画面の前ページへ遷移しておく
+      await page.goto("/");
 
       // Act
-      await page.goto("/todos");
+      await page.getByRole("button", { name: "/todos" }).click();
 
       // Assert
       await expect(page.getByText("Added Task 1").first()).toBeVisible();

@@ -62,7 +62,6 @@ jobs:
         run: |
           ./gradlew build --no-daemon
           java -jar modules/todos-api/build/libs/todos-api-0.0.1-SNAPSHOT.jar &
-          echo $! > backend.pid
           timeout 60 bash -c 'until curl -f http://localhost:8080/v1/greeting/hello; do sleep 2; done'
 
       # Setup and Run Frontend
@@ -78,9 +77,6 @@ jobs:
       - name: Install Frontend Dependencies
         working-directory: ./src/frontend/todos-web
         run: npm ci
-      - name: Install Playwright Browsers
-        working-directory: ./src/frontend/todos-web
-        run: npx playwright install --with-deps
       - name: Cache Playwright browsers
         uses: actions/cache@v4
         id: playwright-cache
@@ -89,12 +85,23 @@ jobs:
           key: ${{ runner.os }}-playwright-${{ hashFiles('src/frontend/todos-web/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-playwright-
+      - name: Install Playwright Browsers
+        working-directory: ./src/frontend/todos-web
+        run: npx playwright install --with-deps
+      - name: Build and Start Frontend
+        working-directory: ./src/frontend/todos-web
+        env:
+          API_BASE_URL: http://localhost:8080
+        run: |
+          npm run build
+          npm start &
+          timeout 60 bash -c 'until curl -f http://localhost:3000; do sleep 2; done'
 
       # Run E2E tests
       - name: Run E2E tests
         working-directory: ./src/frontend/todos-web
         env:
-          NEXT_PUBLIC_API_URL: http://localhost:8080
+          API_BASE_URL: http://localhost:8080
         run: npm run e2e
 
       # Upload artifacts
@@ -104,11 +111,3 @@ jobs:
           name: playwright-report
           path: src/frontend/todos-web/playwright-report/
           retention-days: 30
-
-      # Cleanup
-      - name: Stop servers
-        if: always()
-        run: |
-          if [ -f ./src/backend/backend.pid ]; then
-            kill $(cat ./src/backend/backend.pid) || true
-          fi

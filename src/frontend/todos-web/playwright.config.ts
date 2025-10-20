@@ -1,11 +1,16 @@
+/* Created by `npm init playwright@latest` */
+
 import { defineConfig, devices } from "@playwright/test";
+import dotenv from "dotenv";
+import path from "node:path";
 
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-import dotenv from "dotenv";
-dotenv.config({ path: ".env" });
+// TODO: インポートの規約違反を回避できなかった
+// eslint-disable-next-line unicorn/prefer-module
+dotenv.config({ path: path.resolve(__dirname, ".env") });
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -28,7 +33,10 @@ export default defineConfig({
     baseURL: "http://localhost:3000",
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: "on-first-retry",
+    // TODO: 推奨のエビデンス記録に揃える？ https://github.com/kem198/kems-todos/pull/31#discussion_r2442717664
+    screenshot: process.env.CI ? "only-on-failure" : "on",
+    video: process.env.CI ? "retain-on-failure" : "on",
+    trace: process.env.CI ? "retain-on-failure" : "on-first-retry",
   },
 
   /* Configure projects for major browsers */
@@ -70,9 +78,9 @@ export default defineConfig({
   ],
 
   /* Run your local dev server before starting the tests */
-  webServer: {
-    command: process.env.CI ? "npm run build && npm run start" : "npm run dev",
-    url: "http://localhost:3000",
-    reuseExistingServer: !process.env.CI,
-  },
+  // webServer: {
+  //   command: 'npm run start',
+  //   url: 'http://localhost:3000',
+  //   reuseExistingServer: !process.env.CI,
+  // },
 });
