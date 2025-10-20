@@ -8,6 +8,7 @@ import path from "node:path";
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
+// TODO: インポートの規約違反を回避できなかった
 // eslint-disable-next-line unicorn/prefer-module
 dotenv.config({ path: path.resolve(__dirname, ".env") });
 
