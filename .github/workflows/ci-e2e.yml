@@ -77,9 +77,6 @@ jobs:
       - name: Install Frontend Dependencies
         working-directory: ./src/frontend/todos-web
         run: npm ci
-      - name: Install Playwright Browsers
-        working-directory: ./src/frontend/todos-web
-        run: npx playwright install --with-deps
       - name: Cache Playwright browsers
         uses: actions/cache@v4
         id: playwright-cache
@@ -88,6 +85,9 @@ jobs:
           key: ${{ runner.os }}-playwright-${{ hashFiles('src/frontend/todos-web/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-playwright-
+      - name: Install Playwright Browsers
+        working-directory: ./src/frontend/todos-web
+        run: npx playwright install --with-deps
       - name: Build and Start Frontend
         working-directory: ./src/frontend/todos-web
         env:
