@@ -90,6 +90,10 @@ jobs:
             ${{ runner.os }}-playwright-
       - name: Build and Start Frontend
         working-directory: ./src/frontend/todos-web
+        env:
+          # TODO: 実装から排除できたら消す
+          NEXT_PUBLIC_API_BASE_URL: http://localhost:8080
+          API_BASE_URL: http://localhost:8080
         run: |
           npm run build
           npm start &
