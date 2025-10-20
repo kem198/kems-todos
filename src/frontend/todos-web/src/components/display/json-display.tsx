@@ -1,5 +1,5 @@
 export const JsonDisplay = ({ data }: { data: unknown }) => {
-  const jsonString = data ? JSON.stringify(data, undefined, 2) : "Loading...";
+  const jsonString = data ? JSON.stringify(data, undefined, 2) : " ";
   const lines = jsonString.split("\n");
 
   return (
