@@ -223,7 +223,7 @@ If you want to see more commands, please refer to [backend/README.md](./src/back
 >     ./gradlew bootRun
 >     ```
 >
-> 2. Access [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html) .
+> 2. Access [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html).
 
 ### 6.1. `/v1/greeting`
 
