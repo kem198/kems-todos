@@ -15,12 +15,8 @@ This project focuses on:
 ## TOC
 
 - [1. Application Overview](#1-application-overview)
-    - [1.1. Frontend](#11-frontend)
-        - [1.1.1. todos-web](#111-todos-web)
-    - [1.2. Backend](#12-backend)
-        - [1.2.1. todos-api](#121-todos-api)
-        - [1.2.2. todos-core](#122-todos-core)
-        - [1.2.3. todos-infrastructure](#123-todos-infrastructure)
+    - [1.1. Frontend application](#11-frontend-application)
+    - [1.2. Backend application](#12-backend-application)
 - [2. Requirements](#2-requirements)
     - [2.1. Required](#21-required)
     - [2.2. Recommended](#22-recommended)
@@ -41,41 +37,34 @@ This project focuses on:
 
 ## 1. Application Overview
 
-### 1.1. Frontend
+This application follows a multi-layer architecture.
 
-This application is built with [Next.js](https://nextjs.org/).
+### 1.1. Frontend application
 
-#### 1.1.1. [todos-web](./src/frontend/todos-web/)
+The frontend application is built with [Next.js](https://nextjs.org/).
 
-Acts as the **Driver Side** of the application.
+- [todos-web](./src/frontend/todos-web/)
 
-- Provides a user interface for end users.
+    Acts as the **Driver Side** interface for the frontend.
 
 > [!NOTE]  
 > Currently working on the [develop branch](https://github.com/kem198/kems-todos/tree/develop/src/frontend/todos-web). Coming soon...
 
-### 1.2. Backend
+### 1.2. Backend application
 
-This application is built using a [Multi Module Project](https://spring.io/guides/gs/multi-module) approach with [Spring Boot](https://spring.io/projects/spring-boot).
+The backend application is built using a [Multi Module Project](https://spring.io/guides/gs/multi-module) approach with [Spring Boot](https://spring.io/projects/spring-boot).
 
-#### 1.2.1. [todos-api](./src/backend/modules/todos-api/)
+- [todos-api](./src/backend/modules/todos-api/)
 
-Contains **Application Layer** and the application's entry point.
+    Contains **Application Layer**. Handles API requests/responses and calls business logic.
 
-- Handles API requests/responses.
-- Calls business logic.
+- [todos-core](./src/backend/modules/todos-core/)
 
-#### 1.2.2. [todos-core](./src/backend/modules/todos-core/)
+    Contains **Domain Layer**. Provides domain models and business logic.
 
-Contains **Domain Layer** .
+- [todos-infrastructure](./src/backend/modules/todos-infrastructure/)
 
-- Provides domain models and business logic.
-
-#### 1.2.3. [todos-infrastructure](./src/backend/modules/todos-infrastructure/)
-
-Contains **Infrastructure Layer** .
-
-- Executes CRUD operations on the data store.
+    Contains **Infrastructure Layer**. Executes CRUD operations on the data store.
 
 ## 2. Requirements
 
