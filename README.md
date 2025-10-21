@@ -56,7 +56,7 @@ Acts as the **Driver Side** of the application.
 
 ### 1.2. Backend
 
-This application is built using a [Multi Module Project](https://spring.io/guides/gs/multi-module) approach with [Spring Boot](https://spring.io/projects/spring-boot) .
+This application is built using a [Multi Module Project](https://spring.io/guides/gs/multi-module) approach with [Spring Boot](https://spring.io/projects/spring-boot).
 
 #### 1.2.1. [todos-api](./src/backend/modules/todos-api/)
 
@@ -191,7 +191,14 @@ $ curl 'http://localhost:8080/v1/greeting/hello'
 Hello, World!
 ```
 
-If you want to see more commands, please refer to [backend/README.md](./src/backend/README.md) .
+> [!TIP]
+> Run the API server for development (with hot reload).
+>
+> ```sh
+> ./gradlew bootRun
+> ```
+
+If you want to see more commands, please refer to [backend/README.md](./src/backend/README.md).
 
 ### 3.4. Run Web server
 
