@@ -17,6 +17,7 @@ This project focuses on:
 - [1. Application Overview](#1-application-overview)
     - [1.1. Frontend](#11-frontend)
     - [1.2. Backend](#12-backend)
+    - [1.3. Test Strategy](#13-test-strategy)
 - [2. Requirements](#2-requirements)
     - [2.1. Required](#21-required)
     - [2.2. Recommended](#22-recommended)
@@ -47,7 +48,7 @@ The frontend application is built with [Next.js](https://nextjs.org/).
     - Acts as the **Driver Side** interface.
     - Provides a user interface for end users.
 
-> [!NOTE]  
+> [!NOTE]
 > Currently working on the [develop branch](https://github.com/kem198/kems-todos/tree/develop/src/frontend/todos-web). Coming soon...
 
 ### 1.2. Backend
@@ -63,6 +64,20 @@ The backend application is built using a [Multi Module Project](https://spring.i
 - [todos-infrastructure](./src/backend/modules/todos-infrastructure/)
     - Contains **Infrastructure Layer**.
     - Executes CRUD operations on the data store.
+
+### 1.3. Test Strategy
+
+This project maintains code quality with automated testing and CI.
+
+- Frontend: [Vitest](https://vitest.dev/)
+    - Executes unit tests for shared utilities.
+- Backend: [JUnit](https://junit.org/)
+    - Executes unit tests for shared classes.
+    - Executes integration tests for APIs.
+- E2E: [Playwright](https://playwright.dev/)
+    - Validates end-to-end user flows.
+- CI: [GitHub Actions](https://github.co.jp/features/actions)
+    - Runs automated build and test pipelines.
 
 ## 2. Requirements
 
