@@ -15,8 +15,8 @@ This project focuses on:
 ## TOC
 
 - [1. Application Overview](#1-application-overview)
-    - [1.1. Frontend application](#11-frontend-application)
-    - [1.2. Backend application](#12-backend-application)
+    - [1.1. Frontend](#11-frontend)
+    - [1.2. Backend](#12-backend)
 - [2. Requirements](#2-requirements)
     - [2.1. Required](#21-required)
     - [2.2. Recommended](#22-recommended)
@@ -39,7 +39,7 @@ This project focuses on:
 
 This application follows a multi-layer architecture.
 
-### 1.1. Frontend application
+### 1.1. Frontend
 
 The frontend application is built with [Next.js](https://nextjs.org/).
 
@@ -51,7 +51,7 @@ The frontend application is built with [Next.js](https://nextjs.org/).
 > [!NOTE]  
 > Currently working on the [develop branch](https://github.com/kem198/kems-todos/tree/develop/src/frontend/todos-web). Coming soon...
 
-### 1.2. Backend application
+### 1.2. Backend
 
 The backend application is built using a [Multi Module Project](https://spring.io/guides/gs/multi-module) approach with [Spring Boot](https://spring.io/projects/spring-boot).
 
