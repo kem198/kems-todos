@@ -1,7 +1,9 @@
+[English](README.md) | [日本語](README.ja.md)
+
 <!-- omit in toc -->
 # KeM's Todos
 
-KeM's Todos is a showcase of my current skills.
+KeM's Todos is a todo application that showcases my skills.
 
 This project focuses on:
 
