@@ -217,13 +217,13 @@ If you want to see more commands, please refer to [backend/README.md](./src/back
 >
 > <img src="./docs/img/swagger.png" alt="swagger" width="600">
 >
-> 1. First, run the API server.
+> 1. Run the API server.
 >
 >     ```sh
 >     ./gradlew bootRun
 >     ```
 >
-> 2. Next, access [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html) .
+> 2. Access [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html) .
 
 ### 6.1. `/v1/greeting`
 
