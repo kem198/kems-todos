@@ -8,6 +8,13 @@ on:
     paths:
       - "src/backend/modules/todos-api/**"
       - ".github/workflows/publish-swagger.yml"
+  pull_request:
+    branches:
+      - main
+      - develop
+    paths:
+      - "src/backend/modules/todos-api/**"
+      - ".github/workflows/publish-swagger.yml"
   workflow_dispatch:
 
 permissions:
