@@ -464,7 +464,7 @@ Connection: close
 
 - [REST API Documentation Tool \| Swagger UI](https://swagger.io/tools/swagger-ui/)
 - [【Java】SwaggerでAPI仕様を見れるところまでやってみた（swagger-core × springdoc-openapi-ui） \#SpringBoot - Qiita](https://qiita.com/crml1206/items/e47ec484af750d301953)
-[OpenAPI 3 Library for spring-boot](https://springdoc.org/#general-overview)
+- [OpenAPI 3 Library for spring-boot](https://springdoc.org/#general-overview)
 
 <!-- omit in toc -->
 ### Others
