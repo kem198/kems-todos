@@ -212,6 +212,17 @@ If you want to see more commands, please refer to [backend/README.md](./src/back
 
 ## 6. Demo: Backend APIs
 
+> [!NOTE]
+> You can view the API documentation using [Swagger UI](https://swagger.io/tools/swagger-ui/) .
+>
+> First, run the API server.
+>
+> ```sh
+> ./gradlew bootRun
+> ```
+>
+> Next, access [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html) .
+
 ### 6.1. `/v1/greeting`
 
 ```sh
