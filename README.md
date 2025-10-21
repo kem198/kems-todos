@@ -212,6 +212,19 @@ If you want to see more commands, please refer to [backend/README.md](./src/back
 
 ## 6. Demo: Backend APIs
 
+> [!TIP]
+> You can view the API documentation using [Swagger UI](https://swagger.io/tools/swagger-ui/).
+>
+> <img src="./docs/img/swagger.png" alt="swagger" width="600">
+>
+> 1. Run the API server.
+>
+>     ```sh
+>     ./gradlew bootRun
+>     ```
+>
+> 2. Access [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html).
+
 ### 6.1. `/v1/greeting`
 
 ```sh
@@ -447,6 +460,13 @@ Connection: close
     - [Doma CodeGen プラグイン — Doma ドキュメント](https://docs.domaframework.org/ja/stable/codegen/)
     - [domaframework/getting-started: Getting-started project for Doma](https://github.com/domaframework/getting-started)
     - [domaframework/simple-examples: Doma Simple Examples](https://github.com/domaframework/simple-examples)
+
+<!-- omit in toc -->
+### Swagger
+
+- [REST API Documentation Tool \| Swagger UI](https://swagger.io/tools/swagger-ui/)
+- [【Java】SwaggerでAPI仕様を見れるところまでやってみた（swagger-core × springdoc-openapi-ui） \#SpringBoot - Qiita](https://qiita.com/crml1206/items/e47ec484af750d301953)
+- [OpenAPI 3 Library for spring-boot](https://springdoc.org/#general-overview)
 
 <!-- omit in toc -->
 ### Others
