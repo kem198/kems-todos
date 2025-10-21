@@ -45,7 +45,8 @@ The frontend application is built with [Next.js](https://nextjs.org/).
 
 - [todos-web](./src/frontend/todos-web/)
 
-    Acts as the **Driver Side** interface for the frontend.
+    - Acts as the **Driver Side** interface.
+    - Provides a user interface for end users.
 
 > [!NOTE]  
 > Currently working on the [develop branch](https://github.com/kem198/kems-todos/tree/develop/src/frontend/todos-web). Coming soon...
@@ -56,15 +57,18 @@ The backend application is built using a [Multi Module Project](https://spring.i
 
 - [todos-api](./src/backend/modules/todos-api/)
 
-    Contains **Application Layer**. Handles API requests/responses and calls business logic.
+    - Contains **Application Layer**.
+    - Handles API requests/responses and calls business logic.
 
 - [todos-core](./src/backend/modules/todos-core/)
 
-    Contains **Domain Layer**. Provides domain models and business logic.
+    - Contains **Domain Layer**.
+    - Provides domain models and business logic.
 
 - [todos-infrastructure](./src/backend/modules/todos-infrastructure/)
 
-    Contains **Infrastructure Layer**. Executes CRUD operations on the data store.
+    - Contains **Infrastructure Layer**.
+    - Executes CRUD operations on the data store.
 
 ## 2. Requirements
 
