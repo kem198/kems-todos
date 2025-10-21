@@ -3,7 +3,7 @@
 <!-- omit in toc -->
 # KeM's Todos
 
-KeM's Todos is a todo application that showcases my skills.
+KeM's Todos is a to-do application that serves as a showcase of my current skills.
 
 This project focuses on:
 
