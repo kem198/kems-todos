@@ -213,7 +213,7 @@ If you want to see more commands, please refer to [backend/README.md](./src/back
 ## 6. Demo: Backend APIs
 
 > [!TIP]
-> You can view the API documentation using [Swagger UI](https://swagger.io/tools/swagger-ui/) .
+> You can view the API documentation using [Swagger UI](https://swagger.io/tools/swagger-ui/).
 >
 > <img src="./docs/img/swagger.png" alt="swagger" width="600">
 >
