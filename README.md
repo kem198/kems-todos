@@ -44,7 +44,6 @@ This application follows a multi-layer architecture.
 The frontend application is built with [Next.js](https://nextjs.org/).
 
 - [todos-web](./src/frontend/todos-web/)
-
     - Acts as the **Driver Side** interface.
     - Provides a user interface for end users.
 
@@ -56,17 +55,14 @@ The frontend application is built with [Next.js](https://nextjs.org/).
 The backend application is built using a [Multi Module Project](https://spring.io/guides/gs/multi-module) approach with [Spring Boot](https://spring.io/projects/spring-boot).
 
 - [todos-api](./src/backend/modules/todos-api/)
-
     - Contains **Application Layer**.
     - Handles API requests/responses and calls business logic.
 
 - [todos-core](./src/backend/modules/todos-core/)
-
     - Contains **Domain Layer**.
     - Provides domain models and business logic.
 
 - [todos-infrastructure](./src/backend/modules/todos-infrastructure/)
-
     - Contains **Infrastructure Layer**.
     - Executes CRUD operations on the data store.
 
