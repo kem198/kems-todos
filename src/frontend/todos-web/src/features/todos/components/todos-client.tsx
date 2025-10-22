@@ -4,18 +4,26 @@ import { JsonDisplay } from "@/components/display/json-display";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
-  Card,
-  CardAction,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+  Item,
+  ItemActions,
+  ItemContent,
+  ItemDescription,
+  ItemFooter,
+  ItemMedia,
+  ItemTitle,
+} from "@/components/ui/item";
 import { Separator } from "@/components/ui/separator";
 import { ApiResponseData } from "@/types/common/api-response-data";
 import { Todo } from "@/types/todo/todo";
 import { format } from "date-fns";
-import { CheckIcon, PenIcon } from "lucide-react";
+import { ja } from "date-fns/locale";
+import {
+  BellIcon,
+  CalendarClockIcon,
+  CheckIcon,
+  ChevronRightIcon,
+  MapPinIcon,
+} from "lucide-react";
 
 type TodosClientProps = {
   initialTodos: Todo[];
@@ -27,29 +35,41 @@ export function TodosClient({ initialTodos, responseData }: TodosClientProps) {
     <>
       <div className="flex w-full flex-col gap-4">
         {initialTodos.map((todo) => (
-          <Card key={String(todo.todoId)}>
-            <CardHeader>
-              <CardAction>
-                <Button
-                  variant={todo.finished ? "default" : "outline"}
-                  size="icon"
-                  className="rounded-full"
-                >
-                  {todo.finished && <CheckIcon />}
-                </Button>
-              </CardAction>
-              <CardTitle>{todo.todoTitle}</CardTitle>
+          <Item key={String(todo.todoId)} variant="outline">
+            <ItemMedia>
+              <Button
+                variant={todo.finished ? "default" : "outline"}
+                size="icon"
+                className="rounded-full"
+              >
+                {todo.finished && <CheckIcon />}
+              </Button>
+            </ItemMedia>
+            <ItemContent>
+              <ItemTitle>{todo.todoTitle}</ItemTitle>{" "}
               {todo.todoDescription && (
-                <CardDescription>{todo.todoDescription}</CardDescription>
+                <ItemDescription>{todo.todoDescription}</ItemDescription>
               )}
-            </CardHeader>
-            <CardFooter className="flex gap-2">
-              <Badge variant="secondary">
-                <PenIcon />
-                {format(todo.createdAt, "yyyy-MM-dd")}
-              </Badge>
-            </CardFooter>
-          </Card>
+            </ItemContent>
+            <ItemActions>
+              <ChevronRightIcon className="size-4" />
+            </ItemActions>
+            <ItemFooter>
+              <div className="flex gap-2">
+                <Badge variant="secondary">
+                  <CalendarClockIcon />
+                  {format(todo.createdAt, "M月d日 (E)", { locale: ja })}
+                </Badge>
+                <Badge variant="secondary">
+                  <BellIcon />3
+                </Badge>
+                <Badge variant="secondary">
+                  <MapPinIcon />
+                  Fukuoka, Japan
+                </Badge>
+              </div>
+            </ItemFooter>
+          </Item>
         ))}
       </div>
 
