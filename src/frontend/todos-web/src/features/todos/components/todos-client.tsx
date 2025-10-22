@@ -9,6 +9,7 @@ import {
   ItemContent,
   ItemDescription,
   ItemFooter,
+  ItemGroup,
   ItemMedia,
   ItemTitle,
 } from "@/components/ui/item";
@@ -53,7 +54,7 @@ export function TodosClient({ initialTodos, responseData }: TodosClientProps) {
         </div>
       </div>
 
-      <div className="flex w-full flex-col gap-4">
+      <ItemGroup className="gap-4">
         {initialTodos.map((todo) => (
           <Item key={String(todo.todoId)} variant="outline" asChild>
             <a href="#">
@@ -99,7 +100,7 @@ export function TodosClient({ initialTodos, responseData }: TodosClientProps) {
             </a>
           </Item>
         ))}
-      </div>
+      </ItemGroup>
 
       <Separator />
 
