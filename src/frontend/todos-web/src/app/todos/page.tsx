@@ -7,7 +7,7 @@ export default async function TodosPage() {
   const [todos, responseData] = await getTodos();
 
   return (
-    <AppPage>
+    <AppPage className="mx-auto max-w-3xl">
       <TypographyH1>Todos</TypographyH1>
       <TodosClient initialTodos={todos} responseData={responseData} />
     </AppPage>
