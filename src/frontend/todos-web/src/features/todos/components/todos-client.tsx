@@ -1,6 +1,14 @@
 "use client";
 
 import { JsonDisplay } from "@/components/display/json-display";
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { ApiResponseData } from "@/types/common/api-response-data";
 import { Todo } from "@/types/todo/todo";
@@ -13,19 +21,21 @@ type TodosClientProps = {
 export function TodosClient({ initialTodos, responseData }: TodosClientProps) {
   return (
     <>
-      <ul className="flex w-full flex-col gap-2">
+      <div className="flex w-full flex-col gap-4">
         {initialTodos.map((todo) => (
-          <li
-            key={String(todo.todoId)}
-            className="rounded border border-gray-500 p-2"
-          >
-            <p>{todo.todoTitle}</p>
-            <p>{todo.todoDescription}</p>
-            <p>{String(todo.finished)}</p>
-            <p>{String(todo.createdAt)}</p>
-          </li>
+          <Card key={String(todo.todoId)}>
+            <CardHeader>
+              <CardTitle>{todo.todoTitle}</CardTitle>
+              <CardDescription>{todo.todoDescription}</CardDescription>
+              <CardAction></CardAction>
+            </CardHeader>
+            <CardContent>
+              <p>{todo.finished ? "終わったよ" : "終わってないよ"}</p>
+              <p>{String(todo.createdAt)}</p>
+            </CardContent>
+          </Card>
         ))}
-      </ul>
+      </div>
 
       <Separator />
 
