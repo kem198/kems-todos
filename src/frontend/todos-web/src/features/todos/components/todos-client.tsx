@@ -74,7 +74,7 @@ export function TodosClient({ initialTodos, responseData }: TodosClientProps) {
                 )}
               </ItemContent>
 
-              <ItemActions>
+              <ItemActions className="self-start">
                 <Equal className="size-4 cursor-grab text-gray-400" />
               </ItemActions>
 
