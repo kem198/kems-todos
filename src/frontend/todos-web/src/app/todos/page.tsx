@@ -1,5 +1,5 @@
 import { AppPage } from "@/components/layout/app-page";
-import { TypographyH1 } from "@/components/typography/typography-h1";
+import { TypographyH1 } from "@/components/typography/typography";
 import { TodosClient } from "@/features/todos/components/todos-client";
 import { getTodos } from "@/features/todos/utils/actions";
 

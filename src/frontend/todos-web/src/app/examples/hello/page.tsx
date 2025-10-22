@@ -1,6 +1,6 @@
 import { Hello } from "@/components/example/hello/hello";
 import { AppPage } from "@/components/layout/app-page";
-import { TypographyH1 } from "@/components/typography/typography-h1";
+import { TypographyH1 } from "@/components/typography/typography";
 
 export default function HelloPage() {
   return (
