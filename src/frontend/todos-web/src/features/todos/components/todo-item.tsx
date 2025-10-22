@@ -1,0 +1,74 @@
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Item,
+  ItemActions,
+  ItemContent,
+  ItemDescription,
+  ItemFooter,
+  ItemMedia,
+  ItemTitle,
+} from "@/components/ui/item";
+import { Todo } from "@/types/todo/todo";
+import { format } from "date-fns";
+import { ja } from "date-fns/locale";
+import {
+  BellIcon,
+  CalendarClockIcon,
+  CheckIcon,
+  Equal,
+  LinkIcon,
+  MapPinIcon,
+} from "lucide-react";
+
+type TodosItemProps = {
+  todo: Todo;
+};
+
+export function TodoItem({ todo }: TodosItemProps) {
+  return (
+    <Item variant="outline" asChild>
+      <a href="#">
+        <ItemMedia className="flex items-center">
+          <Button
+            variant={todo.finished ? "default" : "outline"}
+            size="icon-sm"
+            className="rounded-full"
+          >
+            {todo.finished && <CheckIcon />}
+          </Button>
+        </ItemMedia>
+
+        <ItemContent>
+          <ItemTitle>{todo.todoTitle}</ItemTitle>{" "}
+          {todo.todoDescription && (
+            <ItemDescription>{todo.todoDescription}</ItemDescription>
+          )}
+        </ItemContent>
+
+        <ItemActions className="self-start">
+          <Equal className="size-4 cursor-grab text-gray-400" />
+        </ItemActions>
+
+        <ItemFooter className="pl-12">
+          <div className="flex gap-2">
+            <Badge variant="outline">
+              <CalendarClockIcon />
+              {format(todo.createdAt, "M月d日 (E)", { locale: ja })}
+            </Badge>
+            <Badge variant="outline">
+              <BellIcon />3
+            </Badge>
+            <Badge variant="outline">
+              <MapPinIcon />
+              Fukuoka, Japan
+            </Badge>
+            <Badge variant="outline">
+              <LinkIcon />
+            </Badge>
+          </div>
+        </ItemFooter>
+      </a>
+    </Item>
+  );
+}
