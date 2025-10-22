@@ -1,17 +1,21 @@
 "use client";
 
 import { JsonDisplay } from "@/components/display/json-display";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardAction,
-  CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { ApiResponseData } from "@/types/common/api-response-data";
 import { Todo } from "@/types/todo/todo";
+import { format } from "date-fns";
+import { CheckIcon, PenIcon } from "lucide-react";
 
 type TodosClientProps = {
   initialTodos: Todo[];
@@ -25,14 +29,26 @@ export function TodosClient({ initialTodos, responseData }: TodosClientProps) {
         {initialTodos.map((todo) => (
           <Card key={String(todo.todoId)}>
             <CardHeader>
+              <CardAction>
+                <Button
+                  variant={todo.finished ? "default" : "outline"}
+                  size="icon"
+                  className="rounded-full"
+                >
+                  {todo.finished && <CheckIcon />}
+                </Button>
+              </CardAction>
               <CardTitle>{todo.todoTitle}</CardTitle>
-              <CardDescription>{todo.todoDescription}</CardDescription>
-              <CardAction></CardAction>
+              {todo.todoDescription && (
+                <CardDescription>{todo.todoDescription}</CardDescription>
+              )}
             </CardHeader>
-            <CardContent>
-              <p>{todo.finished ? "終わったよ" : "終わってないよ"}</p>
-              <p>{String(todo.createdAt)}</p>
-            </CardContent>
+            <CardFooter className="flex gap-2">
+              <Badge variant="secondary">
+                <PenIcon />
+                {format(todo.createdAt, "yyyy-MM-dd")}
+              </Badge>
+            </CardFooter>
           </Card>
         ))}
       </div>
