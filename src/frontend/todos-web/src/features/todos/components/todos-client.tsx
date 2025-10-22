@@ -5,7 +5,6 @@ import { Separator } from "@/components/ui/separator";
 import { ApiResponseData } from "@/types/common/api-response-data";
 import { Todo } from "@/types/todo/todo";
 
-// propsの型を定義
 type TodosClientProps = {
   initialTodos: Todo[];
   responseData: ApiResponseData;
