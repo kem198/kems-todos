@@ -1,5 +1,4 @@
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import {
   Item,
   ItemActions,
@@ -9,13 +8,13 @@ import {
   ItemMedia,
   ItemTitle,
 } from "@/components/ui/item";
+import { TodoToggle } from "@/features/todos/components/todo-toggle";
 import { Todo } from "@/types/todo/todo";
 import { format } from "date-fns";
 import { ja } from "date-fns/locale";
 import {
   BellIcon,
   CalendarClockIcon,
-  CheckIcon,
   Equal,
   LinkIcon,
   MapPinIcon,
@@ -30,13 +29,7 @@ export function TodoItem({ todo }: TodosItemProps) {
     <Item variant="outline" asChild>
       <a href="#">
         <ItemMedia className="flex items-center">
-          <Button
-            variant={todo.finished ? "default" : "outline"}
-            size="icon-sm"
-            className="rounded-full"
-          >
-            {todo.finished && <CheckIcon />}
-          </Button>
+          <TodoToggle todo={todo} />
         </ItemMedia>
 
         <ItemContent>
