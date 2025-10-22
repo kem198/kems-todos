@@ -1,11 +1,15 @@
 "use client";
 
 import { JsonDisplay } from "@/components/display/json-display";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { ItemGroup } from "@/components/ui/item";
 import { Separator } from "@/components/ui/separator";
+import { TodoItem } from "@/features/todos/components/todo-item";
 import { ApiResponseData } from "@/types/common/api-response-data";
 import { Todo } from "@/types/todo/todo";
+import { PlusIcon } from "lucide-react";
 
-// propsの型を定義
 type TodosClientProps = {
   initialTodos: Todo[];
   responseData: ApiResponseData;
@@ -13,20 +17,20 @@ type TodosClientProps = {
 
 export function TodosClient({ initialTodos, responseData }: TodosClientProps) {
   return (
-    <>
-      <ul className="flex w-full flex-col gap-2">
+    <div className="flex w-full flex-col gap-4">
+      {/* <TodosNavigation /> */}
+      <div className="flex gap-2">
+        <Input type="text" placeholder="Type todo title..." />
+        <Button type="submit">
+          <PlusIcon />
+          Add
+        </Button>
+      </div>
+      <ItemGroup className="gap-4">
         {initialTodos.map((todo) => (
-          <li
-            key={String(todo.todoId)}
-            className="rounded border border-gray-500 p-2"
-          >
-            <p>{todo.todoTitle}</p>
-            <p>{todo.todoDescription}</p>
-            <p>{String(todo.finished)}</p>
-            <p>{String(todo.createdAt)}</p>
-          </li>
+          <TodoItem key={todo.todoId} todo={todo} />
         ))}
-      </ul>
+      </ItemGroup>
 
       <Separator />
 
@@ -39,6 +43,6 @@ export function TodosClient({ initialTodos, responseData }: TodosClientProps) {
       <Separator />
 
       <JsonDisplay data={responseData} />
-    </>
+    </div>
   );
 }

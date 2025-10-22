@@ -11,3 +11,11 @@ export function TypographyH1({ children }: TypographyH1Props) {
     </h1>
   );
 }
+
+type TypographyMutedProps = {
+  children: React.ReactNode;
+};
+
+export function TypographyMuted({ children }: TypographyMutedProps) {
+  return <p className="text-muted-foreground text-sm">{children}</p>;
+}

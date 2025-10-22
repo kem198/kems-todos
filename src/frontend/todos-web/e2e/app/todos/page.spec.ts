@@ -26,12 +26,6 @@ test.describe("Todos ページのテスト", () => {
       // Assert
       await expect(page.getByText("Added Task 1").first()).toBeVisible();
 
-      // Capture screenshot after action
-      await page.screenshot({
-        path: "screenshots/todos/initial-test/added-task-1-after.png",
-        fullPage: true,
-      });
-
       // Cleanup
       if (todoId) {
         await page.request
@@ -61,12 +55,6 @@ test.describe("Todos ページのテスト", () => {
 
       // Assert
       await expect(page.getByText("Added Task 2").first()).toBeVisible();
-
-      // Capture screenshot after action
-      await page.screenshot({
-        path: "screenshots/todos/create-test/added-task-2-after.png",
-        fullPage: true,
-      });
     });
   });
 });

@@ -1,7 +1,9 @@
+[English](README.md) | [日本語](README.ja.md)
+
 <!-- omit in toc -->
 # KeM's Todos
 
-KeM's Todos is a showcase of my current skills.
+KeM's Todos is a to-do application that serves as a showcase of my current skills.
 
 This project focuses on:
 
@@ -16,11 +18,8 @@ This project focuses on:
 
 - [1. Application Overview](#1-application-overview)
     - [1.1. Frontend](#11-frontend)
-        - [1.1.1. todos-web](#111-todos-web)
     - [1.2. Backend](#12-backend)
-        - [1.2.1. todos-api](#121-todos-api)
-        - [1.2.2. todos-core](#122-todos-core)
-        - [1.2.3. todos-infrastructure](#123-todos-infrastructure)
+    - [1.3. Test Strategy](#13-test-strategy)
 - [2. Requirements](#2-requirements)
     - [2.1. Required](#21-required)
     - [2.2. Recommended](#22-recommended)
@@ -41,41 +40,46 @@ This project focuses on:
 
 ## 1. Application Overview
 
+This application follows a multi-layer architecture.
+
 ### 1.1. Frontend
 
-This application is built with [Next.js](https://nextjs.org/).
+The frontend application is built with [Next.js](https://nextjs.org/).
 
-#### 1.1.1. [todos-web](./src/frontend/todos-web/)
+- [todos-web](./src/frontend/todos-web/)
+    - Acts as the **Driver Side** interface.
+    - Provides a user interface for end users.
 
-Acts as the **Driver Side** of the application.
-
-- Provides a user interface for end users.
-
-> [!NOTE]  
+> [!NOTE]
 > Currently working on the [develop branch](https://github.com/kem198/kems-todos/tree/develop/src/frontend/todos-web). Coming soon...
 
 ### 1.2. Backend
 
-This application is built using a [Multi Module Project](https://spring.io/guides/gs/multi-module) approach with [Spring Boot](https://spring.io/projects/spring-boot) .
+The backend application is built using a [Multi Module Project](https://spring.io/guides/gs/multi-module) approach with [Spring Boot](https://spring.io/projects/spring-boot).
 
-#### 1.2.1. [todos-api](./src/backend/modules/todos-api/)
+- [todos-api](./src/backend/modules/todos-api/)
+    - Contains **Application Layer**.
+    - Handles API requests/responses and calls business logic.
+- [todos-core](./src/backend/modules/todos-core/)
+    - Contains **Domain Layer**.
+    - Provides domain models and business logic.
+- [todos-infrastructure](./src/backend/modules/todos-infrastructure/)
+    - Contains **Infrastructure Layer**.
+    - Executes CRUD operations on the data store.
 
-Contains **Application Layer** and the application's entry point.
+### 1.3. Test Strategy
 
-- Handles API requests/responses.
-- Calls business logic.
+This project maintains code quality with automated testing and CI.
 
-#### 1.2.2. [todos-core](./src/backend/modules/todos-core/)
-
-Contains **Domain Layer** .
-
-- Provides domain models and business logic.
-
-#### 1.2.3. [todos-infrastructure](./src/backend/modules/todos-infrastructure/)
-
-Contains **Infrastructure Layer** .
-
-- Executes CRUD operations on the data store.
+- Frontend: [Vitest](https://vitest.dev/)
+    - Executes unit tests for shared utilities.
+- Backend: [JUnit](https://junit.org/)
+    - Executes unit tests for shared classes.
+    - Executes integration tests for APIs.
+- E2E: [Playwright](https://playwright.dev/)
+    - Validates end-to-end user flows.
+- CI: [GitHub Actions](https://github.co.jp/features/actions)
+    - Runs automated build and test pipelines.
 
 ## 2. Requirements
 
@@ -191,7 +195,14 @@ $ curl 'http://localhost:8080/v1/greeting/hello'
 Hello, World!
 ```
 
-If you want to see more commands, please refer to [backend/README.md](./src/backend/README.md) .
+> [!TIP]
+> Run the API server for development (with hot reload).
+>
+> ```sh
+> ./gradlew bootRun
+> ```
+
+If you want to see more commands, please refer to [backend/README.md](./src/backend/README.md).
 
 ### 3.4. Run Web server
 
