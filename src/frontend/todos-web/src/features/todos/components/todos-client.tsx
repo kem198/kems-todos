@@ -21,8 +21,12 @@ import {
   BellIcon,
   CalendarClockIcon,
   CheckIcon,
-  ChevronRightIcon,
+  EllipsisVertical,
+  Equal,
+  LinkIcon,
   MapPinIcon,
+  PlusIcon,
+  SquareMousePointer,
 } from "lucide-react";
 
 type TodosClientProps = {
@@ -32,43 +36,67 @@ type TodosClientProps = {
 
 export function TodosClient({ initialTodos, responseData }: TodosClientProps) {
   return (
-    <>
+    <div className="flex w-full flex-col gap-4">
+      <div className="flex gap-2">
+        <Button>
+          <PlusIcon />
+          Add Todo
+        </Button>
+        <Button variant="outline">
+          <SquareMousePointer />
+          Select
+        </Button>
+        <div className="ml-auto">
+          <Button variant="ghost" size="icon-lg" className="rounded-full">
+            <EllipsisVertical />
+          </Button>
+        </div>
+      </div>
+
       <div className="flex w-full flex-col gap-4">
         {initialTodos.map((todo) => (
-          <Item key={String(todo.todoId)} variant="outline">
-            <ItemMedia>
-              <Button
-                variant={todo.finished ? "default" : "outline"}
-                size="icon"
-                className="rounded-full"
-              >
-                {todo.finished && <CheckIcon />}
-              </Button>
-            </ItemMedia>
-            <ItemContent>
-              <ItemTitle>{todo.todoTitle}</ItemTitle>{" "}
-              {todo.todoDescription && (
-                <ItemDescription>{todo.todoDescription}</ItemDescription>
-              )}
-            </ItemContent>
-            <ItemActions>
-              <ChevronRightIcon className="size-4" />
-            </ItemActions>
-            <ItemFooter>
-              <div className="flex gap-2">
-                <Badge variant="secondary">
-                  <CalendarClockIcon />
-                  {format(todo.createdAt, "M月d日 (E)", { locale: ja })}
-                </Badge>
-                <Badge variant="secondary">
-                  <BellIcon />3
-                </Badge>
-                <Badge variant="secondary">
-                  <MapPinIcon />
-                  Fukuoka, Japan
-                </Badge>
-              </div>
-            </ItemFooter>
+          <Item key={String(todo.todoId)} variant="outline" asChild>
+            <a href="#">
+              <ItemMedia className="flex items-center">
+                <Button
+                  variant={todo.finished ? "default" : "outline"}
+                  size="icon-sm"
+                  className="rounded-full"
+                >
+                  {todo.finished && <CheckIcon />}
+                </Button>
+              </ItemMedia>
+
+              <ItemContent>
+                <ItemTitle>{todo.todoTitle}</ItemTitle>{" "}
+                {todo.todoDescription && (
+                  <ItemDescription>{todo.todoDescription}</ItemDescription>
+                )}
+              </ItemContent>
+
+              <ItemActions>
+                <Equal className="size-4 cursor-grab text-gray-400" />
+              </ItemActions>
+
+              <ItemFooter className="pl-12">
+                <div className="flex gap-2">
+                  <Badge variant="outline">
+                    <CalendarClockIcon />
+                    {format(todo.createdAt, "M月d日 (E)", { locale: ja })}
+                  </Badge>
+                  <Badge variant="outline">
+                    <BellIcon />3
+                  </Badge>
+                  <Badge variant="outline">
+                    <MapPinIcon />
+                    Fukuoka, Japan
+                  </Badge>
+                  <Badge variant="outline">
+                    <LinkIcon />
+                  </Badge>
+                </div>
+              </ItemFooter>
+            </a>
           </Item>
         ))}
       </div>
@@ -84,6 +112,6 @@ export function TodosClient({ initialTodos, responseData }: TodosClientProps) {
       <Separator />
 
       <JsonDisplay data={responseData} />
-    </>
+    </div>
   );
 }
