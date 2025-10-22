@@ -44,7 +44,7 @@ export function TodosClient({ initialTodos, responseData }: TodosClientProps) {
         </Button>
         <Button variant="outline">
           <SquareMousePointer />
-          Select
+          Edit
         </Button>
         <div className="ml-auto">
           <Button variant="ghost" size="icon-lg" className="rounded-full">
