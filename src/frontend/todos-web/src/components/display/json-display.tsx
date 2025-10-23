@@ -5,7 +5,7 @@ export const JsonDisplay = ({ data }: { data: unknown }) => {
   const lines = jsonString.split("\n");
 
   return (
-    <Item variant="outline" className="bg-muted/50">
+    <Item variant="outline" className="bg-muted/50 w-full">
       <ItemContent>
         <pre className="cursor-text text-xs break-words whitespace-pre-wrap select-text">
           {lines.map((line, index) => (
