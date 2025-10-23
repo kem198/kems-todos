@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <AppPage>
-      <TypographyH1>todos-web</TypographyH1>
+      <TypographyH1>{"KeM's Todos"}</TypographyH1>
       <ul>
         <li>
           <Link href="/todos">

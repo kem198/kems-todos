@@ -19,7 +19,7 @@ export function HeaderNavigation() {
           >
             {/* リンクをクリック後、フォーカスが当たったままになるため明示的に外す */}
             <Link href="/" onClick={(e) => e.currentTarget.blur()}>
-              todos-web
+              {"KeM's Todos"}
             </Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
