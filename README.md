@@ -71,14 +71,18 @@ The backend application is built using a [Multi Module Project](https://spring.i
 
 This project maintains code quality with automated testing and CI.
 
-- Frontend: [Vitest](https://vitest.dev/)
+- Frontend
+    - Uses [Vitest](https://vitest.dev/).
     - Executes unit tests for shared utilities.
-- Backend: [JUnit](https://junit.org/)
+- Backend
+    - Uses [JUnit](https://junit.org/).
     - Executes unit tests for shared classes.
     - Executes integration tests for APIs.
-- E2E: [Playwright](https://playwright.dev/)
+- E2E
+    - Uses [Playwright](https://playwright.dev/).
     - Validates end-to-end user flows.
-- CI: [GitHub Actions](https://github.co.jp/features/actions)
+- CI
+    - Uses [GitHub Actions](https://github.co.jp/features/actions).
     - Runs automated build and test pipelines.
 
 ## 2. Requirements
