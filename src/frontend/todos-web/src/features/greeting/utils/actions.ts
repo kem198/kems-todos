@@ -1,5 +1,5 @@
 import { GreetingResult } from "@/features/greeting/types/greeting";
-import { ApiResponseData } from "@/types/common/api-response-data";
+import { SerializedResponse } from "@/types/common/response";
 
 type CreateResponseDataArgs = {
   res: Response;
@@ -24,7 +24,7 @@ const createResponseData = ({ res, body }: CreateResponseDataArgs) =>
     url: res.url,
     body,
     bodyUsed: res.bodyUsed,
-  }) satisfies ApiResponseData;
+  }) satisfies SerializedResponse;
 
 const createErrorResponseData = ({
   status,
@@ -42,11 +42,11 @@ const createErrorResponseData = ({
     url,
     body,
     bodyUsed: false,
-  }) satisfies ApiResponseData;
+  }) satisfies SerializedResponse;
 
 const createRejectedResult = (
   errorMessage: string,
-  responseData: ApiResponseData,
+  responseData: SerializedResponse,
 ): GreetingResult => ({
   status: "rejected",
   greeting: "",

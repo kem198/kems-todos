@@ -2,7 +2,7 @@
 
 import { GreetingCard } from "@/features/greeting/components/greeting-card";
 import type { GreetingResult } from "@/features/greeting/types/greeting";
-import { ApiResponseData } from "@/types/common/api-response-data";
+import { SerializedResponse } from "@/types/common/response";
 import { useEffect, useState } from "react";
 
 export type GreetingCardConfig = {
@@ -140,7 +140,7 @@ const createErrorResponseData = ({
   statusText: string;
   url: string;
   body: string;
-}): ApiResponseData => ({
+}): SerializedResponse => ({
   headers: {},
   ok: false,
   redirected: false,

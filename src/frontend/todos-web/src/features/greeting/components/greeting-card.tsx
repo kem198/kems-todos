@@ -1,14 +1,14 @@
 import { JsonDisplay } from "@/components/display/json-display";
 import { GreetingStatusBadge } from "@/features/greeting/components/greeting-status-badge";
 import { GreetingStatus } from "@/features/greeting/types/greeting";
-import { ApiResponseData } from "@/types/common/api-response-data";
+import { SerializedResponse } from "@/types/common/response";
 
 type GreetingCardProps = {
   title: string;
   description: string;
   greeting: string;
   status: GreetingStatus;
-  responseData?: ApiResponseData;
+  responseData?: SerializedResponse;
   errorMessage?: string;
 };
 
