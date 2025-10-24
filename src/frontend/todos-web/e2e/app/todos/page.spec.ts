@@ -41,20 +41,19 @@ test.describe("Todos ページのテスト", () => {
     }) => {
       // Arrange
       await page.goto("/todos");
-
-      // Capture screenshot before action
-      await page.screenshot({
-        path: "screenshots/todos/create-test/added-task-2-before.png",
-        fullPage: true,
-      });
+      await page.getByRole("textbox", { name: "Type todo title..." }).click();
+      await page
+        .getByRole("textbox", { name: "Type todo title..." })
+        .fill("Added Task 2");
 
       // Act
-      // TODO: 「タイトル」フォームへタスク名を入力する
-      // TODO: 「説明」フォームへタスクの説明を入力する
-      // TODO: 「追加」ボタンをクリックする
+      await page.getByRole("button", { name: "Add" }).click();
 
       // Assert
       await expect(page.getByText("Added Task 2").first()).toBeVisible();
+
+      // Cleanup
+      // TODO: 作成する
     });
   });
 });
