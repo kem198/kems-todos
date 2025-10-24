@@ -6,16 +6,21 @@ describe("getTodos() のテスト", () => {
   let fetchMock: MockInstance;
   const expectedResponse = [
     {
+      todoId: "1",
       todoTitle: "タスクのタイトルタスクのタイトル",
       todoDescription:
         "タスクの説明タスクの説明タスクの説明タスクの説明タスクの説明タスクの説明タスクの説明",
       finished: false,
+      // TODO: 型定義 + Date をテスト可能にする
+      // createdAt: new Date("2025-10-10"),
     },
     {
+      todoId: "2",
       todoTitle: "タスクのタイトルタスクのタイトル",
       todoDescription:
         "タスクの説明タスクの説明タスクの説明タスクの説明タスクの説明タスクの説明タスクの説明",
       finished: false,
+      // createdAt: new Date("2025-10-10"),
     },
   ];
 
