@@ -161,7 +161,7 @@ public class TodoRestControllerTests {
         void shouldReturnBadRequestWith400WhenUnfinishedTodoLimitReached() throws Exception {
             // Arrange
             // 未完了 Todo を上限まで作成する
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 100; i++) {
                 Todo todo = makeTestTodo("Todo " + i, "Description " + i);
                 todoRepository.create(todo);
             }
@@ -190,7 +190,7 @@ public class TodoRestControllerTests {
         void shouldNotCreateTodoWhenUnfinishedTodoLimitReached() throws Exception {
             // Arrange
             // 未完了 Todo を上限まで作成する
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 100; i++) {
                 Todo todo = makeTestTodo("Todo " + i, "Description " + i);
                 todoRepository.create(todo);
             }
@@ -210,7 +210,7 @@ public class TodoRestControllerTests {
 
             // Assert
             Collection<Todo> allTodos = todoRepository.findAll();
-            assertEquals(5, allTodos.size()); // 上限の 5 個のままで増えていない
+            assertEquals(100, allTodos.size()); // 上限のままで増えていない
             assertTrue(allTodos.stream().noneMatch(todo -> "Overflow Todo".equals(todo.getTodoTitle())));
         }
 
