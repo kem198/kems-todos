@@ -2,6 +2,7 @@
 
 import { SerializedResponse } from "@/types/common/response";
 import { Todo } from "@/types/todo/todo";
+import { revalidatePath } from "next/cache";
 
 export const getTodos = async (): Promise<[Todo[], SerializedResponse]> => {
   const apiBaseUrl = process.env.API_BASE_URL;
@@ -55,4 +56,6 @@ export const createTodo = async (formData: FormData): Promise<void> => {
   if (!res.ok) {
     throw new Error(`Failed to add todos. Status: ${res.status}`);
   }
+
+  revalidatePath("/todos");
 };
