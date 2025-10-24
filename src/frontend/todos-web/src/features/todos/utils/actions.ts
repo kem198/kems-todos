@@ -20,6 +20,11 @@ export const getTodos = async (): Promise<[Todo[], SerializedResponse]> => {
 
   const data = await res.json();
 
+  const sortedData = data.toSorted(
+    (a: Todo, b: Todo) =>
+      new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+  );
+
   const info: SerializedResponse = {
     headers: Object.fromEntries(res.headers.entries()),
     ok: res.ok,
@@ -32,7 +37,7 @@ export const getTodos = async (): Promise<[Todo[], SerializedResponse]> => {
     bodyUsed: res.bodyUsed,
   };
 
-  return [data, info];
+  return [sortedData, info];
 };
 
 export const createTodo = async (formData: FormData): Promise<void> => {
