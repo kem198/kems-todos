@@ -1,3 +1,4 @@
+import { Todo } from "@/types/todo/todo";
 import { expect, test } from "@playwright/test";
 
 const apiBaseUrl = process.env.API_BASE_URL;
@@ -54,7 +55,16 @@ test.describe("Todos ページのテスト", () => {
       await expect(page.getByText("Added Task 2").first()).toBeVisible();
 
       // Cleanup
-      // TODO: 作成する
+      const res = await page.request.get(`${apiBaseUrl}/v1/todos`);
+      if (res.ok()) {
+        const todos = (await res.json()) as Array<Todo>;
+        const target = todos.find((t) => t.todoTitle === "Added Task 2");
+        if (target?.todoId) {
+          await page.request
+            .delete(`${apiBaseUrl}/v1/todos/${target.todoId}`)
+            .catch(() => {});
+        }
+      }
     });
   });
 });
