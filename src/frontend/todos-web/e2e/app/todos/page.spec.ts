@@ -1,5 +1,7 @@
 import { expect, test } from "@playwright/test";
 
+const apiBaseUrl = process.env.API_BASE_URL;
+
 test.describe("Todos ページのテスト", () => {
   test.describe("初期表示のテスト", () => {
     test("追加済みのタスク「Added Task 1」が表示されること", async ({
@@ -7,7 +9,6 @@ test.describe("Todos ページのテスト", () => {
     }) => {
       // Arrange
       // DB へ初期データを投入しておく
-      const apiBaseUrl = process.env.API_BASE_URL;
       const res = await page.request.post(`${apiBaseUrl}/v1/todos`, {
         headers: { "Content-Type": "application/json" },
         data: {
