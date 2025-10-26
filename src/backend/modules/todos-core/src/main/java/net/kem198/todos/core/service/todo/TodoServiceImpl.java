@@ -52,7 +52,7 @@ public class TodoServiceImpl implements TodoService {
 
         todo.setTodoId(todoId);
         todo.setCreatedAt(createdAt);
-        todo.setFinished(Boolean.TRUE.equals(todo.isFinished()));
+        todo.setFinished(false);
 
         todoRepository.create(todo);
 
