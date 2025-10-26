@@ -28,7 +28,7 @@ export function TodoItem({ todo }: TodosItemProps) {
   return (
     <Item variant="outline">
       <ItemMedia className="flex items-center">
-        <TodoToggle todo={todo} />
+        <TodoToggle aria-label="TodoToggle" todo={todo} />
       </ItemMedia>
 
       <ItemContent>
