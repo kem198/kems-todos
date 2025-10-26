@@ -131,6 +131,54 @@ public class TodoRestControllerTests {
         }
 
         @Test
+        @DisplayName("Todo の finished が true で渡された場合、データベースに true で保存されること")
+        void shouldSaveTodoFinishedWhenPassedFinished() throws Exception {
+            // Act
+            String requestBody = """
+                        {
+                            "todoTitle": "Hello World!",
+                            "todoDescription": "Hello Todo Description!",
+                            "finished": true
+                        }
+                    """;
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            HttpEntity<String> requestEntity = new HttpEntity<>(requestBody, headers);
+            ResponseEntity<String> response = restTemplate.postForEntity("/v1/todos", requestEntity, String.class);
+
+            // Assert
+            JsonNode responseBody = objectMapper.readTree(response.getBody());
+            String createdTodoId = responseBody.get("todoId").asText();
+            Todo savedTodo = todoRepository.findById(createdTodoId);
+            assertNotNull(savedTodo);
+            assertTrue(savedTodo.isFinished());
+        }
+
+        @Test
+        @DisplayName("Todo の finished が false で渡された場合、データベースに false で保存されること")
+        void shouldSaveTodoUnfinishedWhenPassedUnfinished() throws Exception {
+            // Act
+            String requestBody = """
+                        {
+                            "todoTitle": "Hello World!",
+                            "todoDescription": "Hello Todo Description!",
+                            "finished": false
+                        }
+                    """;
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            HttpEntity<String> requestEntity = new HttpEntity<>(requestBody, headers);
+            ResponseEntity<String> response = restTemplate.postForEntity("/v1/todos", requestEntity, String.class);
+
+            // Assert
+            JsonNode responseBody = objectMapper.readTree(response.getBody());
+            String createdTodoId = responseBody.get("todoId").asText();
+            Todo savedTodo = todoRepository.findById(createdTodoId);
+            assertNotNull(savedTodo);
+            assertFalse(savedTodo.isFinished());
+        }
+
+        @Test
         @DisplayName("作成された Todo と 201 を返すこと")
         void shouldReturnCreatedTodoWith201() throws Exception {
             // Act
