@@ -20,10 +20,14 @@ export const getTodos = async (): Promise<[Todo[], SerializedResponse]> => {
 
   const data = await res.json();
 
-  const sortedData = data.toSorted(
-    (a: Todo, b: Todo) =>
-      new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-  );
+  const sortedData = data.toSorted((a: Todo, b: Todo) => {
+    // Sort by finished (false first), then createdAt (desc)
+    const finishedCompare = Number(a.finished) - Number(b.finished);
+    if (finishedCompare !== 0) {
+      return finishedCompare;
+    }
+    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+  });
 
   const info: SerializedResponse = {
     headers: Object.fromEntries(res.headers.entries()),

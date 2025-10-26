@@ -1,15 +1,18 @@
 "use client";
 
 import { Toggle } from "@/components/ui/toggle";
+import { cn } from "@/lib/utils";
 import { Todo } from "@/types/todo/todo";
 import { CheckIcon } from "lucide-react";
-import { useState } from "react";
+import { useState, type ComponentProps } from "react";
+
+type ToggleProps = ComponentProps<typeof Toggle>;
 
 type TodoToggleProps = {
   todo: Todo;
-};
+} & ToggleProps;
 
-export function TodoToggle({ todo }: TodoToggleProps) {
+export function TodoToggle({ todo, className, ...rest }: TodoToggleProps) {
   const [checked, setChecked] = useState(!!todo.finished);
 
   return (
@@ -17,7 +20,11 @@ export function TodoToggle({ todo }: TodoToggleProps) {
       pressed={checked}
       onPressedChange={setChecked}
       variant="outline"
-      className={`data-[state=on]:bg-primary cursor-pointer rounded-full`}
+      className={cn(
+        `data-[state=on]:bg-primary cursor-pointer rounded-full`,
+        className,
+      )}
+      {...rest}
     >
       {checked && <CheckIcon className="text-primary-foreground" />}
     </Toggle>

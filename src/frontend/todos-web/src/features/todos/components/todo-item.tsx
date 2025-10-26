@@ -26,42 +26,40 @@ type TodosItemProps = {
 
 export function TodoItem({ todo }: TodosItemProps) {
   return (
-    <Item variant="outline" asChild>
-      <a href="#">
-        <ItemMedia className="flex items-center">
-          <TodoToggle todo={todo} />
-        </ItemMedia>
+    <Item variant="outline">
+      <ItemMedia className="flex items-center">
+        <TodoToggle aria-label="TodoToggle" todo={todo} />
+      </ItemMedia>
 
-        <ItemContent>
-          <ItemTitle>{todo.todoTitle}</ItemTitle>{" "}
-          {todo.todoDescription && (
-            <ItemDescription>{todo.todoDescription}</ItemDescription>
-          )}
-        </ItemContent>
+      <ItemContent>
+        <ItemTitle>{todo.todoTitle}</ItemTitle>
+        {todo.todoDescription && (
+          <ItemDescription>{todo.todoDescription}</ItemDescription>
+        )}
+      </ItemContent>
 
-        <ItemActions className="self-start">
-          <Equal className="size-4 cursor-grab text-gray-400" />
-        </ItemActions>
+      <ItemActions className="self-start">
+        <Equal className="size-4 cursor-grab text-gray-400" />
+      </ItemActions>
 
-        <ItemFooter className="pl-12">
-          <div className="flex gap-2">
-            <Badge variant="outline">
-              <CalendarClockIcon />
-              {format(todo.createdAt, "M月d日 (E)", { locale: ja })}
-            </Badge>
-            <Badge variant="outline">
-              <BellIcon />3
-            </Badge>
-            <Badge variant="outline">
-              <MapPinIcon />
-              Fukuoka, Japan
-            </Badge>
-            <Badge variant="outline">
-              <LinkIcon />
-            </Badge>
-          </div>
-        </ItemFooter>
-      </a>
+      <ItemFooter className="pl-12">
+        <div className="flex gap-2">
+          <Badge variant="outline">
+            <CalendarClockIcon />
+            {format(todo.createdAt, "M月d日 (E)", { locale: ja })}
+          </Badge>
+          <Badge variant="outline">
+            <BellIcon />3
+          </Badge>
+          <Badge variant="outline">
+            <MapPinIcon />
+            Fukuoka, Japan
+          </Badge>
+          <Badge variant="outline">
+            <LinkIcon />
+          </Badge>
+        </div>
+      </ItemFooter>
     </Item>
   );
 }
