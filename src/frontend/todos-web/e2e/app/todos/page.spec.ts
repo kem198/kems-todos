@@ -56,14 +56,13 @@ test.describe("Todos ページのテスト", () => {
 
       // Cleanup
       const res = await page.request.get(`${apiBaseUrl}/v1/todos`);
-      if (res.ok()) {
-        const todos = (await res.json()) as Array<Todo>;
-        const target = todos.find((t) => t.todoTitle === "Added Task 2");
-        if (target?.todoId) {
-          await page.request
-            .delete(`${apiBaseUrl}/v1/todos/${target.todoId}`)
-            .catch(() => {});
-        }
+      expect(res.ok()).toBeTruthy();
+      const todos = (await res.json()) as Array<Todo>;
+      const todo = todos.find((t) => t.todoTitle === "Added Task 2");
+      if (todo?.todoId) {
+        await page.request
+          .delete(`${apiBaseUrl}/v1/todos/${todo.todoId}`)
+          .catch(() => {});
       }
     });
   });
