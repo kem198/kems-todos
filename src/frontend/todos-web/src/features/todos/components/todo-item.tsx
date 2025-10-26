@@ -33,7 +33,7 @@ export function TodoItem({ todo }: TodosItemProps) {
         </ItemMedia>
 
         <ItemContent>
-          <ItemTitle>{todo.todoTitle}</ItemTitle>{" "}
+          <ItemTitle>{todo.todoTitle}</ItemTitle>
           {todo.todoDescription && (
             <ItemDescription>{todo.todoDescription}</ItemDescription>
           )}
