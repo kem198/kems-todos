@@ -464,6 +464,12 @@ Connection: close
     - [domaframework/simple-examples: Doma Simple Examples](https://github.com/domaframework/simple-examples)
 
 <!-- omit in toc -->
+### PWA
+
+- [kem198/practice-pwa](https://github.com/kem198/practice-pwa)
+- [Metadata Files: manifest.json \| Next.js](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/manifest)
+
+<!-- omit in toc -->
 ### Others
 
 - [SDK Installation Candidates \| SDKMAN! the Software Development Kit Manager](https://sdkman.io/sdks/)
