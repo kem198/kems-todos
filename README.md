@@ -461,6 +461,12 @@ Connection: close
 - [TDD Boot Camp 2020 Online \#1 基調講演/ライブコーディング - YouTube](https://www.youtube.com/watch?v=Q-FJ3XmFlT8)
 
 <!-- omit in toc -->
+### PWA
+
+- [kem198/practice-pwa](https://github.com/kem198/practice-pwa)
+- [Metadata Files: manifest.json \| Next.js](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/manifest)
+
+<!-- omit in toc -->
 ### Spring Boot
 
 - [Spring Boot in Visual Studio Code](https://code.visualstudio.com/docs/java/java-spring-boot)
